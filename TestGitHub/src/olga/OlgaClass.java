@@ -7,5 +7,6 @@ public class OlgaClass {
 	
 	
 	System.out.println (saludo);
+	System.out.println (saludo);
 }
 }
