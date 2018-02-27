@@ -17,6 +17,7 @@ public class HelloWorld {
 		num2 = teclado.nextInt();
 		resultado = num1 + num2;
 		System.out.println("El resultado es " + resultado);
+		System.out.println("Pero si supieras sumar no te haría falta usar esta app");
 
 	}
 
