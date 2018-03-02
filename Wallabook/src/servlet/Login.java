@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.WallabookDAO;
 import model.Usuario;
-import model.WallabookDAO;
 
 /**
- * Servlet implementation class registrarse
+ * Servlet implementation class Login
  */
-@WebServlet("/registrarse")
-public class registrarse extends HttpServlet {
+@WebServlet("/LogIn/login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	WallabookDAO wallabookDAO = new WallabookDAO();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public registrarse() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +31,17 @@ public class registrarse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	    WallabookDAO wallabookDAO = new WallabookDAO();
 	    	PrintWriter out = response.getWriter();
 		String nickname = request.getParameter("nickname");
-		String password = request.getParameter("password");
-		String localidad = request.getParameter("localidad");
-		String correo = request.getParameter("correo");
-		Usuario usuario = new Usuario(correo, localidad, nickname, password);
-		wallabookDAO.registrarUsuario(usuario);
-		out.println("El usuario " + nickname + " ha sido insertado correctamente");
+		String password = request.getParameter("password");		
+		Usuario usuario = new Usuario(nickname, password);
+		if (wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword())) {
+		    out.println("¡Login correcto!");
+		}
+		else {
+		    out.println("Error en los datos introducidos");
+		}
 	}
 
 	/**

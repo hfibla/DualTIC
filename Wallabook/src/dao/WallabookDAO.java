@@ -1,4 +1,4 @@
-package model;
+package dao;
 
 import java.util.List;
 
@@ -6,7 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import model.Libro;
+import model.Usuario;
 
 public class WallabookDAO {
 	
@@ -22,7 +26,7 @@ public class WallabookDAO {
 
 	public WallabookDAO() {
 		super();
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jspAlumnos");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Wallabook");
 		this.setEntityManager(entityManagerFactory.createEntityManager());
 	}
 	
@@ -44,13 +48,18 @@ public class WallabookDAO {
 	}
 	
 	public boolean comprobarUsuario (String nick) {
-	    TypedQuery<Usuario> query = this.getEntityManager().createQuery("Select u from Usuario u where u.nickname = :nick",
-			Usuario.class);
-	Usuario usuario = query.setParameter("nick", nick).getSingleResult();
-	    if (usuario.equals(null))
-		return false;
-	    else
-		return true;
+	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.nickname = :nick", Usuario.class);
+	    query.setParameter("nick", nick);
+	    Long count = (Long) query.getSingleResult();
+	    return ( ( count.equals( 0L ) ) ? false : true );
+	}
+	
+	public boolean comprobarLogin(String nick, String passwd) {
+	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.nickname = :nick and u.password = :passwd", Usuario.class);
+	    query.setParameter("nick", nick);
+	    query.setParameter("passwd", passwd);
+	    Long count = (Long) query.getSingleResult();
+	    return ( ( count.equals( 0L ) ) ? false : true );
 	}
 	
 	public List<Usuario> consultarUsuarios() {
