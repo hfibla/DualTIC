@@ -44,8 +44,12 @@ public class Usuario implements Serializable {
 	    this.nickname = nickname;
 	    this.password = password;
 	}
-
-
+	
+	public Usuario(String nickname, String password) {
+	    super();
+	    this.nickname = nickname;
+	    this.password = password;
+	}
 
 	public int getIdUsuario() {
 		return this.idUsuario;
