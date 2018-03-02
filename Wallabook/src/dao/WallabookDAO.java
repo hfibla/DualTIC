@@ -74,5 +74,5 @@ public class WallabookDAO {
 	        this.getEntityManager().persist(libro);
 	        entityTransaction.commit();
 	    }
-	
+		
 }
