@@ -20,7 +20,7 @@ public class Libro implements Serializable {
 
 	private String autor;
 
-	private byte disponible;
+	private Object disponible;
 
 	private String editorial;
 
@@ -33,15 +33,13 @@ public class Libro implements Serializable {
 	@JoinColumn(name="ID_CATEGORIA")
 	private Categoria categoria;
 
-	
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
+
 	public Libro() {
-		super();
 	}
-
-
-	public Libro(String titulo, String autor, String idioma, byte disponible, String id_categoria) {
-	}
-	
 
 	public int getIdLibro() {
 		return this.idLibro;
@@ -59,11 +57,11 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
-	public byte getDisponible() {
+	public Object getDisponible() {
 		return this.disponible;
 	}
 
-	public void setDisponible(byte disponible) {
+	public void setDisponible(Object disponible) {
 		this.disponible = disponible;
 	}
 
@@ -97,6 +95,14 @@ public class Libro implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

@@ -89,6 +89,15 @@ public class WallabookDAO {
 	    }
 	    return libros;
 	}
+	
+	public Libro consultarLibroID (String idLibro) {
+	    Libro libro = null;
+	    int idLibroParseada = Integer.parseInt(idLibro);
+	    TypedQuery<Libro> query = this.getEntityManager().createQuery("Select l from Libro l where l.idLibro = :id", Libro.class);
+	    query.setParameter("id", idLibroParseada);
+	    libro = query.getSingleResult();
+	    return libro;
+	}
 	public List <Libro> consultarLibrosAutor (String autor) {
 	    List <Libro> libros = null;
 	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor", Libro.class);
@@ -102,9 +111,42 @@ public class WallabookDAO {
 	    return libros;
 	}
 	
+<<<<<<< HEAD
 	public List<Categoria> obtenerCategoria(){
 		List <Categoria> categorias = null;
 		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c", Categoria.class);
 		return categorias;			
+=======
+	public Usuario consultarUsuarioNickname (String nickname) {
+	    Usuario usuario = null;
+	    if (comprobarUsuario(nickname)) {
+		TypedQuery <Usuario> query = this.getEntityManager().createQuery("Select u from Usuario where u.nickname = :nick", Usuario.class);
+		query.setParameter("nick", nickname);
+		usuario = query.getSingleResult();
+	    }	    
+	    return usuario;
+	}
+	
+	public Long numLibrosNoDisponiblesUsuario(Usuario usuario){
+	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :user and l.disponible = 1", Libro.class);
+	    queryCount.setParameter("user", usuario);
+	    return (Long) queryCount.getSingleResult();
+	}
+	
+	public String cambiarPropietarioLibro (Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+	    String mensaje = "";
+	    if (numLibrosNoDisponiblesUsuario(antiguoPropietario) <= 5) {
+		libro.setUsuario(nuevoPropietario);
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+	        entityTransaction.begin();
+	        this.getEntityManager().persist(libro);
+	        entityTransaction.commit();
+	        mensaje = "Cambio de propietario realizado";
+	    }
+	    else {
+		mensaje = "Máximo de libros alcanzado";
+	    }
+	    return mensaje;
+>>>>>>> 77e456a9d5a23b50c2e3ab0675f4df185d52a94c
 	}
 }

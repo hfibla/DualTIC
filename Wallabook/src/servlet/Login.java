@@ -32,13 +32,12 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
-	    	PrintWriter out = response.getWriter();
-		String nickname = request.getParameter("nickname");
-		String password = request.getParameter("password");		
-		Usuario usuario = new Usuario(nickname, password);
-		String mensaje = wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword());
-		    out.println(mensaje);
-		
+	    PrintWriter out = response.getWriter();
+	    String nickname = request.getParameter("nickname");
+	    String password = request.getParameter("password");		
+	    Usuario usuario = new Usuario(nickname, password);
+	    String mensaje = wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword());
+	    out.println(mensaje);		
 	}
 
 	/**
