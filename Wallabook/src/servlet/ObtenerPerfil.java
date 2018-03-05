@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
-import model.Libro;
 import model.Usuario;
 
 /**
- * Servlet implementation class MostrarLibrosDisponiblesUsuario
+ * Servlet implementation class ObtenerPerfil
  */
-@WebServlet("/MostrarLibrosUsuario")
-public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
+@WebServlet("/ObtenerPerfil")
+public class ObtenerPerfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarLibrosDisponiblesUsuario() {
+    public ObtenerPerfil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +31,11 @@ public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		WallabookDAO wallabookDAO = new WallabookDAO();
-		PrintWriter out = response.getWriter();
-		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idlibro"));
-		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("olduser"));
-		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("newuser"));
-		String mensaje = wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario);
-		out.println(mensaje);
+	    WallabookDAO wallabookDAO = new WallabookDAO();
+	    String nickname = request.getParameter("nickname");
+	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+	    request.setAttribute("usuario", usuario);
+	    request.getRequestDispatcher("mostrarLibros.jsp/?usr=" + nickname).forward(request, response);
 	}
 
 	/**

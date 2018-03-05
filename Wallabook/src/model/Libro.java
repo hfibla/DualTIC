@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -21,7 +20,7 @@ public class Libro implements Serializable {
 
 	private String autor;
 
-	private byte disponible;
+	private Object disponible;
 
 	private String editorial;
 
@@ -34,15 +33,13 @@ public class Libro implements Serializable {
 	@JoinColumn(name="ID_CATEGORIA")
 	private Categoria categoria;
 
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="libros")
-	private List<Usuario> usuarios;
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
 
 	public Libro() {
 	}
-	
-	public Libro(String titulo, String autor, String idioma, byte disponible, String id_categoria) {
-	 }
 
 	public int getIdLibro() {
 		return this.idLibro;
@@ -60,11 +57,11 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
-	public byte getDisponible() {
+	public Object getDisponible() {
 		return this.disponible;
 	}
 
-	public void setDisponible(byte disponible) {
+	public void setDisponible(Object disponible) {
 		this.disponible = disponible;
 	}
 
@@ -100,12 +97,12 @@ public class Libro implements Serializable {
 		this.categoria = categoria;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

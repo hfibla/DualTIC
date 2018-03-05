@@ -41,7 +41,7 @@ public class ConsultarLibrosUsuario extends HttpServlet {
 		}
 		else {
 		    request.setAttribute("usuario", usuario);
-		    request.getRequestDispatcher("perfil.jsp/" + nickname).forward(request, response);
+		    request.getRequestDispatcher("perfil.jsp/?usr=" + nickname).forward(request, response);
 		}
 	}
 
