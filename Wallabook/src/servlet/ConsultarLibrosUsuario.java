@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
+import model.Usuario;
 
 /**
  * Servlet implementation class ConsultarLibrosServlet
  */
 @WebServlet("/ConsultarLibros")
-public class ConsultarLibrosServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-     WallabookDAO wallabookDAO = new WallabookDAO();
+public class ConsultarLibrosUsuario extends HttpServlet {
+	private static final long serialVersionUID = 1L;     
      
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConsultarLibrosServlet() {
+    public ConsultarLibrosUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,17 @@ public class ConsultarLibrosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	    	WallabookDAO wallabookDAO = new WallabookDAO();
 		PrintWriter out = response.getWriter();
-		out.print("consulta de libros");
-		response.getWriter().println(wallabookDAO.consultarLibros());
+		String nickname = request.getParameter("nickname");
+		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+		if (usuario.equals(null)) {
+		    out.println("Usuario no encontrado");
+		}
+		else {
+		    request.setAttribute("usuario", usuario);
+		    request.getRequestDispatcher("perfil.jsp/" + nickname).forward(request, response);
+		}
 	}
 
 }

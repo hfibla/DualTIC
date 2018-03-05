@@ -100,4 +100,28 @@ public class WallabookDAO {
 	    }
 	    return libros;
 	}
+	
+	public Usuario consultarUsuarioNickname (String nickname) {
+	    Usuario usuario = null;
+	    if (comprobarUsuario(nickname)) {
+		TypedQuery <Usuario> query = this.getEntityManager().createQuery("Select u from Usuario where u.nickname = :nick", Usuario.class);
+		query.setParameter("nick", nickname);
+		usuario = query.getSingleResult();
+	    }	    
+	    return usuario;
+	}
+	
+	public List <Libro> librosNoDisponiblesUsuario(Usuario usuario){
+	    List <Libro> libros = null;
+	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :userid", Libro.class);
+	    queryCount.setParameter("userid", usuario.getIdUsuario());
+	    Long count = (Long) queryCount.getSingleResult();
+	    return libros;
+	}
+	
+	public String cambiarPropietarioLibro (Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+	    String mensaje = "";
+	    
+	    return mensaje;
+	}
 }
