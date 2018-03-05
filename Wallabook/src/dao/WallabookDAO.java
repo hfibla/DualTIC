@@ -75,5 +75,17 @@ public class WallabookDAO {
 	        this.getEntityManager().persist(libro);
 	        entityTransaction.commit();
 	    }
-		
+	
+	public List <Libro> consultarLibrosUsuario (Usuario usuario) {
+	    List <Libro> libros = null;
+	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :user", Libro.class);
+	    queryCount.setParameter("user", usuario);
+	    Long count = (Long) queryCount.getSingleResult();
+	    if (!count.equals(0L)) { 
+		TypedQuery<Libro> queryAll = this.getEntityManager().createQuery("Select l from Libro l where l.usuario = :user", Libro.class);
+		queryAll.setParameter("user", usuario);
+		libros = queryAll.getResultList();
+	    }
+	    return libros;
+	}
 }
