@@ -88,4 +88,16 @@ public class WallabookDAO {
 	    }
 	    return libros;
 	}
+	public List <Libro> consultarLibrosAutor (String autor) {
+	    List <Libro> libros = null;
+	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor", Libro.class);
+	    queryCount.setParameter("autor", autor);
+	    Long count = (Long) queryCount.getSingleResult();
+	    if (!count.equals(0L)) { 
+		TypedQuery<Libro> queryAll = this.getEntityManager().createQuery("Select l from Libro l where l.autor = :autor", Libro.class);
+		queryAll.setParameter("autor", autor);
+		libros = queryAll.getResultList();
+	    }
+	    return libros;
+	}
 }

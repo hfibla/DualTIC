@@ -33,8 +33,15 @@ public class Libro implements Serializable {
 	@JoinColumn(name="ID_CATEGORIA")
 	private Categoria categoria;
 
+	
 	public Libro() {
+		super();
 	}
+
+
+	public Libro(String titulo, String autor, String idioma, byte disponible, String id_categoria) {
+	}
+	
 
 	public int getIdLibro() {
 		return this.idLibro;
