@@ -36,12 +36,9 @@ public class Login extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");		
 		Usuario usuario = new Usuario(nickname, password);
-		if (wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword())) {
-		    out.println("¡Login correcto!");
-		}
-		else {
-		    out.println("Error en los datos introducidos");
-		}
+		String mensaje = wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword());
+		    out.println(mensaje);
+		
 	}
 
 	/**

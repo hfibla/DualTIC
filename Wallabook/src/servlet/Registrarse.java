@@ -41,8 +41,8 @@ public class Registrarse extends HttpServlet {
 		String localidad = request.getParameter("localidad");
 		String correo = request.getParameter("correo");
 		Usuario usuario = new Usuario(correo, localidad, nickname, password);
-		wallabookDAO.registrarUsuario(usuario);
-		out.println("El usuario " + nickname + " ha sido insertado correctamente");
+		String mensaje = wallabookDAO.registrarUsuario(usuario);
+		out.println(mensaje);
 	}
 
 	/**

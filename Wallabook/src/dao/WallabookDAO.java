@@ -36,15 +36,16 @@ public class WallabookDAO {
 		return libros;
 	}
 	
-	public void registrarUsuario (Usuario usuario) {
+	public String registrarUsuario (Usuario usuario) {
 	    if (comprobarUsuario(usuario.getNickname()) == false) {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(usuario);
 		entityTransaction.commit();
+		return "El usuario " + usuario.getNickname() + " ha sido insertado correctamente";
 	    }
 	    else
-		System.out.println("Ese usuario ya existe");	    
+		return "Ese usuario ya existe";	    
 	}
 	
 	public boolean comprobarUsuario (String nick) {
@@ -54,12 +55,12 @@ public class WallabookDAO {
 	    return ( ( count.equals( 0L ) ) ? false : true );
 	}
 	
-	public boolean comprobarLogin(String nick, String passwd) {
+	public String comprobarLogin(String nick, String passwd) {
 	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.nickname = :nick and u.password = :passwd", Usuario.class);
 	    query.setParameter("nick", nick);
 	    query.setParameter("passwd", passwd);
 	    Long count = (Long) query.getSingleResult();
-	    return ( ( count.equals( 0L ) ) ? false : true );
+	    return ( ( count.equals( 0L ) ) ? "Error en los datos introducidos" : "¡Login correcto!" );
 	}
 	
 	public List<Usuario> consultarUsuarios() {
