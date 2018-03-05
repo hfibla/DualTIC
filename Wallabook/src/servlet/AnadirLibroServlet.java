@@ -14,7 +14,7 @@ import model.Libro;
 /**
  * Servlet implementation class AnadirLibroServlet
  */
-@WebServlet("/AnadirLibro")
+@WebServlet("/AnadirLibros/anadir")
 public class AnadirLibroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	WallabookDAO wallabookDAO = new WallabookDAO();
@@ -27,9 +27,9 @@ public class AnadirLibroServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
 		String titulo = request.getParameter("titulo");
@@ -42,9 +42,7 @@ public class AnadirLibroServlet extends HttpServlet {
 		// TODO aqui queremos un desplegable
 		//Libro libro = new Libro (titulo, autor, editorial, idioma, disponible, id_categoria);
 		Libro libro = new Libro (titulo, autor, idioma, disponible, id_categoria);
-		wallabookDAO.anadirLibro(libro);
-	
-		
+		wallabookDAO.anadirLibro(libro);	
 		
 	}
 

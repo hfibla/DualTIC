@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import model.Categoria;
 import model.Libro;
 import model.Usuario;
 
@@ -99,5 +100,11 @@ public class WallabookDAO {
 		libros = queryAll.getResultList();
 	    }
 	    return libros;
+	}
+	
+	public List<Categoria> obtenerCategoria(){
+		List <Categoria> categorias = null;
+		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c", Categoria.class);
+		return categorias;			
 	}
 }

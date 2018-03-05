@@ -17,6 +17,8 @@ public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	//parece ser que no va a ser necesario
     public MostrarLibrosDisponiblesUsuario() {
         super();
         // TODO Auto-generated constructor stub
