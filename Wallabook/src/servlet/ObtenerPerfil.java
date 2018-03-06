@@ -35,7 +35,7 @@ public class ObtenerPerfil extends HttpServlet {
 	    String nickname = request.getParameter("nickname");
 	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 	    request.setAttribute("usuario", usuario);
-	    request.getRequestDispatcher("perfil.jsp/?usr=" + nickname).forward(request, response);
+	    request.getRequestDispatcher("perfil.jsp?usr=" + nickname).forward(request, response);
 	}
 
 	/**

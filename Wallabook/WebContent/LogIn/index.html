@@ -11,7 +11,7 @@
 	<IMG id="logo-login" SRC="img/Logo-login.png" title="WallaBook"></IMG>
 	<form id="loginform" method="post" action="/Wallabook/LogIn/login">
 		<input type="text" class="input" placeholder="Usuario" name="nickname"
-			title="Introduce tu nombre de usuario" required> <input
+			title="Introduce tu nombre de usuario" required pattern="[a-zA-Z0-9]+"> <input
 			type="password" class="input" placeholder="Contraseña" name="password"
 			title="Introduce tu contraseña" / required> <input
 			type="submit" class="loginbutton" value="INICIAR SESIÓN" />
