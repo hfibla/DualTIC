@@ -111,7 +111,7 @@ public class WallabookDAO {
 	    return libros;
 	}
 	
-	public List<Categoria> obtenerCategoria(){
+	public List<Categoria> obtenerCategorias(){
 		List <Categoria> categorias = null;
 		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c", Categoria.class);
 		categorias = query.getResultList();
@@ -148,5 +148,12 @@ public class WallabookDAO {
 		mensaje = "Máximo de libros alcanzado";
 	    }
 	    return mensaje;
+	}
+	
+	public Categoria consultarCategoriaNombre (String nombreCategoria) {
+		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
+		query.setParameter("nombreCategoria", nombreCategoria);
+		Categoria categoria = query.getSingleResult();
+		return categoria;
 	}
 }
