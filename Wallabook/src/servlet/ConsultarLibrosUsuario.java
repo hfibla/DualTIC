@@ -15,7 +15,7 @@ import model.Usuario;
 /**
  * Servlet implementation class ConsultarLibrosServlet
  */
-@WebServlet("/ConsultarLibros")
+@WebServlet("/ConsultarLibrosUsuario")
 public class ConsultarLibrosUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
      
@@ -34,14 +34,15 @@ public class ConsultarLibrosUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 	    	WallabookDAO wallabookDAO = new WallabookDAO();
 		PrintWriter out = response.getWriter();
-		String nickname = request.getParameter("nickname");
+//		String nickname = request.getParameter("nickname");
+		String nickname = "priest";
 		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 		if (usuario.equals(null)) {
 		    out.println("Usuario no encontrado");
 		}
 		else {
 		    request.setAttribute("usuario", usuario);
-		    request.getRequestDispatcher("perfil.jsp/?usr=" + nickname).forward(request, response);
+		    request.getRequestDispatcher("mostrarLibros.jsp/?usr=" + nickname).forward(request, response);
 		}
 	}
 
