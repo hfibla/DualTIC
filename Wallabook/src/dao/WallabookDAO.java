@@ -111,12 +111,13 @@ public class WallabookDAO {
 	    return libros;
 	}
 	
-<<<<<<< HEAD
 	public List<Categoria> obtenerCategoria(){
 		List <Categoria> categorias = null;
 		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c", Categoria.class);
+		categorias = query.getResultList();
 		return categorias;			
-=======
+	}
+	
 	public Usuario consultarUsuarioNickname (String nickname) {
 	    Usuario usuario = null;
 	    if (comprobarUsuario(nickname)) {
@@ -147,6 +148,5 @@ public class WallabookDAO {
 		mensaje = "Máximo de libros alcanzado";
 	    }
 	    return mensaje;
->>>>>>> 77e456a9d5a23b50c2e3ab0675f4df185d52a94c
 	}
 }

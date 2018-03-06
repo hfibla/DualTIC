@@ -20,7 +20,7 @@ public class Libro implements Serializable {
 
 	private String autor;
 
-	private Object disponible;
+	private byte disponible;
 
 	private String editorial;
 
@@ -40,6 +40,21 @@ public class Libro implements Serializable {
 
 	public Libro() {
 	}
+	
+	
+
+	public Libro(String autor, byte disponible, String idioma, String titulo, Categoria categoria,
+		Usuario usuario) {
+	    super();
+	    this.autor = autor;
+	    this.disponible = disponible;
+	    this.idioma = idioma;
+	    this.titulo = titulo;
+	    this.categoria = categoria;
+	    this.usuario = usuario;
+	}
+
+
 
 	public int getIdLibro() {
 		return this.idLibro;
@@ -57,11 +72,11 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
-	public Object getDisponible() {
+	public byte getDisponible() {
 		return this.disponible;
 	}
 
-	public void setDisponible(Object disponible) {
+	public void setDisponible(byte disponible) {
 		this.disponible = disponible;
 	}
 
