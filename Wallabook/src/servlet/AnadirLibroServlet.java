@@ -1,5 +1,6 @@
 package servlet;
 
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,13 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
+import model.Categoria;
 import model.Libro;
+import model.Usuario;
 
 /**
  * Servlet implementation class AnadirLibroServlet
  */
 @WebServlet("/AnadirLibros/anadir")
-public class AnadirLibroServlet extends HttpServlet {
+public class AnadirLibroServlet  {
 	private static final long serialVersionUID = 1L;
 	WallabookDAO wallabookDAO = new WallabookDAO();
 
@@ -38,10 +41,13 @@ public class AnadirLibroServlet extends HttpServlet {
 		String idioma = request.getParameter("idioma");
 		byte disponible = 1;
 		// TODO es un boolean
-		String id_categoria = request.getParameter("categoria");
+		String categoriaInput = request.getParameter("categoria");
+		Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
 		// TODO aqui queremos un desplegable
 		//Libro libro = new Libro (titulo, autor, editorial, idioma, disponible, id_categoria);
-		Libro libro = new Libro (titulo, autor, idioma, disponible, id_categoria);
+		String nickname = request.getParameter("usr");
+		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+		Libro libro = new Libro (autor, disponible, idioma,titulo, categoria, usuario);
 		wallabookDAO.anadirLibro(libro);	
 		
 	}

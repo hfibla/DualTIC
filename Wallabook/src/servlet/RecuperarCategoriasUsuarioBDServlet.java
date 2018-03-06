@@ -1,9 +1,7 @@
 package servlet;
 
-
-
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,21 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
-import model.Usuario;
+import model.Categoria;
 
 /**
- * Servlet implementation class Registrarse
+ * Servlet implementation class RecuperarCategoriasUsuarioBDServlet
  */
-@WebServlet("/Registro/registrarse")
-public class Registrarse  {
+@WebServlet("/RecuperarCategoriasUsuario")
+public class RecuperarCategoriasUsuarioBDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-       
+       WallabookDAO wallabookDAO = new WallabookDAO();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Registrarse() {
+    public RecuperarCategoriasUsuarioBDServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,16 +31,10 @@ public class Registrarse  {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    	WallabookDAO wallabookDAO = new WallabookDAO();
-	    	PrintWriter out = response.getWriter();
+		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
 		String nickname = request.getParameter("nickname");
-		String password = request.getParameter("password");
-		String localidad = request.getParameter("localidad");
-		String correo = request.getParameter("correo");
-		Usuario usuario = new Usuario(correo, localidad, nickname, password);
-		String mensaje = wallabookDAO.registrarUsuario(usuario);
-		out.println(mensaje);
+		request.setAttribute("categorias", categorias);
+		request.getRequestDispatcher("AnadirLibros.jsp?usr=" + nickname).forward(request, response);
 	}
 
 	/**

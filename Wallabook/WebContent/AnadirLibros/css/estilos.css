@@ -71,3 +71,23 @@ a{
     color:darkorange;
     
 }
+<!--.seleccion {
+   width:270px;
+   padding:15px 0px;
+   padding-left: 10px;
+   font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+background: white;
+border:none;
+border-radius: 5px;
+color: grey;
+font-size: 15px;
+margin-top:15px;
+}-->
+/* RESPONSIVE */ 
+@media (min-width:1024px) {
+   #logo-login {
+    width: 500px;
+   margin-top: 15px;
+}
+   
+}
