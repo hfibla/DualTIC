@@ -18,7 +18,7 @@ import model.Usuario;
  * Servlet implementation class Registrarse
  */
 @WebServlet("/Registro/registrarse")
-public class Registrarse  {
+public class Registrarse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	

@@ -10,16 +10,16 @@
 </head>
 <body>
 	<IMG id="logo-login" SRC="img/Logo-registro.png" title="WallaBook"></IMG>
-	<form id="loginform" method="post" onsubmit="return validarForm()" action="/Wallabook/Registro/registrarse">
+	<form id="loginform" method="post" action="/Wallabook/Registro/registrarse">
 		<input type="text" class="input" name="nickname" placeholder="Usuario"
-			title="Crea un nombre de usuario" required pattern="[a-zA-Z0-9]+"/> 
+			title="Sólo caracteres alfanuméricos (sin espacios)" required pattern="[a-zA-Z0-9]+"/> 
 			<input type="password" class="input" name="password"
-			placeholder="Contraseña" title="Crea una contraseña segura"
-			/ required> 
+			placeholder="Contraseña" title="8 caracteres mínimo"
+			 required pattern=".{8,}"/> 
 			<input type="email" class="input" name="correo"
 			placeholder="E-mail" title="Introduce un correo válido" required/>
 		<input type="localidad" class="input" name="localidad"
-			placeholder="Localidad" title="Tu lugar de residencia" pattern="[a-zA-Z0-9\s]+" required/>
+			placeholder="Localidad" title="Sólo caracteres del alfabeto español" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" required/>
 		<input type="submit" class="loginbutton" value="REGISTRARME" />
 	</form>
 	<a id="registro-btn" href="/Wallabook/LogIn/">YA TENGO UNA CUENTA</a>
