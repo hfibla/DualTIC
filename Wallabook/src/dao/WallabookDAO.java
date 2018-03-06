@@ -113,7 +113,7 @@ public class WallabookDAO {
 	
 	public List<Categoria> obtenerCategorias(){
 		List <Categoria> categorias = null;
-		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c", Categoria.class);
+		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
 		categorias = query.getResultList();
 		return categorias;			
 	}
@@ -151,7 +151,7 @@ public class WallabookDAO {
 	}
 	
 	public Categoria consultarCategoriaNombre (String nombreCategoria) {
-		TypedQuery<Categoria> query = this.getEntityManager().createNamedQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
+		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
 		query.setParameter("nombreCategoria", nombreCategoria);
 		Categoria categoria = query.getSingleResult();
 		return categoria;

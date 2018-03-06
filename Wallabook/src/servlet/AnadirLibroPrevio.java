@@ -15,14 +15,14 @@ import model.Categoria;
 /**
  * Servlet implementation class RecuperarCategoriasUsuarioBDServlet
  */
-@WebServlet("/RecuperarCategoriasUsuario")
-public class RecuperarCategoriasUsuarioBDServlet extends HttpServlet {
+@WebServlet("/AnadirLibroPrevio")
+public class AnadirLibroPrevio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        WallabookDAO wallabookDAO = new WallabookDAO();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecuperarCategoriasUsuarioBDServlet() {
+    public AnadirLibroPrevio() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,10 @@ public class RecuperarCategoriasUsuarioBDServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
-		String nickname = request.getParameter("nickname");
+//		String nickname = request.getParameter("nickname");
+		String nickname = "priest";
 		request.setAttribute("categorias", categorias);
-		request.getRequestDispatcher("AnadirLibros.jsp?usr=" + nickname).forward(request, response);
+		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp?usr=" + nickname).forward(request, response);
 	}
 
 	/**
