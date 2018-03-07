@@ -33,8 +33,28 @@ public class Libro implements Serializable {
 	@JoinColumn(name="ID_CATEGORIA")
 	private Categoria categoria;
 
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO")
+	private Usuario usuario;
+
 	public Libro() {
 	}
+	
+	
+
+	public Libro(String autor, byte disponible, String idioma, String titulo, Categoria categoria,
+		Usuario usuario) {
+	    super();
+	    this.autor = autor;
+	    this.disponible = disponible;
+	    this.idioma = idioma;
+	    this.titulo = titulo;
+	    this.categoria = categoria;
+	    this.usuario = usuario;
+	}
+
+
 
 	public int getIdLibro() {
 		return this.idLibro;
@@ -90,6 +110,14 @@ public class Libro implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

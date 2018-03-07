@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>WallaBook - Registro</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css.txt">
+<meta charset="UTF-8">
+<title>WallaBook - Registro</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="css/estilos.css">
+<script type="text/javascript" src="registro.js"></script>
 </head>
 <body>
-    <IMG id="logo-login" SRC="img/Logo-registro.png" title="WallaBook"></IMG>
-    <form id="loginform" method="#" action="#">
-<input type="text" class="input" placeholder="Usuario" title="Crea un nombre de usuario" required>
-<input type="password" class="input" placeholder="Contraseña" title="Crea una contraseña segura"/ required>
-<input type="email" class="input" placeholder="E-mail" title="Introduce un correo válido"/ required>
-<input type="localidad" class="input" placeholder="Localidad" title="Tu lugar de residencia"/ required>        
-<input type="submit" class="loginbutton" value="REGISTRARME" />
-</form>
-<a id="registro-btn" href="#" >YA TENGO UNA CUENTA</a>
-    
+	<IMG id="logo-login" SRC="img/Logo-registro.png" title="WallaBook"></IMG>
+	<form id="loginform" method="post" action="/Wallabook/Registro/registrarse">
+		<input type="text" class="input" name="nickname" placeholder="Usuario"
+			title="Sólo caracteres alfanuméricos (sin espacios)" required pattern="[a-zA-Z0-9]+"/> 
+			<input type="password" class="input" name="password"
+			placeholder="Contraseña" title="8 caracteres mínimo"
+			 required pattern=".{8,}"/> 
+			<input type="email" class="input" name="correo"
+			placeholder="E-mail" title="Introduce un correo válido" required/>
+		<input type="text" class="input" name="localidad"
+			placeholder="Localidad" title="Sólo caracteres del alfabeto español" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" required/>
+		<input type="submit" class="loginbutton" value="REGISTRARME" />
+	</form>
+	<a id="registro-btn" href="/Wallabook/LogIn/">YA TENGO UNA CUENTA</a>
 </body>
 </html>
 

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -34,9 +35,23 @@ public class Usuario implements Serializable {
 
 	private String telefono;
 
+	//bi-directional many-to-one association to Libro
+	@OneToMany(mappedBy="usuario")
+	private List<Libro> libros;
+
 	public Usuario() {
 	}
 	
+	
+
+	public Usuario(String nickname, String password) {
+	    super();
+	    this.nickname = nickname;
+	    this.password = password;
+	}
+
+
+
 	public Usuario(String correo, String localidad, String nickname, String password) {
 	    super();
 	    this.correo = correo;
@@ -109,6 +124,28 @@ public class Usuario implements Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public List<Libro> getLibros() {
+		return this.libros;
+	}
+
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+
+	public Libro addLibro(Libro libro) {
+		getLibros().add(libro);
+		libro.setUsuario(this);
+
+		return libro;
+	}
+
+	public Libro removeLibro(Libro libro) {
+		getLibros().remove(libro);
+		libro.setUsuario(null);
+
+		return libro;
 	}
 
 }
