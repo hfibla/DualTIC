@@ -18,7 +18,11 @@ import model.Usuario;
  * Servlet implementation class AnadirLibroServlet
  */
 @WebServlet("/AnadirLibros/anadir")
+<<<<<<< HEAD
 public class AnadirLibroServlet extends HttpServlet  {
+=======
+public class AnadirLibroServlet extends HttpServlet {
+>>>>>>> 853938cfae1083111c151a091fb99adde58b5fbd
 	private static final long serialVersionUID = 1L;
 	WallabookDAO wallabookDAO = new WallabookDAO();
 
