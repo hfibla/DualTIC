@@ -35,7 +35,7 @@ public class MostrarLibros extends HttpServlet {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
 	    List<Libro> libros = wallabookDAO.consultarLibros();
 	    request.setAttribute("libros", libros);
-	        request.getRequestDispatcher("/Wallabook/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+	        request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
 
 	/**
