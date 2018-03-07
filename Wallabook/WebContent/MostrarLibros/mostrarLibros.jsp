@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <title>WallaBook - Todos los libros</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="/Wallabook/MostrarLibros/css/estilos.css">
     
 </head>
     <body>
 <header>
     <div class="contenedor">
-        <img class="logo" src="img/Logo-login.png">
+        <img class="logo" src="/Wallabook/MostrarLibros/img/Logo-login.png">
      </div>
 </header>
 <main>
@@ -24,16 +24,20 @@
 <section class="linea"></section>
     
     
-</main>
-        <div class="contenedor-libros">
+
+        
             <c:forEach items="${libros}" var="libro">
+            	<div class="contenedor-libros">
 					<p>${libro.titulo}</p>
                     <p>${libro.autor}</p>
 					<p>${libro.idioma}</p>
-					<p><c:if test="${libro.editorial > 0}">${libro.editorial}</c:if>
-					<p>${libro.disponible}</p>   
-            </c:forEach>
-        </div>
+					<p><c:if test="${libro.editorial != '0'}">${libro.editorial}</c:if>
+					<p id="nodisponible"><c:if test="${libro.disponible == 0}">No disponible</c:if>
+                   	<p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
+                </div>
+           </c:forEach>
+        
+</main>
          <!-- footer-->
          <footer>
             <div class="contenedor">

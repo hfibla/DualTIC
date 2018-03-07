@@ -92,6 +92,16 @@ footer {
     margin-top: 6px;
 }
 
+#nodisponible {
+   background-color: orangered;
+   border-radius: 4px;
+
+}
+#disponible {
+   background-color: limegreen;
+   border-radius: 4px;
+}
+
 /* RESPONSIVE */
 
 @media (min-width:1080px) { 

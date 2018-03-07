@@ -37,7 +37,7 @@ public class AnadirLibroServlet extends HttpServlet {
 		String autor = request.getParameter("autor");
 		//String editorial = request.getParameter("editorial");
 		String idioma = request.getParameter("idioma");
-		byte disponible = 1;
+		int disponible = 1;
 		// es un boolean
 		String categoriaInput = request.getParameter("categoria");
 		Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
