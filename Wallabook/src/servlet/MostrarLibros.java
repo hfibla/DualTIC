@@ -15,7 +15,7 @@ import model.Libro;
 /**
  * Servlet implementation class MostrarLibros
  */
-@WebServlet("/MostrarLibros/mostrarTodos")
+@WebServlet("/mostrarTodos")
 public class MostrarLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class MostrarLibros extends HttpServlet {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
 	    List<Libro> libros = wallabookDAO.consultarLibros();
 	    request.setAttribute("libros", libros);
-	        request.getRequestDispatcher("mostrarLibros.jsp").forward(request, response);
+	        request.getRequestDispatcher("/Wallabook/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
 
 	/**
