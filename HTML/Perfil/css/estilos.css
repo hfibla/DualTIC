@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #b7b7b7;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: #616161;
+    color: #fff;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    margin:0;
+}
+.logo {
+    height: 49px;
+}
+.menu a{
+    text-decoration:none;
+    color: white;
+    margin-left:10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.menu a:hover{
+    background-color: #b7b7b7;
+    color: white;
+}
+.menu {
+    background-color: #616161;
+    margin-top:-5px;
+    border-top: 2px solid orange;
+    padding:10px;
+}
+.closesesion-btn {
+    
+    height: 50px;
+    color: #fff;
+    font-size:15px;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    margin:0;
+    cursor:pointer;
+}
+.closesesion-btn:hover {
+    text-decoration: underline;
+}
+main {
+    margin-top: 93px;
+    background-color: #b7b7b7;
+    height: 600px;
+    margin-top: 200px;
+} 
+main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 80px;
+    background-color: #fff;
+}
+.avatar img {
+    height: 175px;
+}
+.info-perfil {
+    background-color: #616161;
+    margin: 15px;
+    border: solid #616161;
+    padding: 5px;
+    color: white;
+    margin-top: 40px;
+}
+main p {
+    margin: 5px;
+}
+
+footer {
+    background-color: #616161;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 25px;
+}
+.copy {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: orange;
+}
+
+@media (min-width:480px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 170px;
+    background-color: #fff;
+}
+}
+@media (min-width:580px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 200px;
+    background-color: #fff;
+}
+}
+@media (min-width:680px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 250px;
+    background-color: #fff;
+}
+    
+    .menu {
+    background-color: #616161;
+    margin-top:-5px;
+    border-top: 2px solid orange;
+    padding:10px;
+}
+    
+    
+    
+    
+}
+@media (min-width:780px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 370px;
+    background-color: #fff;
+}
+}
+@media (min-width:920px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left: 500px;
+    background-color: #fff;
+}
+}
+@media (min-width:1080px) { 
+ main .avatar{
+    height: 180px;
+    width:180px; 
+    border: solid 3px #616161; 
+    margin-top: -50px;
+    margin-left:700px;
+    background-color: #fff;
+}
+}
