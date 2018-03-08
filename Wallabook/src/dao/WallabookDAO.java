@@ -156,8 +156,7 @@ public class WallabookDAO {
 		Categoria categoria = query.getSingleResult();
 		return categoria;
 	}
-<<<<<<< HEAD
-	
+
 	public Categoria consultarCategoriaID (int idCategoria) {
 		idCategoria = idCategoria - 1;
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.idCategoria = :idCat", Categoria.class);
@@ -166,7 +165,4 @@ public class WallabookDAO {
 		return categoria;
 	}
 	
-	
-=======
->>>>>>> 505c5f99b66787a06ee1d58bd3714d1a5070d34a
 }
