@@ -37,16 +37,16 @@ public class WallabookDAO {
 		return libros;
 	}
 	
-	public String registrarUsuario (Usuario usuario) {
+	public boolean registrarUsuario (Usuario usuario) {
 	    if (comprobarUsuario(usuario.getNickname()) == false) {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(usuario);
 		entityTransaction.commit();
-		return "El usuario " + usuario.getNickname() + " ha sido insertado correctamente";
+		return true;
 	    }
 	    else
-		return "Ese usuario ya existe";	    
+		return false;	    
 	}
 	
 	public boolean comprobarUsuario (String nick) {
