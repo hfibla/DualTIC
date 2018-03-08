@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,12 +31,17 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
-	    PrintWriter out = response.getWriter();
 	    String nickname = request.getParameter("nickname");
 	    String password = request.getParameter("password");		
 	    Usuario usuario = new Usuario(nickname, password);
-	    String mensaje = wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword());
-	    out.println(mensaje);		
+	    if (wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword())) {
+	    	request.getSession(true).setAttribute("me", usuario.getNickname());
+	    	response.sendRedirect("/Wallabook/AnadirLibroPrevio");
+	    }
+	    else {
+	    	response.sendRedirect("/Wallabook/LogIn/index.html?registro=0");
+	    }
+	    
 	}
 
 	/**

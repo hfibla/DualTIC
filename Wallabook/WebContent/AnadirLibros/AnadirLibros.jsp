@@ -24,7 +24,7 @@
 			<SELECT class="input" name="categoria" SIZE="1"> 
 <OPTION VALUE=0>-</OPTION>
 <c:forEach items="${categorias}" var="categoria">
-	<OPTION VALUE="${categoria.idCategoria}">${categoria.nombreCategoria}</OPTION>
+	<OPTION VALUE="${categoria.nombreCategoria}">${categoria.nombreCategoria}</OPTION>
 </c:forEach>
 </SELECT>
 			<input

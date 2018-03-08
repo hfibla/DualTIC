@@ -56,12 +56,12 @@ public class WallabookDAO {
 	    return ( ( count.equals( 0L ) ) ? false : true );
 	}
 	
-	public String comprobarLogin(String nick, String passwd) {
+	public boolean comprobarLogin(String nick, String passwd) {
 	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.nickname = :nick and u.password = :passwd", Usuario.class);
 	    query.setParameter("nick", nick);
 	    query.setParameter("passwd", passwd);
 	    Long count = (Long) query.getSingleResult();
-	    return ( ( count.equals( 0L ) ) ? "Error en los datos introducidos" : "¡Login correcto!" );
+	    return ( ( count.equals( 0L ) ) ? false : true );
 	}
 	
 	public List<Usuario> consultarUsuarios() {
@@ -121,7 +121,7 @@ public class WallabookDAO {
 	public Usuario consultarUsuarioNickname (String nickname) {
 	    Usuario usuario = null;
 	    if (comprobarUsuario(nickname)) {
-		TypedQuery <Usuario> query = this.getEntityManager().createQuery("Select u from Usuario where u.nickname = :nick", Usuario.class);
+		TypedQuery<Usuario> query = this.getEntityManager().createQuery("Select u from Usuario u where u.nickname = :nick", Usuario.class);
 		query.setParameter("nick", nickname);
 		usuario = query.getSingleResult();
 	    }	    
@@ -153,7 +153,6 @@ public class WallabookDAO {
 	public Categoria consultarCategoriaNombre (String nombreCategoria) {
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
 		query.setParameter("nombreCategoria", nombreCategoria);
-		System.out.println(nombreCategoria);
 		Categoria categoria = query.getSingleResult();
 		return categoria;
 	}
@@ -162,7 +161,6 @@ public class WallabookDAO {
 		idCategoria = idCategoria - 1;
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.idCategoria = :idCat", Categoria.class);
 		query.setParameter("idCat", idCategoria);
-		System.out.println(idCategoria);
 		Categoria categoria = query.getSingleResult();
 		return categoria;
 	}
