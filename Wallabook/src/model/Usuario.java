@@ -44,20 +44,20 @@ public class Usuario implements Serializable {
 	
 	
 
-	public Usuario(String correo, String localidad, String nickname, String password) {
-		super();
-		this.correo = correo;
-		this.localidad = localidad;
-		this.nickname = nickname;
-		this.password = password;
+	public Usuario(String nickname, String password) {
+	    super();
+	    this.nickname = nickname;
+	    this.password = password;
 	}
 
 
 
-	public Usuario(String nickname, String password) {
-		super();
-		this.nickname = nickname;
-		this.password = password;
+	public Usuario(String correo, String localidad, String nickname, String password) {
+	    super();
+	    this.correo = correo;
+	    this.localidad = localidad;
+	    this.nickname = nickname;
+	    this.password = password;
 	}
 
 

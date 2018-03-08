@@ -17,7 +17,7 @@ var reg = getUrlVars()["registro"];
 if (reg == "1") {
 	alert ("Usuario registrado correctamente");
 } else if (reg == "0") {
-	alert ("El usuario ya existe");
+	alert ("Error en los datos introducidos");
 }
 
 };

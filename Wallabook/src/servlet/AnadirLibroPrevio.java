@@ -13,7 +13,7 @@ import dao.WallabookDAO;
 import model.Categoria;
 
 /**
- * Servlet implementation class RecuperarCategoriasUsuarioBDServlet
+ * Servlet implementation class AnadirLibroPrevio
  */
 @WebServlet("/AnadirLibroPrevio")
 public class AnadirLibroPrevio extends HttpServlet {
@@ -33,9 +33,10 @@ public class AnadirLibroPrevio extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
 //		String nickname = request.getParameter("nickname");
-		String nickname = "priest";
+//		String nickname = "priest";
+//		request.setAttribute("me", nickname);
 		request.setAttribute("categorias", categorias);
-		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp?me=" + nickname).forward(request, response);
+		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp").forward(request, response);
 	}
 
 	/**
