@@ -31,7 +31,7 @@ public class AnadirLibroServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String titulo = request.getParameter("titulo");
 		String autor = request.getParameter("autor");
@@ -40,14 +40,17 @@ public class AnadirLibroServlet extends HttpServlet {
 		int disponible = 1;
 		// es un boolean
 		String categoriaInput = request.getParameter("categoria");
-		Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
+		int categoriaParseada = Integer.parseInt(categoriaInput);
+		Categoria categoria = wallabookDAO.consultarCategoriaID(categoriaParseada);
 		// aqui queremos un desplegable
 		//Libro libro = new Libro (titulo, autor, editorial, idioma, disponible, id_categoria);
-		String nickname = request.getParameter("usr");
+		String nickname = request.getParameter("me");
 		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
-		Libro libro = new Libro (autor, disponible, idioma,titulo, categoria, usuario);
+		Libro libro = new Libro (autor, disponible, idioma, titulo, categoria, usuario);
 		wallabookDAO.anadirLibro(libro);	
 		
 	}
+    
+    
 
 }
