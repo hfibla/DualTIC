@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #b7b7b7;
+    
+}
+header {
+    width: 100%;;
+    background: #616161;
+    color: #fff;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    margin:0;
+    border-bottom: 5px solid orange;
+}
+.logo {
+    height: 49px;
+}
+
+.linea {
+    margin-bottom: px;
+    height: 5px;
+    background-color: orange;
+}
+.contenedor1 {
+    font-size:20px;
+    margin:100px;
+    margin-top: 60px;
+    text-align:center;
+    margin-bottom: 0px;
+    color: black;
+    
+}
+ 
+#lista {
+    background-color: grey;
+    height: 1000px;;
+    
+    
+}
+.muestra-libro {
+background-color: #616161;
+    height: 220px;
+    width: 150px;
+    margin: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-left:40px;
+    
+}
+footer {
+    background-color: #616161;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    border-top: 5px solid orange;
+}
+.copy {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: orange;
+}
+
+.contenedor-libros {
+    width: 300px;
+    height: 150px;
+    margin: 5px;
+    margin-left: 25px;
+    margin-right: 30px;    background-color: #616161;
+    border: 2px solid orange;
+    color: white;
+    display: inline-block;
+    
+}
+.contenedor-libros p {
+    margin: 5px;
+    margin-top: 6px;
+}
+
+#nodisponible {
+   background-color: orangered;
+   border-radius: 4px;
+
+}
+#disponible {
+   background-color: limegreen;
+   border-radius: 4px;
+}
+
+/* RESPONSIVE */
+
+@media (min-width:1080px) { 
+    footer {
+        background-color: #616161;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 25px;
+        
+}
+    .copy {
+                margin-left: 80px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
