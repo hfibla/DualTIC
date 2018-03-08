@@ -21,7 +21,7 @@
 			title="Editorial del libro" name="editorial"> 
 		<input type="text" class="input" name="idioma" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
 			placeholder="Idioma" title="Idioma del libro" required> 
-			<SELECT class="input" NAME="categoria" SIZE="1"> 
+			<SELECT class="input" name="categoria" SIZE="1"> 
 <OPTION VALUE=0>-</OPTION>
 <c:forEach items="${categorias}" var="categoria">
 	<OPTION VALUE="${categoria.idCategoria}">${categoria.nombreCategoria}</OPTION>
