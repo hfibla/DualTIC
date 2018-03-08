@@ -37,16 +37,16 @@ public class WallabookDAO {
 		return libros;
 	}
 	
-	public boolean registrarUsuario (Usuario usuario) {
+	public String registrarUsuario (Usuario usuario) {
 	    if (comprobarUsuario(usuario.getNickname()) == false) {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(usuario);
 		entityTransaction.commit();
-		return true;
+		return "El usuario " + usuario.getNickname() + " ha sido insertado correctamente";
 	    }
 	    else
-		return false;	    
+		return "Ese usuario ya existe";	    
 	}
 	
 	public boolean comprobarUsuario (String nick) {
@@ -156,6 +156,7 @@ public class WallabookDAO {
 		Categoria categoria = query.getSingleResult();
 		return categoria;
 	}
+<<<<<<< HEAD
 	
 	public Categoria consultarCategoriaID (int idCategoria) {
 		idCategoria = idCategoria - 1;
@@ -166,4 +167,6 @@ public class WallabookDAO {
 	}
 	
 	
+=======
+>>>>>>> 505c5f99b66787a06ee1d58bd3714d1a5070d34a
 }

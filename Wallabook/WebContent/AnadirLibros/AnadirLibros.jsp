@@ -8,21 +8,19 @@
 <title>WallaBook - Añadir Libro</title>
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
-<link rel="stylesheet" href="/Wallabook/AnadirLibros/css/estilos.css">
+<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-	<IMG id="logo-login" SRC="/Wallabook/AnadirLibros/img/Logo-add-book.png" title="WallaBook"></IMG>
+	<IMG id="logo-login" SRC="img/Logo-add-book.png" title="WallaBook???"></IMG>
 	<form id="loginform" method="post" action="/Wallabook/AnadirLibros/anadir">
 		<input type="text" class="input" placeholder="Título"
-			title="Título del libro" name="titulo" required>
-		<input type="text" name="autor" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
+			title="Título del libro" required> <input type="text"
 			class="input" placeholder="Autor" title="Autor del libro" required>
 		<input type="text" class="input" placeholder="Editorial (Opcional)"
-			title="Editorial del libro" name="editorial"> 
-		<input type="text" class="input" name="idioma" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
+			title="Editorial del libro"> <input type="text" class="input"
 			placeholder="Idioma" title="Idioma del libro" required> 
-			<SELECT class="input" name="categoria" SIZE="1"> 
-<OPTION VALUE=0>-</OPTION>
+			<SELECT class="input" NAME="selCombo" SIZE=1 onChange="javascript:alert('prueba');"> 
+<OPTION VALUE="link pagina 1">-</OPTION>
 <c:forEach items="${categorias}" var="categoria">
 	<OPTION VALUE="${categoria.nombreCategoria}">${categoria.nombreCategoria}</OPTION>
 </c:forEach>
