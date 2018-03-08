@@ -35,7 +35,7 @@ public class AnadirLibroPrevio extends HttpServlet {
 //		String nickname = request.getParameter("nickname");
 		String nickname = "priest";
 		request.setAttribute("categorias", categorias);
-		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp?me=" + nickname).forward(request, response);
+		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp?usr=" + nickname).forward(request, response);
 	}
 
 	/**

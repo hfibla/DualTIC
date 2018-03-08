@@ -37,16 +37,16 @@ public class WallabookDAO {
 		return libros;
 	}
 	
-	public boolean registrarUsuario (Usuario usuario) {
+	public String registrarUsuario (Usuario usuario) {
 	    if (comprobarUsuario(usuario.getNickname()) == false) {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(usuario);
 		entityTransaction.commit();
-		return true;
+		return "El usuario " + usuario.getNickname() + " ha sido insertado correctamente";
 	    }
 	    else
-		return false;	    
+		return "Ese usuario ya existe";	    
 	}
 	
 	public boolean comprobarUsuario (String nick) {
@@ -153,19 +153,7 @@ public class WallabookDAO {
 	public Categoria consultarCategoriaNombre (String nombreCategoria) {
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
 		query.setParameter("nombreCategoria", nombreCategoria);
-		System.out.println(nombreCategoria);
 		Categoria categoria = query.getSingleResult();
 		return categoria;
 	}
-	
-	public Categoria consultarCategoriaID (int idCategoria) {
-		idCategoria = idCategoria - 1;
-		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c where c.idCategoria = :idCat", Categoria.class);
-		query.setParameter("idCat", idCategoria);
-		System.out.println(idCategoria);
-		Categoria categoria = query.getSingleResult();
-		return categoria;
-	}
-	
-	
 }

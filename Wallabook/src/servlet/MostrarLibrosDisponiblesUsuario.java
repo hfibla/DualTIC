@@ -38,8 +38,8 @@ public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		PrintWriter out = response.getWriter();
 		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idlibro"));
-		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("me"));
-		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("usr"));
+		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("olduser"));
+		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("newuser"));
 		String mensaje = wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario);
 		out.println(mensaje);
 	}
