@@ -36,7 +36,7 @@
                    	<p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
                 </div>
            </c:forEach>
-        
+        <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 </main>
          <!-- footer-->
          <footer>

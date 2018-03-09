@@ -37,16 +37,15 @@ public class WallabookDAO {
 		return libros;
 	}
 	
-	public String registrarUsuario (Usuario usuario) {
-	    if (comprobarUsuario(usuario.getNickname()) == false) {
-		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
-		entityTransaction.begin();
-		this.getEntityManager().persist(usuario);
-		entityTransaction.commit();
-		return "El usuario " + usuario.getNickname() + " ha sido insertado correctamente";
+	public boolean registrarUsuario (Usuario usuario) {
+	    if ((comprobarUsuario(usuario.getNickname()) && comprobarEmail(usuario.getCorreo())) == false) {
+			EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+			entityTransaction.begin();
+			this.getEntityManager().persist(usuario);
+			entityTransaction.commit();
+			return true;
 	    }
-	    else
-		return "Ese usuario ya existe";	    
+	    else return false;	    
 	}
 	
 	public boolean comprobarUsuario (String nick) {
@@ -55,6 +54,14 @@ public class WallabookDAO {
 	    Long count = (Long) query.getSingleResult();
 	    return ( ( count.equals( 0L ) ) ? false : true );
 	}
+	
+	public boolean comprobarEmail (String email) {
+	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.correo = :email", Usuario.class);
+	    query.setParameter("email", email);
+	    Long count = (Long) query.getSingleResult();
+	    return ( ( count.equals( 0L ) ) ? false : true );
+	}
+	
 	
 	public boolean comprobarLogin(String nick, String passwd) {
 	    Query query = this.getEntityManager().createQuery("Select count(u) from Usuario u where u.nickname = :nick and u.password = :passwd", Usuario.class);

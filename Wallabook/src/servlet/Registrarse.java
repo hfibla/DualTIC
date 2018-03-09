@@ -3,7 +3,6 @@ package servlet;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,15 +35,18 @@ public class Registrarse extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    	WallabookDAO wallabookDAO = new WallabookDAO();
-	    	PrintWriter out = response.getWriter();
+    	WallabookDAO wallabookDAO = new WallabookDAO();
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		String localidad = request.getParameter("localidad");
 		String correo = request.getParameter("correo");
 		Usuario usuario = new Usuario(correo, localidad, nickname, password);
-		String mensaje = wallabookDAO.registrarUsuario(usuario);
-		out.println(mensaje);
+		if (wallabookDAO.registrarUsuario(usuario)) {
+			response.sendRedirect("/Wallabook/LogIn/index.html?registro=1");
+		}
+		else {
+			response.sendRedirect("/Wallabook/Registro/index.html?registro=0");
+		}
 	}
 
 	/**

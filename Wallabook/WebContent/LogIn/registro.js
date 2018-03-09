@@ -11,7 +11,7 @@ return vars;
 };
 
 
-function checkReg() {
+function checkURLParam() {
 var reg = getUrlVars()["registro"];
 
 if (reg == "1") {

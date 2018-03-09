@@ -102,6 +102,9 @@ footer {
    border-radius: 4px;
 }
 
+#registro-btn:hover{
+    color:darkorange;
+
 /* RESPONSIVE */
 
 @media (min-width:1080px) { 

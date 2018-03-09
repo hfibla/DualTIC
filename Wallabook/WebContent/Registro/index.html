@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/estilos.css">
 <script type="text/javascript" src="registro.js"></script>
 </head>
-<body>
+<body onload="checkURLParam()">
 	<IMG id="logo-login" SRC="img/Logo-registro.png" title="WallaBook"></IMG>
 	<form id="loginform" method="post" action="/Wallabook/Registro/registrarse">
 		<input type="text" class="input" name="nickname" placeholder="Usuario"

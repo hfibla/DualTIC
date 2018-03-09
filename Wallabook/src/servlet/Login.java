@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
 	    Usuario usuario = new Usuario(nickname, password);
 	    if (wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword())) {
 	    	request.getSession(true).setAttribute("me", usuario.getNickname());
-	    	response.sendRedirect("/Wallabook/AnadirLibroPrevio");
+	    	response.sendRedirect("/Wallabook/PaginaPrincipal");
 	    }
 	    else {
 	    	response.sendRedirect("/Wallabook/LogIn/index.html?registro=0");

@@ -32,9 +32,6 @@ public class AnadirLibroPrevio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
-//		String nickname = request.getParameter("nickname");
-//		String nickname = "priest";
-//		request.setAttribute("me", nickname);
 		request.setAttribute("categorias", categorias);
 		request.getRequestDispatcher("/AnadirLibros/AnadirLibros.jsp").forward(request, response);
 	}

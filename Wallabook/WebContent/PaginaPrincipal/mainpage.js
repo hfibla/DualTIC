@@ -1,5 +1,5 @@
 window.onload = function() {
-	checkReg();
+	checkURLParam();
 };
 
 function getUrlVars() {
@@ -12,10 +12,9 @@ return vars;
 
 
 function checkURLParam() {
-var reg = getUrlVars()["registro"];
+var librook = getUrlVars()["librook"];
 
-if (reg == "0") {
-	alert ("El nombre de usuario y el correo electrónico deben ser únicos. Comprueba tus datos.");
-}
-
+if (librook == "1") {
+	alert ("Libro añadido correctamente");
+} 
 };

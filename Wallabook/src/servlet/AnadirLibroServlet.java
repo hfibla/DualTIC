@@ -31,7 +31,7 @@ public class AnadirLibroServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Libro libro = null;
     	String titulo = request.getParameter("titulo");
@@ -45,13 +45,15 @@ public class AnadirLibroServlet extends HttpServlet {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		System.out.println(nickname);
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		if (request.getParameterMap().containsKey("editorial")) {
+		if (request.getParameterMap().containsKey("editorial") && !request.getParameter("editorial").isEmpty()) {
 			String editorial = request.getParameter("editorial");
 			libro = new Libro (autor, disponible, editorial, idioma, titulo, categoria, usuario);
         } else {
         	libro = new Libro (autor, disponible, idioma, titulo, categoria, usuario);
         }
-		wallabookDAO.anadirLibro(libro);	
+		wallabookDAO.anadirLibro(libro);
+		
+		response.sendRedirect("/Wallabook/PaginaPrincipal/index.html?librook=1");
 		
 	}
 

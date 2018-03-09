@@ -15,7 +15,7 @@ import model.Libro;
 /**
  * Servlet implementation class MostrarLibros
  */
-@WebServlet("/mostrarTodos")
+@WebServlet("/MostrarLibros")
 public class MostrarLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

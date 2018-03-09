@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,9 +36,9 @@
                    <p>${libro.titulo}</p>
                     <p>${libro.autor}</p>
                     <p>${libro.idioma}</p>
-                    <p><c:if test="${libro.editorial > 0}">${libro.editorial}</c:if>
-                    <p id="nodisponible"><c:if test="${libro.disponible = 0}">No disponible ✘ </c:if>
-                    <p id="disponible"><c:if test="${libro.disponible = 1}">Disponible ✔ </c:if>
+                    <p><c:if test="${libro.editorial != '0'}">${libro.editorial}</c:if></p>
+                    <p id="nodisponible"><c:if test="${libro.disponible = 0}">No disponible</c:if></p>
+                    <p id="disponible"><c:if test="${libro.disponible = 1}">Disponible</c:if></p>
                     </div>
                 </c:forEach>
                 

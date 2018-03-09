@@ -8,9 +8,10 @@
 	<link rel="stylesheet" href="css/estilos.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <script type="text/javascript" src="mainpage.js"></script>
 	</head>
 	
-	<body>
+	<body onload="checkURLParam()">
 	<header>
     <div class="contenedor">
        <img id="logo" src="img/logotipo.png">
@@ -25,8 +26,8 @@
         <input type="checkbox" id="menu-bar">
         <label class="fontawesome-align-justify" for="menu-bar"></label>
                 <nav class="menu">
-                    <a href="#">Libros</a>
-                    <a href="#">Añadir libro</a>
+                    <a href="/Wallabook/MostrarLibros">Libros</a>
+                    <a href="/Wallabook/AnadirLibroPrevio">Añadir libro</a> 
                     <a href="#">Mi perfil</a>
 					<a href="#">Cerrar sesión</a>
                     
