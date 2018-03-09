@@ -26,16 +26,34 @@
     
 
         
+           <div class="centrar">
             <c:forEach items="${libros}" var="libro">
-            	<div class="contenedor-libros">
+            	<c:if test="${libro.editorial != '0'}">
+                 <div class="contenedor-libros-con-ed">
 					<p>${libro.titulo}</p>
                     <p>${libro.autor}</p>
 					<p>${libro.idioma}</p>
-					<p><c:if test="${libro.editorial != '0'}">${libro.editorial}</c:if>
+					<p>${libro.editorial}</p>
+                    <p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
 					<p id="nodisponible"><c:if test="${libro.disponible == 0}">No disponible</c:if>
-                   	<p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
                 </div>
-           </c:forEach>
+                </c:if>
+                <c:if test="${libro.editorial == '0'}">
+                <div class="contenedor-libros-sin-ed">
+					<p>${libro.titulo}</p>
+                    <p>${libro.autor}</p>
+					<p>${libro.idioma}</p>
+					<p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
+					<p id="nodisponible"><c:if test="${libro.disponible == 0}">No disponible</c:if>
+                 </div>  
+                 </c:if>              
+            </c:forEach>
+      
+        
+        <c:forEach items="${libros}" var="libro">
+                 
+            </c:forEach>   
+</div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 </main>
          <!-- footer-->
