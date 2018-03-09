@@ -45,7 +45,7 @@ public class AnadirLibroServlet extends HttpServlet {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		System.out.println(nickname);
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		if (request.getParameterMap().containsKey("editorial") && !request.getParameter("editorial").isEmpty()) {
+		if (request.getParameterMap().containsKey("editorial")) {
 			String editorial = request.getParameter("editorial");
 			libro = new Libro (autor, disponible, editorial, idioma, titulo, categoria, usuario);
         } else {
