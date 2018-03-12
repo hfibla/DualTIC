@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
 import model.Libro;
+import model.Usuario;
 
 /**
  * Servlet implementation class MostrarLibros
@@ -33,17 +34,13 @@ public class MostrarLibros extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	    WallabookDAO wallabookDAO = new WallabookDAO();
-	    List<Libro> libros = wallabookDAO.consultarLibros();
+	    String nickname = (String) request.getSession(false).getAttribute("me");
+		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		List<Libro> libros = wallabookDAO.consultarLibrosDisponiblesNoPropios(usuario);
 	    request.setAttribute("libros", libros);
-	        request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+	    request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
 }

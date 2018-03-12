@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
-import model.Categoria;
+import model.Libro;
+import model.Usuario;
 
 /**
- * Servlet implementation class AnadirLibroPrevio
+ * Servlet implementation class ObtenerMisLibros
  */
-@WebServlet("/AnadirLibroPrevio")
-public class AnadirLibroPrevio extends HttpServlet {
+@WebServlet("/ObtenerMisLibros")
+public class ObtenerMisLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       WallabookDAO wallabookDAO = new WallabookDAO();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnadirLibroPrevio() {
+    public ObtenerMisLibros() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,9 +32,13 @@ public class AnadirLibroPrevio extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
-		request.setAttribute("categorias", categorias);
-		request.getRequestDispatcher("/AnadirLibros/anadirLibros.jsp").forward(request, response);
+		WallabookDAO wallabookDAO = new WallabookDAO();
+	    String nickname = (String) request.getSession(false).getAttribute("me");
+		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
+		request.setAttribute("usuario", usuario);
+	    request.setAttribute("libros", libros);
+	    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
 	}
 
 	/**

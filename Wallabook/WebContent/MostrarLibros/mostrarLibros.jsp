@@ -22,37 +22,28 @@
     <h4>Listado de libros</h4>
     </div>    
 <section class="linea"></section>
-    
-    
-
-        
            <div class="centrar">
             <c:forEach items="${libros}" var="libro">
-            	<c:if test="${libro.editorial != '0'}">
-                 <div class="contenedor-libros-con-ed">
-					<p>${libro.titulo}</p>
-                    <p>${libro.autor}</p>
-					<p>${libro.idioma}</p>
-					<p>${libro.editorial}</p>
-                    <p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
-					<p id="nodisponible"><c:if test="${libro.disponible == 0}">No disponible</c:if>
-                </div>
-                </c:if>
-                <c:if test="${libro.editorial == '0'}">
-                <div class="contenedor-libros-sin-ed">
-					<p>${libro.titulo}</p>
-                    <p>${libro.autor}</p>
-					<p>${libro.idioma}</p>
-					<p id="disponible"><c:if test="${libro.disponible == 1}">Disponible</c:if>
-					<p id="nodisponible"><c:if test="${libro.disponible == 0}">No disponible</c:if>
-                 </div>  
-                 </c:if>              
+	            	<c:choose>
+						<c:when test="${libro.editorial != '0'}">
+							<div class="contenedor-libros-con-ed">
+								<p>${libro.titulo}</p>
+								<p>${libro.autor}</p>
+								<p>${libro.idioma}</p>
+								<p>${libro.editorial}</p>
+								<p>${libro.usuario.getNickname()}</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+			                <div class="contenedor-libros-sin-ed">
+								<p>${libro.titulo}</p>
+			                    <p>${libro.autor}</p>
+								<p>${libro.idioma}</p>					
+								<p>${libro.usuario.getNickname()}</p>
+			                 </div>  
+		                </c:otherwise>
+	                </c:choose>
             </c:forEach>
-      
-        
-        <c:forEach items="${libros}" var="libro">
-                 
-            </c:forEach>   
 </div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 </main>

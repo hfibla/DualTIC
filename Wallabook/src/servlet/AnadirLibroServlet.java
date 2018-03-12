@@ -43,7 +43,6 @@ public class AnadirLibroServlet extends HttpServlet {
 		Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
 		// aqui queremos un desplegable
 		String nickname = (String) request.getSession(false).getAttribute("me");
-		System.out.println(nickname);
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		if (request.getParameterMap().containsKey("editorial")) {
 			String editorial = request.getParameter("editorial");
