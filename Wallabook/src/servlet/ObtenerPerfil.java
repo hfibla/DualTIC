@@ -31,18 +31,19 @@ public class ObtenerPerfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
-	    String nickname = request.getParameter("usr");
-	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
-	    request.setAttribute("usuario", usuario);
-	    request.getRequestDispatcher("perfil.jsp?usr=" + nickname).forward(request, response);
+	    if (request.getParameterMap().containsKey("usr")) {
+	    	String nickname = request.getParameter("usr");
+	 	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);	    
+	 	    request.setAttribute("usuario", usuario);
+	 	    request.getRequestDispatcher("perfil.jsp?usr=" + nickname).forward(request, response);
+	    } else {
+	    	String nickname = (String) request.getSession(false).getAttribute("me");
+			Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+			request.setAttribute("usuario", usuario);
+			request.getRequestDispatcher("miPerfil.jsp").forward(request, response);
+	    	}
+		}
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
-}
