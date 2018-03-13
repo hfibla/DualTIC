@@ -24,6 +24,7 @@
 <section class="linea"></section>
            <div class="centrar">
             <c:forEach items="${libros}" var="libro">
+            	<a href="/Wallabook/ObtenerLibrosUsuario?usr=${libro.usuario.getNickname()}">
 	            	<c:choose>
 						<c:when test="${libro.editorial != '0'}">
 							<div class="contenedor-libros-con-ed">
@@ -45,6 +46,7 @@
 			                 </div>  
 		                </c:otherwise>
 	                </c:choose>
+	        	</a>
             </c:forEach>
 </div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>

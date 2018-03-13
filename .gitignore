@@ -20,3 +20,5 @@ Wallabook/.classpath
 Wallabook/.classpath
 *.component
 >>>>>>> 3fb3778a2cb43faea6c76ce0ccf64ced39a1d784
+Wallabook/src/META-INF/persistence.xml
+Wallabook/.classpath
