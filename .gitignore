@@ -28,4 +28,16 @@ Wallabook/.classpath
 Wallabook/src/servlet/VerMisLibrosDesdeMiPerfil.java
 Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
 Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+<<<<<<< HEAD
+Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+Wallabook/src/servlet/PerfilPropioServlet.java
+Wallabook/.classpath
+Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+Wallabook/src/META-INF/persistence.xml
+Wallabook/src/servlet/PerfilPropioServlet.java
+Wallabook/src/servlet/VerMisLibrosDesdeMiPerfil.java
+=======
 >>>>>>> 255b35d4115a41a3be66d28c2a533fa6f6844df9
+>>>>>>> cbf726d384121d97ea8696ebd54460b687038e91
+Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+Wallabook/.classpath
