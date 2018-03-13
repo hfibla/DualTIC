@@ -43,7 +43,6 @@ section {
     margin-bottom: 25px;
 }
 /* -----------------------------BARRA BUSQUEDA----------------------------- */
-/* -----------------------------BARRA BUSQUEDA----------------------------- */
 #buscar-bar {
     
     float:left;
@@ -77,8 +76,8 @@ section {
     color: white;
     border: solid 2px #616161;
 }
-/* -----------------------------BARRA BUSQUEDA----------------------------- */
-/* -----------------------------BARRA BUSQUEDA----------------------------- */
+
+
 
 /* ---------------------------ESTILOS MENU--------------------------- */
 #menu-bar{
@@ -244,8 +243,8 @@ footer .contenedor {
     position: absolute;
     width: 100%;
 }
-  /* -----------------------------BARRA BUSQUEDA----------------------------- */
 /* -----------------------------BARRA BUSQUEDA----------------------------- */
+
 #buscar-bar {
     
     float:left;
@@ -279,8 +278,7 @@ footer .contenedor {
     color: white;
     border: solid 2px #616161;
 }
-/* -----------------------------BARRA BUSQUEDA----------------------------- */
-/* -----------------------------BARRA BUSQUEDA----------------------------- */
+
     
 }
 
@@ -369,7 +367,7 @@ footer .contenedor {
     padding: 2px;
     margin-top: 1px;
     margin-left: 5px;
-    
+    display: none;
 }
 
 #buscar-bar-bar{
