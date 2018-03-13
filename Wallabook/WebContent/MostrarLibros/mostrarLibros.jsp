@@ -32,6 +32,7 @@
 								<p>${libro.idioma}</p>
 								<p>${libro.editorial}</p>
 								<p>${libro.usuario.getNickname()}</p>
+								<p>${libro.usuario.getLocalidad()}</p>
 							</div>
 						</c:when>
 						<c:otherwise>
@@ -40,6 +41,7 @@
 			                    <p>${libro.autor}</p>
 								<p>${libro.idioma}</p>					
 								<p>${libro.usuario.getNickname()}</p>
+								<p>${libro.usuario.getLocalidad()}</p>
 			                 </div>  
 		                </c:otherwise>
 	                </c:choose>

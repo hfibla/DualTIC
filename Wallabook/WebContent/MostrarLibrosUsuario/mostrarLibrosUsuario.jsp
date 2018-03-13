@@ -24,7 +24,7 @@
 		<a href="" class="volver">Volver</a>
 	</header>
 	<main>
-	<p>Libros de ${suUsuario.nickname}</p>
+	<p>Libros de <a href="servletOlga?usr=${suUsuario.nickname}">${suUsuario.nickname}</a></p>
 	</main>
 	<DIV id="contenedor-general">
 
