@@ -20,5 +20,12 @@ Wallabook/.classpath
 Wallabook/.classpath
 *.component
 >>>>>>> 3fb3778a2cb43faea6c76ce0ccf64ced39a1d784
+<<<<<<< HEAD
 Wallabook/src/META-INF/persistence.xml
 Wallabook/.classpath
+=======
+Wallabook/.classpath
+Wallabook/src/servlet/VerMisLibrosDesdeMiPerfil.java
+Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+Wallabook/.settings/org.eclipse.wst.common.project.facet.core.xml
+>>>>>>> 255b35d4115a41a3be66d28c2a533fa6f6844df9
