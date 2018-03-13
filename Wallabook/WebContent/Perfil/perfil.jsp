@@ -13,7 +13,8 @@
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/Perfil/img/Logo-login.png">
-        <a class="closesesion-btn">Volver al menú principal</a>
+ 
+        <a href="/Wallabook/PaginaPrincipal" class="closesesion-btn">Volver al menú principal</a>
                 <nav class="menu">
                     <a href="/Wallabook/ObtenerLibrosUsuario?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
                     
