@@ -186,4 +186,16 @@ public class WallabookDAO {
 		return libros;
 	}
 	
+	public Usuario actualizarDatosUsuario (Usuario usuario, String nombreReal, String telefono, String localidad) {
+		if (usuario.getNombreReal() != nombreReal || usuario.getTelefono() != telefono || usuario.getLocalidad() != localidad) {
+			Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario);
+			this.getEntityManager().getTransaction().begin();
+			usuarioEditado.setNombreReal(nombreReal);			
+			usuarioEditado.setTelefono(telefono);
+			usuarioEditado.setLocalidad(localidad);
+			this.getEntityManager().getTransaction().commit();
+			return usuarioEditado;
+		} else return null;
+	}
+	
 }

@@ -12,10 +12,14 @@ return vars;
 
 
 function checkURLParam() {
-var reg = getUrlVars()["registro"];
+var editok = getUrlVars()["editok"];
 
-if (reg == "0") {
-	alert ("El nombre de usuario y el correo electrónico deben ser únicos. Comprueba tus datos.");
+if (editok == "0") {
+	alert ("No se han realizado cambios en la base de datos");
+}
+
+else if (editok == "1") {
+	alert ("Los cambios se han realizado con éxito");
 }
 
 };

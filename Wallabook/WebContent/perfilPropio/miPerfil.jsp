@@ -8,15 +8,16 @@
     <title>WallaBook - Perfil</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
+    <script type="text/javascript" src="miPerfil.js"></script>
 </head>
-<body>
+<body onload="checkURLParam()">
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
                 <nav class="menu">
                     <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
-                    <a href="#">Editar perfil</a>                    
+                    <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>                    
                 </nav>
      </div>
 </header>
