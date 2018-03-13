@@ -14,16 +14,16 @@ import model.Libro;
 import model.Usuario;
 
 /**
- * Servlet implementation class MostrarLibros
+ * Servlet implementation class ObtenerMisLibros
  */
-@WebServlet("/MostrarLibros")
-public class MostrarLibros extends HttpServlet {
+@WebServlet("/ObtenerMisLibros")
+public class ObtenerMisLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarLibros() {
+    public ObtenerMisLibros() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +32,21 @@ public class MostrarLibros extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    WallabookDAO wallabookDAO = new WallabookDAO();
+		WallabookDAO wallabookDAO = new WallabookDAO();
 	    String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		List<Libro> libros = wallabookDAO.consultarLibrosDisponiblesNoPropios(usuario);
+		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
+		request.setAttribute("usuario", usuario);
 	    request.setAttribute("libros", libros);
-	    request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+	    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 
 }

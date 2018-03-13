@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -11,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
-import model.Categoria;
+import model.Libro;
+import model.Usuario;
 
 /**
- * Servlet implementation class AnadirLibroPrevio
+ * Servlet implementation class ObtenerLibrosUsuario
  */
-@WebServlet("/AnadirLibroPrevio")
-public class AnadirLibroPrevio extends HttpServlet {
+@WebServlet("/ObtenerLibrosUsuario")
+public class ObtenerLibrosUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       WallabookDAO wallabookDAO = new WallabookDAO();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnadirLibroPrevio() {
+    public ObtenerLibrosUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,17 @@ public class AnadirLibroPrevio extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
-		request.setAttribute("categorias", categorias);
-		request.getRequestDispatcher("/AnadirLibros/anadirLibros.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		WallabookDAO wallabookDAO = new WallabookDAO();
+		String miNickname = (String) request.getSession(false).getAttribute("me");
+		Usuario miUsuario =  wallabookDAO.consultarUsuarioNickname(miNickname);
+	    String suNickname = request.getParameter("usr");
+		Usuario suUsuario =  wallabookDAO.consultarUsuarioNickname(suNickname);
+		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(suUsuario);
+		request.setAttribute("miUsuario", miUsuario);
+		request.setAttribute("suUsuario", suUsuario);
+	    request.setAttribute("libros", libros);
+	    request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
 	}
 
 	/**

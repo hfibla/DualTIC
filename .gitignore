@@ -13,5 +13,10 @@ Wallabook/.classpath
 Wallabook/.classpath
 =======
 >>>>>>> f882deb50f0fb1405401b572329018104edcc7d2
+<<<<<<< HEAD
 Wallabook/src/META-INF/persistence.xml
 Wallabook/.classpath
+=======
+Wallabook/.classpath
+*.component
+>>>>>>> 3fb3778a2cb43faea6c76ce0ccf64ced39a1d784
