@@ -35,12 +35,12 @@ public class ObtenerPerfil extends HttpServlet {
 	    	String nickname = request.getParameter("usr");
 	 	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);	    
 	 	    request.setAttribute("usuario", usuario);
-	 	    request.getRequestDispatcher("perfil.jsp?usr=" + nickname).forward(request, response);
+	 	    request.getRequestDispatcher("/Perfil/perfil.jsp?usr=" + nickname).forward(request, response);
 	    } else {
 	    	String nickname = (String) request.getSession(false).getAttribute("me");
 			Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("miPerfil.jsp").forward(request, response);
+			request.getRequestDispatcher("/perfilPropio/miPerfil.jsp").forward(request, response);
 	    	}
 		}
 

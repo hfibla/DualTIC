@@ -7,17 +7,16 @@
     <meta charset="UTF-8">
     <title>WallaBook - Perfil</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/Wallabook/Perfil/css/estilos.css">
+    <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
 </head>
 <body>
 <header>
     <div class="contenedor">
-        <img class="logo" src="/Wallabook/Perfil/img/Logo-login.png">
-        <a class="closesesion-btn">Volver al menú principal</a>
+        <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
+        <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
                 <nav class="menu">
-                    <a href="/Wallabook/ObtenerLibrosUsuario?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
-                    
-                    
+                    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
+                    <a href="#">Editar perfil</a>                    
                 </nav>
      </div>
 </header>

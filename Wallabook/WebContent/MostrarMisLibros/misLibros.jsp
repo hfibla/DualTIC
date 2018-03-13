@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
 
-<link rel="stylesheet" href="css/estilosperfil.css">
+<link rel="stylesheet" href="/Wallabook/MostrarMisLibros/css/estilosperfil.css">
 </head>
 <body>
 	<header>
@@ -17,11 +17,11 @@
 		<div id="separador"></div>
 		<div class="contenedor">
 
-			<img id="logo" src="img/logotipo.png">
+			<img id="logo" src="/Wallabook/MostrarMisLibros/img/logotipo.png">
 
 			<div class="contenedor-botton"></div>
 		</div>
-		<a href="" class="volver">Mi perfil</a>
+		<a href="/Wallabook/ObtenerPerfil" class="volver">Mi perfil</a>
 	</header>
 	<main>
 
@@ -33,7 +33,7 @@
 				<p>${libro.titulo}</p>
 				<p>${libro.autor}</p>
 				<p>${libro.idioma}</p>
-				<c:if test="${libro.editorial > 0}">
+				<c:if test="${libro.editorial != '0'}">
 					<p>${libro.editorial}</p>
 				</c:if>
 				<c:choose>
