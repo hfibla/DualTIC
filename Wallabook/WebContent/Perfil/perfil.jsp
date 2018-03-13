@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,9 +13,9 @@
 <header>
     <div class="contenedor">
         <img class="logo" src="img/Logo-login.png">
-        <a class="closesesion-btn">Volver al menÃº principal</a>
+        <a class="closesesion-btn">Volver al menú principal</a>
                 <nav class="menu">
-                    <a href="#">Libros del usuario</a>
+                    <a href="/ObtenerLibrosUsuario?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
                     
                     
                 </nav>
@@ -24,11 +27,17 @@
     <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
     </div>
 <div class="info-perfil">
-    <p >Usuario:</p>
-    <p >Nombre real:</p>
-    <p >Localidad:</p>
-    <p >Correo:</p>
-    <p >TelÃ©fono:</p>
+    <p>Usuario: ${usuario.nickname}</p>
+    <c:choose>
+    	<c:when test="${usuario.telefono != ''}"><p>Nombre real: ${usuario.nombreReal}</p></c:when>
+    	<c:otherwise><p>Nombre real: - </p></c:otherwise>
+    </c:choose>    
+    <p>Localidad: ${usuario.localidad}</p>
+    <p>Correo: ${usuario.correo}</p>
+    <c:choose>
+    	<c:when test="${usuario.telefono != ''}"><p>Teléfono: ${usuario.telefono}</p></c:when>
+    	<c:otherwise><p>Teléfono: - </p></c:otherwise>
+    </c:choose>
        
         
     </div>
