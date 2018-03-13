@@ -31,7 +31,7 @@ public class ObtenerPerfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    WallabookDAO wallabookDAO = new WallabookDAO();
-	    String nickname = request.getParameter("nickname");
+	    String nickname = request.getParameter("usr");
 	    Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 	    request.setAttribute("usuario", usuario);
 	    request.getRequestDispatcher("perfil.jsp?usr=" + nickname).forward(request, response);
