@@ -17,7 +17,7 @@ import model.Usuario;
  * Servlet implementation class MostrarLibrosDisponiblesUsuario
  */
 @WebServlet("/MostrarLibrosUsuario")
-public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
+public class CambiarPropietarioLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -25,7 +25,7 @@ public class MostrarLibrosDisponiblesUsuario extends HttpServlet {
      */
 	
 	//parece ser que no va a ser necesario
-    public MostrarLibrosDisponiblesUsuario() {
+    public CambiarPropietarioLibro() {
         super();
         // TODO Auto-generated constructor stub
     }
