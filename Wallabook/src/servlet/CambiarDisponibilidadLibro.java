@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
+import model.Libro;
 import model.Usuario;
 
 /**
@@ -33,9 +35,16 @@ public class CambiarDisponibilidadLibro extends HttpServlet {
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		String[] disponibilidadLibros = request.getParameterValues("disponible");
 		int librosNoDisponibles = wallabookDAO.consultarLibrosUsuario(usuario).size() - disponibilidadLibros.length;
-		if (librosNoDisponibles + wallabookDAO.numLibrosNoDisponiblesUsuario(usuario) <= 5) {
+		if (librosNoDisponibles <= 5) {
 			wallabookDAO.cambiarDisponibilidadLibros(disponibilidadLibros, usuario);
 		}
+		else {
+			request.setAttribute("error", 1);
+		}
+		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
+		request.setAttribute("usuario", usuario);
+	    request.setAttribute("libros", libros);
+	    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
 	}
 
 }
