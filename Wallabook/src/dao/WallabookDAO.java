@@ -197,8 +197,7 @@ public class WallabookDAO {
 		} else return null;
 	}
 	public List<Libro> buscarLibrosTitulo(String titulo, Usuario usuario) {
-		List <Libro> libros = null;
-		String mensajeNullLibros = "No hemos encontrado el libro con ese titulo. Busca otro";
+		List <Libro> libros = null;		
 		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user", Libro.class);
 		queryCount.setParameter("user", usuario);
 		Long count = (Long) queryCount.getSingleResult();

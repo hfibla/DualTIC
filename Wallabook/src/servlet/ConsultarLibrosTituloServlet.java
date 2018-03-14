@@ -40,7 +40,12 @@ public class ConsultarLibrosTituloServlet extends HttpServlet {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		libros = wallabookDAO.buscarLibrosTitulo(titulo, usuario);
-		request.setAttribute("libros", libros);
+		if (libros.equals(null)) {
+			String mensajeNullLibros = "No hemos encontrado el libro con ese título. Busca otro";
+		}
+		else {
+		request.setAttribute("libros", libros);		
+		}
 		request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
 
