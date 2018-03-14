@@ -42,6 +42,7 @@ public class ConsultarLibrosTituloServlet extends HttpServlet {
 		libros = wallabookDAO.buscarLibrosTitulo(titulo, usuario);
 		if (libros.equals(null)) {
 			String mensajeNullLibros = "No hemos encontrado el libro con ese título. Busca otro";
+			request.setAttribute("error", mensajeNullLibros);
 		}
 		else {
 		request.setAttribute("libros", libros);		
