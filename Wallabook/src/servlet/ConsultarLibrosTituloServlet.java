@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
+import model.Categoria;
+import model.Libro;
 import model.Usuario;
 
 /**
- * Servlet implementation class PerfilPropioServlet
+ * Servlet implementation class ConsultaLibrosServlet
  */
-@WebServlet("/miPerfil")
-public class PerfilPropioServlet extends HttpServlet {
+@WebServlet("/ConsultarLibrosTitulo")
+public class ConsultarLibrosTituloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	WallabookDAO wallabookDAO = new WallabookDAO();
+	
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerfilPropioServlet() {
+    public ConsultarLibrosTituloServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +35,13 @@ public class PerfilPropioServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Libro> libros = null;
+		String titulo = request.getParameter("titulo");
 		String nickname = (String) request.getSession(false).getAttribute("me");
-		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
-		request.setAttribute("usuario", usuario);
-		request.getRequestDispatcher("miPerfil.jsp").forward(request, response);
-		
+		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		libros = wallabookDAO.buscarLibrosTitulo(titulo, usuario);
+		request.setAttribute("libros", libros);
+		request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
-	
-	
+
 }
