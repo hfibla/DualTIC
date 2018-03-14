@@ -136,7 +136,7 @@ public class WallabookDAO {
 	}
 	
 	public Long numLibrosNoDisponiblesUsuario(Usuario usuario){
-	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :user and l.disponible = 1", Libro.class);
+	    Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :user and l.disponible = 0", Libro.class);
 	    queryCount.setParameter("user", usuario);
 	    return (Long) queryCount.getSingleResult();
 	}
@@ -144,11 +144,10 @@ public class WallabookDAO {
 	public String cambiarPropietarioLibro (Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
 	    String mensaje = "";
 	    if (numLibrosNoDisponiblesUsuario(antiguoPropietario) <= 5) {
-		libro.setUsuario(nuevoPropietario);
-		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
-	        entityTransaction.begin();
-	        this.getEntityManager().persist(libro);
-	        entityTransaction.commit();
+	    	Libro libroEditado = this.getEntityManager().find(Libro.class, libro.getIdLibro());
+			this.getEntityManager().getTransaction().begin();
+			libroEditado.setUsuario(nuevoPropietario);
+			this.getEntityManager().getTransaction().commit();
 	        mensaje = "Cambio de propietario realizado";
 	    }
 	    else {

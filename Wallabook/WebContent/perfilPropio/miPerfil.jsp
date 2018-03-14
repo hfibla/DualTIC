@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
     <script type="text/javascript" src="/Wallabook/perfilPropio/miPerfil.js"></script>
 </head>
-<body onload="checkURLParam()">
+<body onload="checkEditOk(${editok})">
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">

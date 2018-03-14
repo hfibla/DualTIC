@@ -75,11 +75,12 @@ public class ObtenerPerfil extends HttpServlet {
 			Usuario usuarioEditado = wallabookDAO.actualizarDatosUsuario(usuario, nombreReal, telefono, localidad);
 			if (usuarioEditado.equals(null)) {			
 			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("/perfilPropio/miPerfil.jsp?editok=0").forward(request, response);
+			request.setAttribute("editok", 0);
 			} else {
 			request.setAttribute("usuario", usuarioEditado);
-			request.getRequestDispatcher("/perfilPropio/miPerfil.jsp?editok=1").forward(request, response);
+			request.setAttribute("editok", 1);
 			}
+			request.getRequestDispatcher("/perfilPropio/miPerfil.jsp").forward(request, response);
 	}
 	
 }
