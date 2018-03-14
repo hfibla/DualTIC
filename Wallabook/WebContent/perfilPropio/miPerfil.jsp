@@ -8,7 +8,7 @@
     <title>WallaBook - Perfil</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
-    <script type="text/javascript" src="miPerfil.js"></script>
+    <script type="text/javascript" src="/Wallabook/perfilPropio/miPerfil.js"></script>
 </head>
 <body onload="checkURLParam()">
 <header>
@@ -29,13 +29,13 @@
 <div class="info-perfil">
     <p>Usuario: ${usuario.nickname}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != ''}"><p>Nombre real: ${usuario.nombreReal}</p></c:when>
+    	<c:when test="${usuario.nombreReal != null}"><p>Nombre real: ${usuario.nombreReal}</p></c:when>
     	<c:otherwise><p>Nombre real: - </p></c:otherwise>
     </c:choose>    
     <p>Localidad: ${usuario.localidad}</p>
     <p>Correo: ${usuario.correo}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != ''}"><p>Teléfono: ${usuario.telefono}</p></c:when>
+    	<c:when test="${usuario.telefono != null}"><p>Teléfono: ${usuario.telefono}</p></c:when>
     	<c:otherwise><p>Teléfono: - </p></c:otherwise>
     </c:choose>
        

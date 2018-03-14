@@ -188,7 +188,7 @@ public class WallabookDAO {
 	
 	public Usuario actualizarDatosUsuario (Usuario usuario, String nombreReal, String telefono, String localidad) {
 		if (usuario.getNombreReal() != nombreReal || usuario.getTelefono() != telefono || usuario.getLocalidad() != localidad) {
-			Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario);
+			Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
 			this.getEntityManager().getTransaction().begin();
 			usuarioEditado.setNombreReal(nombreReal);			
 			usuarioEditado.setTelefono(telefono);

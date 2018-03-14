@@ -30,13 +30,13 @@
 <div class="info-perfil">
     <p>Usuario: ${usuario.nickname}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != ''}"><p>Nombre real: ${usuario.nombreReal}</p></c:when>
+    	<c:when test="${usuario.nombreReal != null}"><p>Nombre real: ${usuario.nombreReal}</p></c:when>
     	<c:otherwise><p>Nombre real: - </p></c:otherwise>
     </c:choose>    
     <p>Localidad: ${usuario.localidad}</p>
     <p>Correo: ${usuario.correo}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != ''}"><p>Teléfono: ${usuario.telefono}</p></c:when>
+    	<c:when test="${usuario.telefono != null}"><p>Teléfono: ${usuario.telefono}</p></c:when>
     	<c:otherwise><p>Teléfono: - </p></c:otherwise>
     </c:choose>
        
