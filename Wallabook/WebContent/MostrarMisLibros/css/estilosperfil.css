@@ -115,6 +115,25 @@ footer {
     font-weight: bold;
 }
 
+.cambiar-dispo { 
+   float: right;
+   top: 0;
+   margin-top: -40px;
+   margin-right: 120px;
+   color:orange;
+   font-size: 15px;
+   text-decoration: none;
+}
+.cambiar-dispo:hover { 
+   float: right;
+   top: 0;
+   margin-top: -40px;
+   margin-right: 120px;
+   color:darkorange;
+   font-size: 15px;
+   text-decoration: none;
+   font-weight: bold;
+}
 
 @media (min-width:1080px) { 
    footer {

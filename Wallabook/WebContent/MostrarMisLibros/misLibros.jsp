@@ -21,6 +21,7 @@
 
 			<div class="contenedor-botton"></div>
 		</div>
+		<a href="/Wallabook/ObtenerDisponibilidadMisLibros" class="cambiar-dispo">Editar disponibilidad</a>
 		<a href="/Wallabook/ObtenerPerfil" class="volver">Mi perfil</a>
 	</header>
 	<main>
@@ -47,11 +48,9 @@
 			</div>
 		</c:forEach>
 	</DIV>
-
 	<footer>
 		<div class="contenedor">
 			<p class="copy">WallaBook &copy; 2018 Dev: Ivan</p>
-
 		</div>
 	</footer>
 </body>

@@ -38,9 +38,7 @@
     <input type="submit" value="Guardar cambios"/>
 </form>
     
-       
-        
-    </div>
+      
     
 </main>
     </body>

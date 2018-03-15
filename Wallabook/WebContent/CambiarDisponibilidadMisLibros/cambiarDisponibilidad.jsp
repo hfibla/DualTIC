@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>WallaBook</title>
+<title>WallaBook - Mis libros</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
 
-<link rel="stylesheet" href="/Wallabook/MostrarLibrosUsuario/css/estilos.css">
+<link rel="stylesheet" href="/Wallabook/CambiarDisponibilidadMisLibros/css/estilos.css">
 </head>
 <body>
 	<header>
@@ -17,17 +17,15 @@
 		<div id="separador"></div>
 		<div class="contenedor">
 
-			<img id="logo" src="/Wallabook/MostrarLibrosUsuario/img/logotipo.png">
+			<img id="logo" src="/Wallabook/CambiarDisponibilidadMisLibros/img/Logo-login.png">
 
 			<div class="contenedor-botton"></div>
 		</div>
-		<a href="/Wallabook/PaginaPrincipal" class="volver">Volver</a>
 	</header>
 	<main>
-	<p>Libros de <a href="/Wallabook/ObtenerPerfil?usr=${suUsuario.nickname}">${suUsuario.nickname}</a></p>
+	<p>Mis Libros</p>
 	</main>
 	<DIV id="contenedor-general">
-
 		<c:forEach items="${libros}" var="libro">
 			<div class="contenedor-libros">
 				<p>${libro.titulo}</p>
@@ -36,22 +34,30 @@
 				<c:if test="${libro.editorial != '0'}">
 					<p>${libro.editorial}</p>
 				</c:if>
+				<p>Disponibilidad</p>
+				<!-- ----------------Botón switch----------------- -->
+				<div class="onoffswitch"> 
 				<c:choose>
 					<c:when test="${libro.disponible == 0}">
-						<p id="nodisponible">No disponible</p>
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
 					</c:when>
 					<c:otherwise>
-						<p id="disponible">Disponible</p>
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
 					</c:otherwise>
 				</c:choose>
-				<a href="#" class="boton-solicitar">Solicitar libro</a>
+				<label class="onoffswitch-label" for="myonoffswitch"> 
+                        <span class="onoffswitch-inner"></span> 
+                        <span class="onoffswitch-switch"></span> 
+                </label> 
+				</div>
 			</div>
 		</c:forEach>
-	</div>
+	</DIV>
+	
 
 	<footer>
 		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev: Ivan</p>
+			<p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
 
 		</div>
 	</footer>
