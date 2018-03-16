@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import model.Avatar;
 import model.Categoria;
 import model.Libro;
 import model.Usuario;
@@ -88,7 +89,7 @@ public class WallabookDAO {
 	}
 
 	public List<Libro> consultarLibrosUsuario(Usuario usuario) {
-		List<Libro> libros = null;
+		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.usuario = :user",
 				Libro.class);
 		queryCount.setParameter("user", usuario);
@@ -113,7 +114,7 @@ public class WallabookDAO {
 	}
 
 	public List<Libro> consultarLibrosAutor(String autor) {
-		List<Libro> libros = null;
+		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor",
 				Libro.class);
 		queryCount.setParameter("autor", autor);
@@ -128,7 +129,7 @@ public class WallabookDAO {
 	}
 
 	public List<Categoria> obtenerCategorias() {
-		List<Categoria> categorias = null;
+		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
 		categorias = query.getResultList();
 		return categorias;
@@ -184,7 +185,7 @@ public class WallabookDAO {
 	}
 
 	public List<Libro> consultarLibrosDisponiblesNoPropios(Usuario usuario) {
-		List<Libro> libros = null;
+		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (l) from Libro l where l.usuario != :user and l.disponible = 1", Libro.class);
 		queryCount.setParameter("user", usuario);
@@ -251,5 +252,12 @@ public class WallabookDAO {
 			this.getEntityManager().getTransaction().commit();
 		}
 
+	}
+	
+	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
+		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
+		this.getEntityManager().getTransaction().begin();
+		usuarioEditado.setAvatar(avatar);
+		this.getEntityManager().getTransaction().commit();
 	}
 }

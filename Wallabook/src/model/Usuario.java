@@ -19,9 +19,6 @@ public class Usuario implements Serializable {
 	@Column(name="ID_USUARIO")
 	private int idUsuario;
 
-	@Lob
-	private byte[] avatar;
-
 	private String correo;
 
 	private String localidad;
@@ -39,11 +36,18 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy="usuario")
 	private List<Libro> libros;
 
+	//bi-directional many-to-one association to Peticion
+	@OneToMany(mappedBy="usuario")
+	private List<Peticion> peticiones;
+
+	//bi-directional many-to-one association to Avatar
+	@ManyToOne
+	@JoinColumn(name="ID_AVATAR")
+	private Avatar avatar;
+
 	public Usuario() {
 	}
 	
-	
-
 	public Usuario(String nickname, String password) {
 	    super();
 	    this.nickname = nickname;
@@ -60,22 +64,12 @@ public class Usuario implements Serializable {
 	    this.password = password;
 	}
 
-
-
 	public int getIdUsuario() {
 		return this.idUsuario;
 	}
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
-	}
-
-	public byte[] getAvatar() {
-		return this.avatar;
-	}
-
-	public void setAvatar(byte[] avatar) {
-		this.avatar = avatar;
 	}
 
 	public String getCorreo() {
@@ -146,6 +140,36 @@ public class Usuario implements Serializable {
 		libro.setUsuario(null);
 
 		return libro;
+	}
+
+	public List<Peticion> getPeticiones() {
+		return this.peticiones;
+	}
+
+	public void setPeticiones(List<Peticion> peticiones) {
+		this.peticiones = peticiones;
+	}
+
+	public Peticion addPeticion(Peticion peticion) {
+		getPeticiones().add(peticion);
+		peticion.setUsuario(this);
+
+		return peticion;
+	}
+
+	public Peticion removePeticion(Peticion peticion) {
+		getPeticiones().remove(peticion);
+		peticion.setUsuario(null);
+
+		return peticion;
+	}
+
+	public Avatar getAvatar() {
+		return this.avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
 	}
 
 }

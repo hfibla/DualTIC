@@ -25,9 +25,18 @@
 		<a href="/Wallabook/ObtenerPerfil" class="volver">Mi perfil</a>
 	</header>
 	<main>
-
 	<p>Mis Libros</p>
 	</main>
+	<c:if test="${not empty error}">
+		<div id="demasiados-nodisp-cambiados">
+			<p>${error}</p>
+		</div>
+	</c:if>
+	<c:if test="${not empty maxLibros}">
+		<div id="limite-nodisp">
+			<p>${maxLibros}</p>
+		</div>
+	</c:if>
 	<DIV id="contenedor-general">
 		<c:forEach items="${libros}" var="libro">
 			<div class="contenedor-libros">

@@ -36,17 +36,12 @@ public class ObtenerMisLibros extends HttpServlet {
 	    String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
+		if (wallabookDAO.numLibrosNoDisponiblesUsuario(usuario) == 5) {
+			request.setAttribute("maxLibros", "Has alcanzado el límite de libros no disponibles. No podrás pedir libros hasta que reduzcas esa cantidad.");
+		}
 		request.setAttribute("usuario", usuario);
 	    request.setAttribute("libros", libros);
 	    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

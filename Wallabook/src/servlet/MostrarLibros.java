@@ -37,8 +37,14 @@ public class MostrarLibros extends HttpServlet {
 	    String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		List<Libro> libros = wallabookDAO.consultarLibrosDisponiblesNoPropios(usuario);
-	    request.setAttribute("libros", libros);
-	    request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+		if (libros.isEmpty()) {
+			String mensajeNullLibros = "No hemos encontrado libros.";
+			request.setAttribute("error", mensajeNullLibros);
+		}
+		else {
+		request.setAttribute("libros", libros);		
+		}
+		request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 	}
 
 	

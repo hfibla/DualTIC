@@ -22,10 +22,9 @@
                 </nav>
      </div>
 </header>
-<main>
-    
+<main>    
     <div class="avatar">
-    <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
+    <img src="${usuario.avatar.getLinkAvatar()}"/>
     </div>
 <div class="info-perfil">
     <p>Usuario: ${usuario.nickname}</p>

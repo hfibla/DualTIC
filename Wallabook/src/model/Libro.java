@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -38,37 +39,37 @@ public class Libro implements Serializable {
 	@JoinColumn(name="ID_USUARIO")
 	private Usuario usuario;
 
+	//bi-directional many-to-one association to Peticion
+	@OneToMany(mappedBy="libro")
+	private List<Peticion> peticiones;
+
 	public Libro() {
 	}
 	
-	
-
 	public Libro(String autor, int disponible, String idioma, String titulo, Categoria categoria,
-		Usuario usuario) {
-	    super();
-	    this.autor = autor;
-	    this.disponible = disponible;
-	    this.idioma = idioma;
-	    this.titulo = titulo;
-	    this.categoria = categoria;
-	    this.usuario = usuario;
-	}
-
-
-
-	public Libro(String autor, int disponible, String editorial, String idioma, String titulo, Categoria categoria,
 			Usuario usuario) {
-		super();
-		this.autor = autor;
-		this.disponible = disponible;
-		this.editorial = editorial;
-		this.idioma = idioma;
-		this.titulo = titulo;
-		this.categoria = categoria;
-		this.usuario = usuario;
-	}
+		    super();
+		    this.autor = autor;
+		    this.disponible = disponible;
+		    this.idioma = idioma;
+		    this.titulo = titulo;
+		    this.categoria = categoria;
+		    this.usuario = usuario;
+		}
 
 
+
+		public Libro(String autor, int disponible, String editorial, String idioma, String titulo, Categoria categoria,
+				Usuario usuario) {
+			super();
+			this.autor = autor;
+			this.disponible = disponible;
+			this.editorial = editorial;
+			this.idioma = idioma;
+			this.titulo = titulo;
+			this.categoria = categoria;
+			this.usuario = usuario;
+		}
 
 	public int getIdLibro() {
 		return this.idLibro;
@@ -132,6 +133,28 @@ public class Libro implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Peticion> getPeticiones() {
+		return this.peticiones;
+	}
+
+	public void setPeticiones(List<Peticion> peticiones) {
+		this.peticiones = peticiones;
+	}
+
+	public Peticion addPeticione(Peticion peticione) {
+		getPeticiones().add(peticione);
+		peticione.setLibro(this);
+
+		return peticione;
+	}
+
+	public Peticion removePeticione(Peticion peticione) {
+		getPeticiones().remove(peticione);
+		peticione.setLibro(null);
+
+		return peticione;
 	}
 
 }

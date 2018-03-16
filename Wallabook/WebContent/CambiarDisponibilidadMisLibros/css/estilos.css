@@ -27,6 +27,61 @@ header{
     border-bottom: solid 5px orange;
 }
 
+
+/** CSS BOTONES GUARDAR CANCELAR **/
+
+#save-changes {
+    border : solid 0px #616161;
+	font-size : 20px;
+	color : #ffa600;
+    float: right;
+    margin: 5px;
+    margin-right: 15px; 
+    padding-top: 6px;
+    padding-bottom: 5px;
+    background: grey;
+}
+
+#save-changes:hover {
+    border : solid 0px #616161;
+	font-size : 20px;
+	color : #ffa600;
+    float: right;
+    margin: 5px;
+    margin-right: 15px; 
+    padding-top: 6px;
+    padding-bottom: 5px;
+	background : #616161;
+	background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#616161), color-stop(100%,#616161));
+	background : -moz-linear-gradient(top, #616161 0%, #616161 100%);
+	background : -webkit-linear-gradient(top, #616161 0%, #616161 100%);
+	background : -o-linear-gradient(top, #616161 0%, #616161 100%);
+	background : -ms-linear-gradient(top, #616161 0%, #616161 100%);
+	background : linear-gradient(top, #616161 0%, #616161 100%);
+	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#616161', endColorstr='#616161',GradientType=0 )  
+}
+
+#discard-changes {
+    color: orange;
+    text-decoration: none;
+    float: right;
+    margin: 5px;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    margin-right: 15px;
+}
+
+#discard-changes:hover {
+    color: orange;
+    text-decoration: none;
+    float: right;
+    margin: 5px;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    background-color: #616161;
+    margin-right: 15px;  
+}
+
 #logo {
     height: 55px;
     top: 0;
@@ -35,12 +90,15 @@ header{
 }
 main { 
     width: 100%px;
-    height: 30px;
-    padding: 7px;
+    height: 40px;
     margin-top: 60px;
-    margin-left: 20px;
-    border-bottom: 2px solid orange;
+    background-color: grey;
     color: white;
+}
+
+#disponibilidadcss {
+    color:orange;
+    font-weight: bold;
 }
 
 #contenedor-general {
@@ -48,10 +106,10 @@ main {
 }
 .contenedor-libros {
     width: 250px;
-    height: 213px;
-    margin: 5px;
-    margin-left: 25px;
-    margin-right: 30px;    background-color: #616161;
+    height: 180px;
+    margin-left:32px;
+    margin-right:10px;    
+    background-color: #616161;
     border: 2px solid orange;
     color: white;
     display: inline-block;
@@ -84,24 +142,6 @@ main {
    margin-top: 6px;
 }
 
-footer {
-    background-color: #505050;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1px;
-    border-top: 5px solid orange;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-     height: 50px;
-}
-.copy {
-   font-family: 'Open Sans', sans-serif;
-   font-size: 15px;
-   color: orange;
-
-}
 #nodisponible {
    color : red;
    border-radius: 4px;
@@ -116,74 +156,65 @@ footer {
     font-weight: bold;
 }
 
-/* CSS BOTÃ“N DISPONIBILIDAD */
-.onoffswitch {
-position: relative; width: 70px;
--webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-margin-left: 170px;
-
-}
-.onoffswitch-checkbox {
-display: none;
- 
-}
-.onoffswitch-label {
-display: block; overflow: hidden; cursor: pointer;
-border: 2px solid #454545; border-radius: 0px;
-}
-.onoffswitch-inner {
-display: block; width: 200%; margin-left: -100%;
-transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
-font-size: 14px; color: red; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-box-sizing: border-box;
-border: 2px solid transparent;
-background-clip: padding-box;
-}
-.onoffswitch-inner:before {
-content: "SI";
-padding-left: 10px;
-background-color: orange; color:#454545;
-}
-.onoffswitch-inner:after {
-content: "NO";
-padding-right: 10px;
-color: #454545; 
-background-color: grey;
-text-align: right;
-}
-.onoffswitch-switch {
-display: block; width: 18px; margin: 0px;
-background: grey;
-position: absolute; top: 0; bottom: 0;
-right: 72px;
-transition: all 0.3s ease-in 0s; 
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-right: 0px; 
+/* CSS BOTÓN DISPONIBILIDAD */
+.container {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
 }
 
-@media (min-width:1080px) { 
-   footer {
-    background-color: #505050;
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 5px solid orange;
-    justify-content: center;
-    padding: 1px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: 50px;
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  
 }
-   .copy {
-    text-align: center;
-   }
+
+.checkmark {
+  position: absolute;
+  margin-left: 5%;
+  
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: darkorange;
+}
 
 
+.container input:checked ~ .checkmark {
+  background-color: orange;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

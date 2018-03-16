@@ -9,22 +9,25 @@
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
 
-<link rel="stylesheet" href="/Wallabook/CambiarDisponibilidadMisLibros/css/estilos.css">
+<!--  <link rel="stylesheet" href="/Wallabook/CambiarDisponibilidadMisLibros/css/estilos.css">-->
 </head>
 <body>
 	<header>
 
-		<div id="separador"></div>
-		<div class="contenedor">
+		<div id="separador"></div>		
 
 			<img id="logo" src="/Wallabook/CambiarDisponibilidadMisLibros/img/Logo-login.png">
-
-			<div class="contenedor-botton"></div>
-		</div>
+			
 	</header>
-	<main>
-	<p>Mis Libros</p>
-	</main>
+	
+	 <!--BOTONES GUARDAR CANCELAR -->
+			<div class="contenedor-buttons">
+             <a href="/Wallabook/ObtenerMisLibros" id="discard-changes">Cancelar</a>
+          <form method="post" action="/Wallabook/CambiarDisponibilidadLibro">
+           <a><button id="save-changes" type="submit">Guardar cambios</button></a>
+              
+		
+	
 	<DIV id="contenedor-general">
 		<c:forEach items="${libros}" var="libro">
 			<div class="contenedor-libros">
@@ -34,32 +37,27 @@
 				<c:if test="${libro.editorial != '0'}">
 					<p>${libro.editorial}</p>
 				</c:if>
-				<p>Disponibilidad</p>
-				<c:when test="${libro.disponible == 0}">
-					<input type="checkbox" name="disponible" value="${libro.idLibro}">
-				</c:when>
-				<c:otherwise>
-					<input type="checkbox" name="disponible" value="${libro.idLibro}" checked>
-				</c:otherwise>
-				
+								
 				<!-- ----------------Botón switch----------------- -->
-				<!--  <div class="onoffswitch"> 
-				<c:choose>
-					<c:when test="${libro.disponible == 0}">
-						<input type="checkbox" name="disponible" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}">
-					</c:when>
-					<c:otherwise>
-						<input type="checkbox" name="disponible" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}" checked>
-					</c:otherwise>
-				</c:choose>
-				<label class="onoffswitch-label" for="myonoffswitch"> 
-                        <span class="onoffswitch-inner"></span> 
-                        <span class="onoffswitch-switch"></span> 
-                </label> 
-				</div> -->
+				  
+				<p id="disponibilidadcss">
+					<label class="container">Disponibilidad:  
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<input type="checkbox" name="disponible" value="${libro.idLibro}">
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" name="disponible" value="${libro.idLibro}" checked>
+							</c:otherwise>
+						</c:choose>
+						<span class="checkmark"></span> 
+					</label> 
+				</p> 
 			</div>
 		</c:forEach>
 	</DIV>
+	</form>
+	</div>
 	
 
 	<footer>

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
+import model.Avatar;
 import model.Usuario;
 
 /**
@@ -45,7 +47,8 @@ public class CambiarAvatar extends HttpServlet {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 		int idAvatar = Integer.parseInt(request.getParameter("avatar"));
-		// wallabookDAO.cambiarAvatar(usuario, idAvatar);
+		Avatar avatar = new Avatar(idAvatar);
+		wallabookDAO.cambiarAvatar(usuario, avatar);
 	}
 
 }

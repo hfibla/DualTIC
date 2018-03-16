@@ -19,32 +19,36 @@ import model.Usuario;
 @WebServlet("/CambiarDisponibilidadLibro")
 public class CambiarDisponibilidadLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CambiarDisponibilidadLibro() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-		
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CambiarDisponibilidadLibro() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		String nickname = (String) request.getSession(false).getAttribute("me");
-		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		String[] disponibilidadLibros = request.getParameterValues("disponible");
+		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+		String[] disponibilidadLibros = null;
+		if (request.getParameterMap().containsKey("disponible")) {
+			disponibilidadLibros = request.getParameterValues("disponible");
+		} else {
+			disponibilidadLibros = new String[0];
+		}
 		int librosNoDisponibles = wallabookDAO.consultarLibrosUsuario(usuario).size() - disponibilidadLibros.length;
 		if (librosNoDisponibles <= 5) {
 			wallabookDAO.cambiarDisponibilidadLibros(disponibilidadLibros, usuario);
-		}
-		else {
-			request.setAttribute("error", 1);
+		} else {
+			request.setAttribute("error", "No puedes tener más de 5 libros no disponibles");
 		}
 		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
 		request.setAttribute("usuario", usuario);
-	    request.setAttribute("libros", libros);
-	    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
+		request.setAttribute("libros", libros);
+		request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
 	}
 
 }
