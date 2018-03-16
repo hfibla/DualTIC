@@ -23,6 +23,8 @@
     </div>    
 <section class="linea"></section>
            <div class="centrar">
+           <c:choose>
+           		<c:when test="${empty error}">
             <c:forEach items="${libros}" var="libro">
             	<a href="/Wallabook/ObtenerLibrosUsuario?usr=${libro.usuario.getNickname()}">
 	            	<c:choose>
@@ -48,6 +50,12 @@
 	                </c:choose>
 	        	</a>
             </c:forEach>
+            </c:when>
+            <c:otherwise>
+            	<p>${error}</p>
+            </c:otherwise>
+            
+            </c:choose>
 </div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 </main>

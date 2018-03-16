@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
-import model.Categoria;
 import model.Libro;
 import model.Usuario;
 
@@ -34,14 +33,14 @@ public class ConsultarLibrosTituloServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Libro> libros = null;
 		String titulo = request.getParameter("titulo");
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		libros = wallabookDAO.buscarLibrosTitulo(titulo, usuario);
-		if (libros.equals(null)) {
-			String mensajeNullLibros = "No hemos encontrado el libro con ese título. Busca otro";
+		if (libros.isEmpty()) {
+			String mensajeNullLibros = "No hemos encontrado ningún libro con ese título.";
 			request.setAttribute("error", mensajeNullLibros);
 		}
 		else {

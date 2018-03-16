@@ -218,12 +218,14 @@ public class WallabookDAO {
 				"Select count (l) from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user",
 				Libro.class);
 		queryCount.setParameter("user", usuario);
+		queryCount.setParameter("titulo", titulo);
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
 			TypedQuery<Libro> queryAll = this.getEntityManager().createQuery(
-					"Select l from Libro l where l.titulo = :titulo and l.disponible = 1 l.usuario !=:user",
+					"Select l from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user",
 					Libro.class);
 			queryAll.setParameter("user", usuario);
+			queryAll.setParameter("titulo", titulo);
 			libros = queryAll.getResultList();
 		}
 		return libros;

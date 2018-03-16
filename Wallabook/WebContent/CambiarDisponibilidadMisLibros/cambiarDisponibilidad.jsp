@@ -39,10 +39,10 @@
 				<div class="onoffswitch"> 
 				<c:choose>
 					<c:when test="${libro.disponible == 0}">
-						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}">
 					</c:when>
 					<c:otherwise>
-						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}" checked>
 					</c:otherwise>
 				</c:choose>
 				<label class="onoffswitch-label" for="myonoffswitch"> 
