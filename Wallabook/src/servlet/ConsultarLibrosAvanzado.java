@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,26 +34,44 @@ public class ConsultarLibrosAvanzado extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Libro> libros = null;
-		String titulo =  " ";
+		String espacio = "";
+		String titulo =  "";
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);		
-		String autor = " ";
-		String categoriaInput = " ";		
-			if (titulo!=" ") {
-				titulo = request.getParameter("titulo");
-			}
-			if (autor!=" ") {
-				autor = request.getParameter("autor");
-			}
-			if (categoriaInput!=" ") {			
-				categoriaInput = request.getParameter("categoria");
-				Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
-			}
-		libros = wallabookDAO.buscarLibrosAvanzado(titulo, autor, categoriaInput, usuario);		
-		request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+		String autor = "";
+		String categoriaInput = "";		
 		
+			if (request.getParameter("titulo").equals(espacio)) {
+				titulo = "%";
+				}
+			else {
+				titulo = request.getParameter(titulo);
+			}
+			
+			if (request.getParameter("autor").equals(espacio)) {
+				autor = "%";
+				}
+			else {
+				autor = request.getParameter(autor);
+			}
+			if (request.getParameter("categoriaInput").equals(espacio)) {
+				categoriaInput = "%";
+			}
+			else {
+				categoriaInput= request.getParameter(categoriaInput);
+			}
+			List<Libro> libros = wallabookDAO.buscarLibrosAvanzado(titulo, autor, categoriaInput, usuario);
+			
+			if (libros.isEmpty()) {
+				String mensajeNullLibros = "No hemos encontrado ningún libro con ese título.";
+				request.setAttribute("error", mensajeNullLibros);
+			}
+			else {
+			request.setAttribute("libros", libros);		
+			}
+			request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
+				
 	}	
 }
