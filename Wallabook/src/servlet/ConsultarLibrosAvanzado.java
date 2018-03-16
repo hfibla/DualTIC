@@ -36,22 +36,23 @@ public class ConsultarLibrosAvanzado extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<Libro> libros = null;
-		String titulo = request.getParameter("titulo");
+		String titulo =  " ";
 		String nickname = (String) request.getSession(false).getAttribute("me");
-		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		libros = wallabookDAO.buscarLibrosAvanzado();
-		String autor = request.getParameter("autor");
-		String categoriaInput = request.getParameter("categoria");
-		Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
-		if (titulo!=null) {
-			
-		}
-		
-		
-		//List<Libro> libro = wallabookDAO.consultarLibrosAutor(autor);		
-		//rederigir a jsp ()
+		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);		
+		String autor = " ";
+		String categoriaInput = " ";		
+			if (titulo!=" ") {
+				titulo = request.getParameter("titulo");
+			}
+			if (autor!=" ") {
+				autor = request.getParameter("autor");
+			}
+			if (categoriaInput!=" ") {			
+				categoriaInput = request.getParameter("categoria");
+				Categoria categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
+			}
+		libros = wallabookDAO.buscarLibrosAvanzado(titulo, autor, categoriaInput, usuario);		
 		request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
 		
-	}
-
+	}	
 }
