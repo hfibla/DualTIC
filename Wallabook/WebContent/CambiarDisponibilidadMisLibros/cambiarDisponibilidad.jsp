@@ -35,21 +35,28 @@
 					<p>${libro.editorial}</p>
 				</c:if>
 				<p>Disponibilidad</p>
+				<c:when test="${libro.disponible == 0}">
+					<input type="checkbox" name="disponible" value="${libro.idLibro}">
+				</c:when>
+				<c:otherwise>
+					<input type="checkbox" name="disponible" value="${libro.idLibro}" checked>
+				</c:otherwise>
+				
 				<!-- ----------------Botón switch----------------- -->
-				<div class="onoffswitch"> 
+				<!--  <div class="onoffswitch"> 
 				<c:choose>
 					<c:when test="${libro.disponible == 0}">
-						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}">
+						<input type="checkbox" name="disponible" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}">
 					</c:when>
 					<c:otherwise>
-						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}" checked>
+						<input type="checkbox" name="disponible" class="onoffswitch-checkbox" id="myonoffswitch" value="${libro.idLibro}" checked>
 					</c:otherwise>
 				</c:choose>
 				<label class="onoffswitch-label" for="myonoffswitch"> 
                         <span class="onoffswitch-inner"></span> 
                         <span class="onoffswitch-switch"></span> 
                 </label> 
-				</div>
+				</div> -->
 			</div>
 		</c:forEach>
 	</DIV>

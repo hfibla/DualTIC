@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -213,7 +214,7 @@ public class WallabookDAO {
 	}
 
 	public List<Libro> buscarLibrosTitulo(String titulo, Usuario usuario) {
-		List<Libro> libros = null;
+		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (l) from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user",
 				Libro.class);
