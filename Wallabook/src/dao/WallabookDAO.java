@@ -113,6 +113,7 @@ public class WallabookDAO {
 		return libro;
 	}
 
+<<<<<<< HEAD
 	public List<Libro> consultarLibrosAutor(String autor) {
 		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor",
@@ -128,6 +129,8 @@ public class WallabookDAO {
 		return libros;
 	}
 
+=======
+>>>>>>> 8a3b89624bc059dcf5bc6e20d77a1cadbef2434a
 	public List<Categoria> obtenerCategorias() {
 		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
@@ -233,6 +236,31 @@ public class WallabookDAO {
 		return libros;
 	}
 
+	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String categoriaInput, Usuario usuario){
+		List<Libro> libros = Collections.emptyList();	
+		Query queryCountAvanzada = this.getEntityManager().createQuery(
+				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
+						+ "l.categoria like :categoriaInput ",
+						Libro.class);	
+				queryCountAvanzada.setParameter("user", usuario); 
+				queryCountAvanzada.setParameter("titulo", titulo); 
+				queryCountAvanzada.setParameter("autor", autor);
+				queryCountAvanzada.setParameter("categoria", categoriaInput); 				
+				Long count = (Long) queryCountAvanzada.getSingleResult();
+				if (!count.equals(0L)) {
+					TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
+					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
+							+ "l.categoria like :categoriaInput ",
+							Libro.class);		
+					queryAvanzada.setParameter("user", usuario);
+					queryAvanzada.setParameter("titulo", titulo);
+					queryAvanzada.setParameter("autor", autor);
+					queryAvanzada.setParameter("categoria", categoriaInput);
+			libros = queryAvanzada.getResultList();											
+			}
+		return libros;
+	}
+	
 	public void cambiarDisponibilidadLibros(String[] idLibros, Usuario usuario) {
 		List<Libro> libros = consultarLibrosUsuario(usuario);
 		for (int i = 0; i < libros.size(); i++) {
