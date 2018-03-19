@@ -36,12 +36,11 @@ public class CambiarPropietarioLibro extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		WallabookDAO wallabookDAO = new WallabookDAO();
-		PrintWriter out = response.getWriter();
 		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idlibro"));
 		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("olduser"));
 		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("newuser"));
-		String mensaje = wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario);
-		out.println(mensaje);
+		String mensaje =wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario);
+		
 	}
 
 	/**
