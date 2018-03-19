@@ -1,20 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>WallaBook - A√±adir Libro</title>
+    <title>WallaBook - Buscar Avanzado</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
     <body>
 	<IMG id="logo-login" src="img/Logo-login.png" title="WallaBook">
 	<form id="loginform" method="post" action="/Wallabook/MostrarLibros/mostrarLibros.jsp">
-		<input type="text" class="input" placeholder="Buscar por t√≠tulo" name="titulo"
-			title="T√≠tulo del libro" > 
+		<input type="text" class="input" placeholder="Buscar por tÌtulo" name="titulo"
+			title="TÌtulo del libro" > 
 		<input type="text" name="autor"
 			class="input" placeholder="Buscar por autor" title="Autor del libro"> 
-<SELECT class="input" NAME="categoria" SIZE=1> 
-<OPTION VALUE="default">Buscar por categor√≠a</OPTION>
+<SELECT class="input" NAME="categoriaInput" SIZE=1> 
+<OPTION VALUE="default">Buscar por categorÌa</OPTION>
 <c:forEach items="${categorias}" var="categoria">
 	<OPTION VALUE="${categoria.nombreCategoria}">${categoria.nombreCategoria}</OPTION>
 </c:forEach>
@@ -23,4 +26,4 @@
 
 			<input type="submit" class="loginbutton" value="BUSCAR" />
 	</form>
-	<a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la p√°gina principal</a>
+	<a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la p·gina principal</a>

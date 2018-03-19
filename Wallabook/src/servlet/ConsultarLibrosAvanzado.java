@@ -34,6 +34,12 @@ public class ConsultarLibrosAvanzado extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List <Categoria> categoriaInput = wallabookDAO.obtenerCategorias();
+		request.setAttribute("categorias", categoriaInput);	
+	}
+    
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String espacio = "";
@@ -71,7 +77,6 @@ public class ConsultarLibrosAvanzado extends HttpServlet {
 			else {
 			request.setAttribute("libros", libros);		
 			}
-			request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);
-				
+			request.getRequestDispatcher("/MostrarLibros/mostrarLibros.jsp").forward(request, response);				
 	}	
 }

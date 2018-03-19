@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import model.Avatar;
+//import model.Avatar;
 import model.Categoria;
 import model.Libro;
 import model.Usuario;
@@ -113,7 +113,6 @@ public class WallabookDAO {
 		return libro;
 	}
 
-<<<<<<< HEAD
 	public List<Libro> consultarLibrosAutor(String autor) {
 		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor",
@@ -129,8 +128,7 @@ public class WallabookDAO {
 		return libros;
 	}
 
-=======
->>>>>>> 8a3b89624bc059dcf5bc6e20d77a1cadbef2434a
+
 	public List<Categoria> obtenerCategorias() {
 		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
@@ -282,10 +280,10 @@ public class WallabookDAO {
 
 	}
 	
-	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
-		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
-		this.getEntityManager().getTransaction().begin();
-		usuarioEditado.setAvatar(avatar);
-		this.getEntityManager().getTransaction().commit();
-	}
+//	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
+//		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
+//		this.getEntityManager().getTransaction().begin();
+//		usuarioEditado.setAvatar(avatar);
+//		this.getEntityManager().getTransaction().commit();
+//	}
 }
