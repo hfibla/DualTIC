@@ -128,7 +128,10 @@ public class WallabookDAO {
 		return libros;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b77e011d7915e6388aada8527123c9cefbca3f2
 	public List<Categoria> obtenerCategorias() {
 		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
