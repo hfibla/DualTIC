@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,8 +34,13 @@ public class CambiarAvatar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		WallabookDAO wallabookDAO = new WallabookDAO();
+		String nickname = (String) request.getSession(false).getAttribute("me");
+		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+		List <Avatar> avatares = wallabookDAO.obtenerAvatares();
+		request.setAttribute("usuario", usuario);
+	    request.setAttribute("avatares", avatares);
+	    request.getRequestDispatcher("/CambiarAvatar/cambiarAvatar.jsp").forward(request, response);
 	}
 
 	/**
@@ -49,6 +55,8 @@ public class CambiarAvatar extends HttpServlet {
 		int idAvatar = Integer.parseInt(request.getParameter("avatar"));
 		Avatar avatar = new Avatar(idAvatar);
 		wallabookDAO.cambiarAvatar(usuario, avatar);
+		request.setAttribute("usuario", usuario);
+		request.getRequestDispatcher("/perfilPropio/miPerfil.jsp").forward(request, response);
 	}
 
 }

@@ -12,12 +12,22 @@
 </head>
 <body onload="checkEditOk(${editok})">
 <header>
+	<div class="modal-wrapper" id="popup">
+    <div class="popup-contenedor">
+            <a class="popup-cerrar" href="#">✖</a>
+      	    <h2>¿Estás seguro?</h2>
+            <p>Piénsatelo dos veces...</p>
+            <a class="si-button" href="#">Continuar</a>
+            <a class="no-button" href="#">Cancelar</a>
+    </div>
+</div>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
-        <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesi�n</a>
+        <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
                 <nav class="menu">
                     <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
-                    <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>                    
+                    <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
+                    <a href="#popup" class="popup-link">Eliminar cuenta</a>                  
                 </nav>
      </div>
 </header>
@@ -25,6 +35,7 @@
     
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}"/>
+    <a href="/Wallabook/CambiarAvatar"><input type="button" value="Cambiar Avatar"/></a>
     </div>
 <div class="info-perfil">
     <p>Usuario: ${usuario.nickname}</p>
@@ -35,8 +46,8 @@
     <p>Localidad: ${usuario.localidad}</p>
     <p>Correo: ${usuario.correo}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != null}"><p>Tel�fono: ${usuario.telefono}</p></c:when>
-    	<c:otherwise><p>Tel�fono: - </p></c:otherwise>
+    	<c:when test="${usuario.telefono != null}"><p>Teléfono: ${usuario.telefono}</p></c:when>
+    	<c:otherwise><p>Teléfono: - </p></c:otherwise>
     </c:choose>
        
         

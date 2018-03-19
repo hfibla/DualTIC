@@ -10,9 +10,12 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-//import model.Avatar;
+import model.Avatar;
 import model.Categoria;
 import model.Libro;
+import model.Notificacion;
+import model.Peticion;
+import model.PeticionPK;
 import model.Usuario;
 
 public class WallabookDAO {
@@ -128,10 +131,6 @@ public class WallabookDAO {
 		return libros;
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b77e011d7915e6388aada8527123c9cefbca3f2
 	public List<Categoria> obtenerCategorias() {
 		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
@@ -157,18 +156,71 @@ public class WallabookDAO {
 		return (Long) queryCount.getSingleResult();
 	}
 
-	public String cambiarPropietarioLibro(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
-		String mensaje = "";
-		if (numLibrosNoDisponiblesUsuario(antiguoPropietario) <= 5) {
+	public boolean cambiarPropietarioLibro(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		if (numLibrosNoDisponiblesUsuario(nuevoPropietario) <= 5) {
 			Libro libroEditado = this.getEntityManager().find(Libro.class, libro.getIdLibro());
 			this.getEntityManager().getTransaction().begin();
 			libroEditado.setUsuario(nuevoPropietario);
+			libroEditado.setDisponible(0);
 			this.getEntityManager().getTransaction().commit();
-			mensaje = "Cambio de propietario realizado";
+			gestionarPeticionLibro(libro, nuevoPropietario);
+			return true;
 		} else {
-			mensaje = "Máximo de libros alcanzado";
+			return false;
 		}
-		return mensaje;
+	}
+	
+	public void enviarNotificacionesCambioLibroOK(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.", antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.", nuevoPropietario);
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacionExPropietario);
+		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		entityTransaction.commit();
+	}
+	
+	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "no ha podido realizarse.", antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacionExPropietario);
+		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		entityTransaction.commit();
+	}
+	
+	public List<Peticion> consultarPeticionesLibro (Libro libro){
+		List <Peticion> peticiones = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+		queryCount.setParameter("libro", libro);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery<Peticion> queryAll = this.getEntityManager()
+					.createQuery("Select p from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+			queryAll.setParameter("libro", libro);
+			peticiones = queryAll.getResultList();
+		}
+		return peticiones;
+	}
+	
+	public void gestionarPeticionLibro(Libro libro, Usuario nuevoPropietario) {
+		List <Peticion> peticiones = consultarPeticionesLibro(libro);
+		boolean porEncontrar = true;		
+		for (int i=0; i<peticiones.size();i++) {
+			PeticionPK idPeticion = peticiones.get(i).getId();
+			Peticion peticion = this.getEntityManager().find(Peticion.class, idPeticion);
+			this.getEntityManager().getTransaction().begin();
+			if (porEncontrar && peticion.getId().getIdRemitente() == nuevoPropietario.getIdUsuario()) {
+				peticion.getId().setConfirmada("aceptada");
+				porEncontrar = false;
+			}
+			else {
+				peticion.getId().setConfirmada("denegada");
+			}
+			this.getEntityManager().getTransaction().commit();
+		}
 	}
 
 	public Categoria consultarCategoriaNombre(String nombreCategoria) {
@@ -240,7 +292,7 @@ public class WallabookDAO {
 	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String categoriaInput, Usuario usuario){
 		List<Libro> libros = Collections.emptyList();	
 		Query queryCountAvanzada = this.getEntityManager().createQuery(
-				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
+				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
 						+ "l.categoria like :categoriaInput ",
 						Libro.class);	
 				queryCountAvanzada.setParameter("user", usuario); 
@@ -250,7 +302,7 @@ public class WallabookDAO {
 				Long count = (Long) queryCountAvanzada.getSingleResult();
 				if (!count.equals(0L)) {
 					TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
-					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
+					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
 							+ "l.categoria like :categoriaInput ",
 							Libro.class);		
 					queryAvanzada.setParameter("user", usuario);
@@ -283,10 +335,23 @@ public class WallabookDAO {
 
 	}
 	
-//	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
-//		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
-//		this.getEntityManager().getTransaction().begin();
-//		usuarioEditado.setAvatar(avatar);
-//		this.getEntityManager().getTransaction().commit();
-//	}
+	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
+		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
+		this.getEntityManager().getTransaction().begin();
+		usuarioEditado.setAvatar(avatar);
+		this.getEntityManager().getTransaction().commit();
+	}
+	
+	public List <Avatar> obtenerAvatares(){
+		List <Avatar> avatares = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (a) from Avatar a", Avatar.class);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery<Avatar> queryAll = this.getEntityManager()
+					.createQuery("Select a from Avatar a", Avatar.class);
+			avatares = queryAll.getResultList();
+		}	
+		return avatares;
+	}
 }

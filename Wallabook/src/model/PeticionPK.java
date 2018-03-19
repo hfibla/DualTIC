@@ -12,8 +12,7 @@ public class PeticionPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private java.util.Date fecha;
+	private String confirmada;
 
 	@Column(name="ID_REMITENTE", insertable=false, updatable=false)
 	private int idRemitente;
@@ -23,11 +22,17 @@ public class PeticionPK implements Serializable {
 
 	public PeticionPK() {
 	}
-	public java.util.Date getFecha() {
-		return this.fecha;
+	
+	public PeticionPK(int idRemitente) {
+		super();
+		this.idRemitente = idRemitente;
 	}
-	public void setFecha(java.util.Date fecha) {
-		this.fecha = fecha;
+
+	public String getConfirmada() {
+		return this.confirmada;
+	}
+	public void setConfirmada(String confirmada) {
+		this.confirmada = confirmada;
 	}
 	public int getIdRemitente() {
 		return this.idRemitente;
@@ -51,7 +56,7 @@ public class PeticionPK implements Serializable {
 		}
 		PeticionPK castOther = (PeticionPK)other;
 		return 
-			this.fecha.equals(castOther.fecha)
+			this.confirmada.equals(castOther.confirmada)
 			&& (this.idRemitente == castOther.idRemitente)
 			&& (this.idLibro == castOther.idLibro);
 	}
@@ -59,7 +64,7 @@ public class PeticionPK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.fecha.hashCode();
+		hash = hash * prime + this.confirmada.hashCode();
 		hash = hash * prime + this.idRemitente;
 		hash = hash * prime + this.idLibro;
 		
