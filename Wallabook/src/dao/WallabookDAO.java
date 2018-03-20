@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-//import model.Avatar;
+import model.Avatar;
 import model.Categoria;
 import model.Libro;
 import model.Usuario;
@@ -128,10 +128,6 @@ public class WallabookDAO {
 		return libros;
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b77e011d7915e6388aada8527123c9cefbca3f2
 	public List<Categoria> obtenerCategorias() {
 		List<Categoria> categorias = Collections.emptyList();
 		TypedQuery<Categoria> query = this.getEntityManager().createQuery("SELECT c FROM Categoria c", Categoria.class);
@@ -237,26 +233,32 @@ public class WallabookDAO {
 		return libros;
 	}
 
-	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String categoriaInput, Usuario usuario){
+//	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String categoriaInput, Usuario usuario){
+	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, Categoria categoria, Usuario usuario){
 		List<Libro> libros = Collections.emptyList();	
 		Query queryCountAvanzada = this.getEntityManager().createQuery(
-				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
-						+ "l.categoria like :categoriaInput ",
+				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
+						+ " l.categoria like :categoria ",
 						Libro.class);	
 				queryCountAvanzada.setParameter("user", usuario); 
-				queryCountAvanzada.setParameter("titulo", titulo); 
+				if (titulo != null) {	
+					queryCountAvanzada.setParameter("titulo", titulo);}
+				else {
+					titulo = "%";}
 				queryCountAvanzada.setParameter("autor", autor);
-				queryCountAvanzada.setParameter("categoria", categoriaInput); 				
+//				queryCountAvanzada.setParameter("categoria", categoriaInput); 	
+				queryCountAvanzada.setParameter("categoria", categoria); 
 				Long count = (Long) queryCountAvanzada.getSingleResult();
 				if (!count.equals(0L)) {
 					TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
-					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and"
-							+ "l.categoria like :categoriaInput ",
+					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
+							+ " l.categoria like :categoria ",
 							Libro.class);		
 					queryAvanzada.setParameter("user", usuario);
 					queryAvanzada.setParameter("titulo", titulo);
 					queryAvanzada.setParameter("autor", autor);
-					queryAvanzada.setParameter("categoria", categoriaInput);
+//					queryAvanzada.setParameter("categoria", categoriaInput);
+					queryAvanzada.setParameter("categoria", categoria);
 			libros = queryAvanzada.getResultList();											
 			}
 		return libros;
@@ -283,10 +285,10 @@ public class WallabookDAO {
 
 	}
 	
-//	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
-//		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
-//		this.getEntityManager().getTransaction().begin();
-//		usuarioEditado.setAvatar(avatar);
-//		this.getEntityManager().getTransaction().commit();
-//	}
+	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
+		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
+		this.getEntityManager().getTransaction().begin();
+		usuarioEditado.setAvatar(avatar);
+		this.getEntityManager().getTransaction().commit();
+	}
 }
