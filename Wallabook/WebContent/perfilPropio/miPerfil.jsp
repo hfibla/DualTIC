@@ -24,10 +24,18 @@
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
+         <a href="##" class="return-btn">Página principal</a>
                 <nav class="menu">
+<<<<<<< HEAD
+                
+                    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
+=======
                     <a href="/Wallabook/ObtenerLibros">Mis libros</a>
+>>>>>>> 4070fb1795b9a46bee468f90d66e7ada9a83b473
                     <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
-                    <a href="#popup" class="popup-link">Eliminar cuenta</a>                  
+                    <a href="#popup" class="popup-link">Eliminar cuenta</a>       
+                    <img href="#" class="notificacion" src="/Wallabook/perfilPropio/img/notificacion.png">
+                    <img href="#" class="notificacion-on" src="/Wallabook/perfilPropio/img/notificacion-on.png">             
                 </nav>
      </div>
 </header>
@@ -35,8 +43,8 @@
     
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}"/>
-    <a href="/Wallabook/CambiarAvatar"><input type="button" value="Cambiar Avatar"/></a>
-    </div>
+     </div>
+     <a href="/Wallabook/CambiarAvatar"><input id="changebutton" type="button" value="Cambiar Avatar"/></a>
 <div class="info-perfil">
     <p>Usuario: ${usuario.nickname}</p>
     <c:choose>
@@ -58,7 +66,13 @@
     <footer>
             <div class="contenedor">
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
-                
-            </div>
+                <div class="social">
+				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+				</div>
+            </div>	
         </footer>
 </html>

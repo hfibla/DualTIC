@@ -60,12 +60,19 @@
 </div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 </main>
-         <!-- footer-->
-         <footer>
+ <div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
+
+         <!-- <footer>
             <div class="contenedor">
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
                 
             </div>
-        </footer>
+        </footer>-->
     </body>
 </html>
