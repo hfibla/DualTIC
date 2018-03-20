@@ -28,6 +28,10 @@ public class Categoria implements Serializable {
 
 	public Categoria() {
 	}
+	
+	public boolean isValid() {
+	    return this.nombreCategoria != null;
+	  }
 
 	public int getIdCategoria() {
 		return this.idCategoria;

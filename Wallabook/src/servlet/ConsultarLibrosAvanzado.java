@@ -35,41 +35,24 @@ public class ConsultarLibrosAvanzado extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List <Categoria> categoriaInput = wallabookDAO.obtenerCategorias();
-		request.setAttribute("categorias", categoriaInput);	
+		List <Categoria> categorias = wallabookDAO.obtenerCategorias();
+		request.setAttribute("categorias", categorias);
+		request.getRequestDispatcher("/Buscar/BuscarAvanzado.jsp").forward(request, response);
 	}
-    
-    
+        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String espacio = "";
-		String titulo =  "";
+		
+		String titulo =  request.getParameter("titulo");
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);		
-		String autor = "";
-		String categoriaInput = "";		
-		
-			if (request.getParameter("titulo").equals(espacio)) {
-				titulo = "%";
-				}
-			else {
-				titulo = request.getParameter(titulo);
-			}
-			
-			if (request.getParameter("autor").equals(espacio)) {
-				autor = "%";
-				}
-			else {
-				autor = request.getParameter(autor);
-			}
-			if (request.getParameter("categoriaInput").equals(espacio)) {
-				categoriaInput = "%";
-			}
-			else {
-				categoriaInput= request.getParameter(categoriaInput);
-			}
-			List<Libro> libros = wallabookDAO.buscarLibrosAvanzado(titulo, autor, categoriaInput, usuario);
-			
+		String autor = request.getParameter("autor");
+		Categoria categoria = new Categoria();		
+		String categoriaInput = request.getParameter("categoria");
+		if (!categoriaInput.equals("default")) {
+		categoria = wallabookDAO.consultarCategoriaNombre(categoriaInput);
+		}		
+
+			List<Libro> libros = wallabookDAO.buscarLibrosAvanzado(titulo, autor, categoria, usuario);			
 			if (libros.isEmpty()) {
 				String mensajeNullLibros = "No hemos encontrado ningún libro con ese título.";
 				request.setAttribute("error", mensajeNullLibros);

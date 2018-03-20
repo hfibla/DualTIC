@@ -197,6 +197,7 @@ public class WallabookDAO {
 		entityTransaction.commit();
 	}
 
+<<<<<<< HEAD
 	public void enviarNotificacionesOtrosCambioLibroDenegado(Libro libro,
 			Usuario nuevoPropietario) {
 		List<Peticion> peticiones = Collections.emptyList();
@@ -250,6 +251,8 @@ public class WallabookDAO {
 		}
 	}
 
+=======
+>>>>>>> 72200fa5bc059b3f715ab8a9676bb93182ef5584
 	public List<Peticion> consultarPeticionesLibro(Libro libro) {
 		List<Peticion> peticiones = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
@@ -350,6 +353,7 @@ public class WallabookDAO {
 		return libros;
 	}
 
+<<<<<<< HEAD
 	// public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String
 	// categoriaInput, Usuario usuario){
 	public List<Libro> buscarLibrosAvanzado(String titulo, String autor, Categoria categoria, Usuario usuario) {
@@ -388,6 +392,50 @@ public class WallabookDAO {
 			queryAvanzada.setParameter("categoria", categoria);
 			libros = queryAvanzada.getResultList();
 		}
+=======
+	public List<Libro> buscarLibrosAvanzado(String titulo, String autor, Categoria categoria, Usuario usuario) {
+		List<Libro> libros = Collections.emptyList();
+		if (!categoria.isValid()) {
+			Query queryCountAvanzadaSinCategoria = this.getEntityManager().createQuery(
+					"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor",
+					Libro.class);
+			queryCountAvanzadaSinCategoria.setParameter("user", usuario);
+			queryCountAvanzadaSinCategoria.setParameter("titulo", "%" + titulo + "%");
+			queryCountAvanzadaSinCategoria.setParameter("autor", "%" + autor + "%");
+
+			Long countS = (Long) queryCountAvanzadaSinCategoria.getSingleResult();
+			if (!countS.equals(0L)) {
+				TypedQuery<Libro> queryAvanzadaSinCategoria = this.getEntityManager().createQuery(
+						"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor",
+						Libro.class);
+				queryAvanzadaSinCategoria.setParameter("user", usuario);
+				queryAvanzadaSinCategoria.setParameter("titulo", "%" + titulo + "%");
+				queryAvanzadaSinCategoria.setParameter("autor", "%" + autor + "%");
+				libros = queryAvanzadaSinCategoria.getResultList();
+			}
+		} else {
+			Query queryCountAvanzada = this.getEntityManager().createQuery(
+					"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and l.categoria = :categoria",
+					Libro.class);
+			queryCountAvanzada.setParameter("user", usuario);
+			queryCountAvanzada.setParameter("titulo", "%" + titulo + "%");
+			queryCountAvanzada.setParameter("autor", "%" + autor + "%");		
+			queryCountAvanzada.setParameter("categoria", categoria);
+
+			Long count = (Long) queryCountAvanzada.getSingleResult();
+			if (!count.equals(0L)) {
+				TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
+						"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and l.categoria = :categoria",
+						Libro.class);
+				queryAvanzada.setParameter("user", usuario);
+				queryAvanzada.setParameter("titulo", "%" + titulo + "%");
+				queryAvanzada.setParameter("autor", "%" + autor + "%");
+				queryAvanzada.setParameter("categoria", categoria);
+				libros = queryAvanzada.getResultList();
+			}
+		}
+
+>>>>>>> 72200fa5bc059b3f715ab8a9676bb93182ef5584
 		return libros;
 	}
 

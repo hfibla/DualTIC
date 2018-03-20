@@ -11,6 +11,7 @@
 </head>
     <body>
 	<IMG id="logo-login" src="/Wallabook/Buscar/img/Logo-login.png" title="WallaBook">
+	
 	<form id="loginform" method="post" action="/Wallabook/ConsultarLibrosAvanzado">
 		<input type="text" class="input" placeholder="Buscar por título" name="titulo" title="Título del libro" > 
 		<input type="text" name="autor"	class="input" placeholder="Buscar por autor" title="Autor del libro"> 
