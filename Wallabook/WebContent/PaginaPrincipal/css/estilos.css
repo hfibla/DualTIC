@@ -224,20 +224,16 @@ footer .contenedor {
    
 }
 
-.sociales {
-    width: 100%;
-    text-align: center;
-    font-size: 28px;
-	
-	
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right: 0;
 }
-
-.sociales a {
-    color: #333;
-	color: orange;
-    text-decoration: none;
-	margin-left: 5px;
-	margin-right: 5px;
+.social-icon{
+widht: 50px;
+height: 50px;
 }
 
 

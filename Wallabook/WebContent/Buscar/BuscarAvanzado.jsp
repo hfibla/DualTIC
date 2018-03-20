@@ -8,6 +8,7 @@
     <title>WallaBook - Buscar Avanzado</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/Buscar/css/estilos.css">
+     <link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
     <body>
 	<IMG id="logo-login" src="/Wallabook/Buscar/img/Logo-login.png" title="WallaBook">

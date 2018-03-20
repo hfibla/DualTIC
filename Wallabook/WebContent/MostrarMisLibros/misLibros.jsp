@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <title>WallaBook - Mis libros</title>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
-
 <link rel="stylesheet" href="/Wallabook/MostrarMisLibros/css/estilosperfil.css">
+<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
 <body>
 	<header>
@@ -59,8 +59,16 @@
 	</DIV>
 	<footer>
 		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev: Ivan</p>
+			<p class="copy">WallaBook &copy; 2018 Dev:Moha</p>
 		</div>
+		 <div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
+		
 	</footer>
 </body>
 </html>
