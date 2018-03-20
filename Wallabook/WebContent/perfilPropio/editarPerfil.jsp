@@ -24,7 +24,7 @@
 <main>
     
     <div class="avatar">
-    <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
+    <img src="${usuario.avatar.getLinkAvatar()}">
     </div>
 <form method="post" action="/Wallabook/ObtenerPerfil">
     <p>Usuario:<input type="text" value="${usuario.nickname}" title="Este atributo no es modificable" disabled/></p>

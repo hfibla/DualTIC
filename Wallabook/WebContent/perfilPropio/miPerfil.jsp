@@ -17,7 +17,7 @@
             <a class="popup-cerrar" href="#">✖</a>
       	    <h2>¿Estás seguro?</h2>
             <p>Piénsatelo dos veces...</p>
-            <a class="si-button" href="#">Continuar</a>
+            <a class="si-button" href="/Wallabook/EliminarCuenta">Continuar</a>
             <a class="no-button" href="#">Cancelar</a>
     </div>
 </div>

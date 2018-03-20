@@ -28,7 +28,7 @@ public class EliminarCuenta extends HttpServlet {
 		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
 		wallabookDAO.eliminarUsuario(usuario);
 		request.getSession().invalidate();
-    	response.sendRedirect("/Wallabook/LogIn/index.html?eliminar=1");
+    	response.sendRedirect("/Wallabook/Registro/index.html?eliminar=1");
 	}
 
 }

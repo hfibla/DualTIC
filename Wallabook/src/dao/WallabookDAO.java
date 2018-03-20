@@ -3,7 +3,6 @@ package dao;
 import java.util.Collections;
 import java.util.List;
 
-import javax.management.Notification;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
