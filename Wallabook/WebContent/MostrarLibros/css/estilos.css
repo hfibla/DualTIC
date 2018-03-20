@@ -42,7 +42,7 @@ header {
 .volver{
 	float: right;
 	margin: 15px;
-	text-align: center;
+	
 	color:white;
 	
 	
@@ -50,13 +50,15 @@ header {
 .volver:hover{
 	float: right;
 	margin: 15px;
-	text-align: center;
+	
 	color:orange;
 	cursor:pointer;
 	
 }
 .logo {
     height: 49px;
+    float:left;
+    margi-left: 10px;
 }
 
 .linea {
@@ -91,19 +93,21 @@ background-color: #616161;
     margin-left:40px;
     
 }
-footer {
+/*footer {
     background-color: #616161;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
     border-top: 5px solid orange;
+    bottom:0;
+    position:relative;
 }
 .copy {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     color: orange;
-}
+}*/
 .contenedor-libros-con-ed {
     width: 300px;
     height: 150px;
@@ -155,24 +159,38 @@ footer {
 }
 
 #registro-btn:hover{
-    color:darkorange;
+    color:orange;
+}
+
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right: 0;
+}
+.social-icon{
+widht: 50px;
+height: 50px;
+
+}
 
 /* RESPONSIVE */
 
-@media (min-width:1080px) { 
+/* @media (min-width:1080px) { 
     footer {
         background-color: #616161;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         padding: 25px;
-        
+        bottom:0;
+   		 position:relative;
 }
     .copy {
                 margin-left: 80px;
     }
-}
-
+}**/
 
 
 
