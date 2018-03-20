@@ -21,7 +21,7 @@
 
 			<div class="contenedor-botton"></div>
 		</div>
-		<a href="/Wallabook/ObtenerDisponibilidadMisLibros" class="cambiar-dispo">Editar disponibilidad</a>
+		<a href="/Wallabook/CambiarDisponibilidadLibro" class="cambiar-dispo">Editar disponibilidad</a>
 		<a href="/Wallabook/ObtenerPerfil" class="volver">Mi perfil</a>
 	</header>
 	<main>

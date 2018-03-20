@@ -14,28 +14,21 @@ import model.Libro;
 import model.Usuario;
 
 /**
- * Servlet implementation class ObtenerLibrosUsuario
+ * Servlet implementation class ObtenerLibros
  */
-@WebServlet("/ObtenerLibrosUsuario")
-public class ObtenerLibrosUsuario extends HttpServlet {
+@WebServlet("/ObtenerLibros")
+public class ObtenerLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ObtenerLibrosUsuario() {
+    public ObtenerLibros() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		String miNickname = (String) request.getSession(false).getAttribute("me");
 		Usuario miUsuario =  wallabookDAO.consultarUsuarioNickname(miNickname);
+		if (request.getParameterMap().containsKey("usr")) {
 	    String suNickname = request.getParameter("usr");
 		Usuario suUsuario =  wallabookDAO.consultarUsuarioNickname(suNickname);
 		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(suUsuario);
@@ -43,14 +36,16 @@ public class ObtenerLibrosUsuario extends HttpServlet {
 		request.setAttribute("suUsuario", suUsuario);
 	    request.setAttribute("libros", libros);
 	    request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		}
+		else {
+			List<Libro> libros = wallabookDAO.consultarLibrosUsuario(miUsuario);
+			if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
+				request.setAttribute("maxLibros", "Has alcanzado el límite de libros no disponibles. No podrás pedir libros hasta que reduzcas esa cantidad.");
+			}
+			request.setAttribute("usuario", miUsuario);
+		    request.setAttribute("libros", libros);
+		    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
+		}
 	}
 
 }

@@ -26,8 +26,12 @@
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
          <a href="##" class="return-btn">Página principal</a>
                 <nav class="menu">
+<<<<<<< HEAD
                 
                     <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
+=======
+                    <a href="/Wallabook/ObtenerLibros">Mis libros</a>
+>>>>>>> 4070fb1795b9a46bee468f90d66e7ada9a83b473
                     <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
                     <a href="#popup" class="popup-link">Eliminar cuenta</a>       
                     <img href="#" class="notificacion" src="/Wallabook/perfilPropio/img/notificacion.png">

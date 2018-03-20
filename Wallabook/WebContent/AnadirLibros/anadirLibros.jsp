@@ -12,7 +12,7 @@
 </head>
 <body>
 	<IMG id="logo-login" SRC="/Wallabook/AnadirLibros/img/Logo-add-book.png" title="WallaBook"></IMG>
-	<form id="loginform" method="post" action="/Wallabook/AnadirLibros/anadir">
+	<form id="loginform" method="post" action="/Wallabook/AnadirLibro">
 		<input type="text" class="input" placeholder="Título" name="titulo"
 			title="Título del libro" required> 
 		<input type="text" name="autor"
