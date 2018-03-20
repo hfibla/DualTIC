@@ -3,6 +3,7 @@ package dao;
 import java.util.Collections;
 import java.util.List;
 
+import javax.management.Notification;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -283,6 +284,19 @@ public class WallabookDAO {
 		}
 	}
 
+	public List<Notificacion> verNotificacionesUsuario (Usuario usuario){
+	List <Notificacion> notificaciones =Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery("SELECT n FROM Notificacion n where usuario =:user", Notificacion.class);
+		queryCount.setParameter("user", usuario);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery <Notificacion> query = this.getEntityManager().createQuery("SELECT n FROM Notificacion n where usuario =:user", Notificacion.class);
+			query.setParameter("user", usuario);
+			notificaciones = query.getResultList();
+		}		
+		return notificaciones;	
+	}
+	
 	public Categoria consultarCategoriaNombre(String nombreCategoria) {
 		TypedQuery<Categoria> query = this.getEntityManager()
 				.createQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
