@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,9 +14,9 @@
     <div class="contenedor">
         <img class="logo" src="/Wallabook/Perfil/img/Logo-login.png">
  
-        <a href="/Wallabook/PaginaPrincipal" class="closesesion-btn">Volver al menú principal</a>
+        <a href="/Wallabook/PaginaPrincipal" class="closesesion-btn">Volver al menÃº principal</a>
                 <nav class="menu">
-                    <a href="/Wallabook/ObtenerLibrosUsuario?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
+                    <a href="/Wallabook/ObtenerLibros?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
                     
                     
                 </nav>
@@ -35,8 +35,8 @@
     <p>Localidad: ${usuario.localidad}</p>
     <p>Correo: ${usuario.correo}</p>
     <c:choose>
-    	<c:when test="${usuario.telefono != null}"><p>Teléfono: ${usuario.telefono}</p></c:when>
-    	<c:otherwise><p>Teléfono: - </p></c:otherwise>
+    	<c:when test="${usuario.telefono != null}"><p>TelÃ©fono: ${usuario.telefono}</p></c:when>
+    	<c:otherwise><p>TelÃ©fono: - </p></c:otherwise>
     </c:choose>
        
         

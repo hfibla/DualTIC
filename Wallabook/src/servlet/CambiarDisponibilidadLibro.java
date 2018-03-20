@@ -20,12 +20,20 @@ import model.Usuario;
 public class CambiarDisponibilidadLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public CambiarDisponibilidadLibro() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		WallabookDAO wallabookDAO = new WallabookDAO();
+		String nickname = (String) request.getSession(false).getAttribute("me");
+		Usuario usuario = wallabookDAO.consultarUsuarioNickname(nickname);
+		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
+		request.setAttribute("usuario", usuario);
+		request.setAttribute("libros", libros);
+		request.getRequestDispatcher("/CambiarDisponibilidadMisLibros/cambiarDisponibilidad.jsp").forward(request,
+				response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

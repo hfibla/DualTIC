@@ -26,7 +26,7 @@
            <c:choose>
            		<c:when test="${empty error}">
             <c:forEach items="${libros}" var="libro">
-            	<a href="/Wallabook/ObtenerLibrosUsuario?usr=${libro.usuario.getNickname()}">
+            	<a href="/Wallabook/ObtenerLibros?usr=${libro.usuario.getNickname()}">
 	            	<c:choose>
 						<c:when test="${libro.editorial != '0'}">
 							<div class="contenedor-libros-con-ed">

@@ -28,9 +28,6 @@ public class ObtenerMisLibros extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WallabookDAO wallabookDAO = new WallabookDAO();
 	    String nickname = (String) request.getSession(false).getAttribute("me");

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +25,7 @@
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
                 <nav class="menu">
-                    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
+                    <a href="/Wallabook/ObtenerLibros">Mis libros</a>
                     <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
                     <a href="#popup" class="popup-link">Eliminar cuenta</a>                  
                 </nav>
