@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -17,7 +18,8 @@ public class Peticion implements Serializable {
 	@EmbeddedId
 	private PeticionPK id;
 
-	private int confirmada;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
 
 	//bi-directional many-to-one association to Libro
 	@ManyToOne
@@ -31,6 +33,13 @@ public class Peticion implements Serializable {
 
 	public Peticion() {
 	}
+	
+	public Peticion(PeticionPK id) {
+		super();
+		this.id = id;
+	}
+
+
 
 	public PeticionPK getId() {
 		return this.id;
@@ -40,12 +49,12 @@ public class Peticion implements Serializable {
 		this.id = id;
 	}
 
-	public int getConfirmada() {
-		return this.confirmada;
+	public Date getFecha() {
+		return this.fecha;
 	}
 
-	public void setConfirmada(int confirmada) {
-		this.confirmada = confirmada;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public Libro getLibro() {

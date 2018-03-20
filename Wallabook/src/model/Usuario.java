@@ -4,19 +4,18 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the usuarios database table.
  * 
  */
 @Entity
-@Table(name="usuarios")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@Table(name = "usuarios")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_USUARIO")
+	@Column(name = "ID_USUARIO")
 	private int idUsuario;
 
 	private String correo;
@@ -25,43 +24,45 @@ public class Usuario implements Serializable {
 
 	private String nickname;
 
-	@Column(name="NOMBRE_REAL")
+	@Column(name = "NOMBRE_REAL")
 	private String nombreReal;
 
 	private String password;
 
 	private String telefono;
 
-	//bi-directional many-to-one association to Libro
-	@OneToMany(mappedBy="usuario")
+	// bi-directional many-to-one association to Libro
+	@OneToMany(mappedBy = "usuario")
 	private List<Libro> libros;
 
-	//bi-directional many-to-one association to Peticion
-	@OneToMany(mappedBy="usuario")
+	// bi-directional many-to-one association to Peticion
+	@OneToMany(mappedBy = "usuario")
 	private List<Peticion> peticiones;
 
-	//bi-directional many-to-one association to Avatar
+	// bi-directional many-to-one association to Avatar
 	@ManyToOne
-	@JoinColumn(name="ID_AVATAR")
+	@JoinColumn(name = "ID_AVATAR")
 	private Avatar avatar;
+
+	// bi-directional many-to-one association to Notificacion
+	@OneToMany(mappedBy = "usuario")
+	private List<Notificacion> notificaciones;
 
 	public Usuario() {
 	}
-	
+
 	public Usuario(String nickname, String password) {
-	    super();
-	    this.nickname = nickname;
-	    this.password = password;
+		super();
+		this.nickname = nickname;
+		this.password = password;
 	}
 
-
-
 	public Usuario(String correo, String localidad, String nickname, String password) {
-	    super();
-	    this.correo = correo;
-	    this.localidad = localidad;
-	    this.nickname = nickname;
-	    this.password = password;
+		super();
+		this.correo = correo;
+		this.localidad = localidad;
+		this.nickname = nickname;
+		this.password = password;
 	}
 
 	public int getIdUsuario() {
@@ -170,6 +171,28 @@ public class Usuario implements Serializable {
 
 	public void setAvatar(Avatar avatar) {
 		this.avatar = avatar;
+	}
+
+	public List<Notificacion> getNotificaciones() {
+		return this.notificaciones;
+	}
+
+	public void setNotificaciones(List<Notificacion> notificaciones) {
+		this.notificaciones = notificaciones;
+	}
+
+	public Notificacion addNotificacion(Notificacion notificacion) {
+		getNotificaciones().add(notificacion);
+		notificacion.setUsuario(this);
+
+		return notificacion;
+	}
+
+	public Notificacion removeNotificacione(Notificacion notificacion) {
+		getNotificaciones().remove(notificacion);
+		notificacion.setUsuario(null);
+
+		return notificacion;
 	}
 
 }

@@ -38,9 +38,6 @@ public class ObtenerDisponibilidadMisLibros extends HttpServlet {
 		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(usuario);
 		request.setAttribute("usuario", usuario);
 	    request.setAttribute("libros", libros);
-	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(usuario) > 5) {
-	    	request.setAttribute("error", 1);
-	    }
 	    request.getRequestDispatcher("/CambiarDisponibilidadMisLibros/cambiarDisponibilidad.jsp").forward(request, response);
 	}
 

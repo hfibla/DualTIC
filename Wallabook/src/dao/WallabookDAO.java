@@ -13,6 +13,9 @@ import javax.persistence.TypedQuery;
 import model.Avatar;
 import model.Categoria;
 import model.Libro;
+import model.Notificacion;
+import model.Peticion;
+import model.PeticionPK;
 import model.Usuario;
 
 public class WallabookDAO {
@@ -153,18 +156,71 @@ public class WallabookDAO {
 		return (Long) queryCount.getSingleResult();
 	}
 
-	public String cambiarPropietarioLibro(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
-		String mensaje = "";
-		if (numLibrosNoDisponiblesUsuario(antiguoPropietario) <= 5) {
+	public boolean cambiarPropietarioLibro(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		if (numLibrosNoDisponiblesUsuario(nuevoPropietario) <= 5) {
 			Libro libroEditado = this.getEntityManager().find(Libro.class, libro.getIdLibro());
 			this.getEntityManager().getTransaction().begin();
 			libroEditado.setUsuario(nuevoPropietario);
+			libroEditado.setDisponible(0);
 			this.getEntityManager().getTransaction().commit();
-			mensaje = "Cambio de propietario realizado";
+			gestionarPeticionLibro(libro, nuevoPropietario);
+			return true;
 		} else {
-			mensaje = "Máximo de libros alcanzado";
+			return false;
 		}
-		return mensaje;
+	}
+	
+	public void enviarNotificacionesCambioLibroOK(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.", antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.", nuevoPropietario);
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacionExPropietario);
+		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		entityTransaction.commit();
+	}
+	
+	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
+		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "no ha podido realizarse.", antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacionExPropietario);
+		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		entityTransaction.commit();
+	}
+	
+	public List<Peticion> consultarPeticionesLibro (Libro libro){
+		List <Peticion> peticiones = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+		queryCount.setParameter("libro", libro);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery<Peticion> queryAll = this.getEntityManager()
+					.createQuery("Select p from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+			queryAll.setParameter("libro", libro);
+			peticiones = queryAll.getResultList();
+		}
+		return peticiones;
+	}
+	
+	public void gestionarPeticionLibro(Libro libro, Usuario nuevoPropietario) {
+		List <Peticion> peticiones = consultarPeticionesLibro(libro);
+		boolean porEncontrar = true;		
+		for (int i=0; i<peticiones.size();i++) {
+			PeticionPK idPeticion = peticiones.get(i).getId();
+			Peticion peticion = this.getEntityManager().find(Peticion.class, idPeticion);
+			this.getEntityManager().getTransaction().begin();
+			if (porEncontrar && peticion.getId().getIdRemitente() == nuevoPropietario.getIdUsuario()) {
+				peticion.getId().setConfirmada("aceptada");
+				porEncontrar = false;
+			}
+			else {
+				peticion.getId().setConfirmada("denegada");
+			}
+			this.getEntityManager().getTransaction().commit();
+		}
 	}
 
 	public Categoria consultarCategoriaNombre(String nombreCategoria) {
@@ -238,7 +294,11 @@ public class WallabookDAO {
 		List<Libro> libros = Collections.emptyList();	
 		Query queryCountAvanzada = this.getEntityManager().createQuery(
 				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
+<<<<<<< HEAD
 						+ " l.categoria like :categoria ",
+=======
+						+ "l.categoria like :categoriaInput ",
+>>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
 						Libro.class);	
 				queryCountAvanzada.setParameter("user", usuario); 
 				if (titulo != null) {	
@@ -252,7 +312,11 @@ public class WallabookDAO {
 				if (!count.equals(0L)) {
 					TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
 					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
+<<<<<<< HEAD
 							+ " l.categoria like :categoria ",
+=======
+							+ "l.categoria like :categoriaInput ",
+>>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
 							Libro.class);		
 					queryAvanzada.setParameter("user", usuario);
 					queryAvanzada.setParameter("titulo", titulo);
@@ -291,4 +355,20 @@ public class WallabookDAO {
 		usuarioEditado.setAvatar(avatar);
 		this.getEntityManager().getTransaction().commit();
 	}
+<<<<<<< HEAD
+=======
+	
+	public List <Avatar> obtenerAvatares(){
+		List <Avatar> avatares = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (a) from Avatar a", Avatar.class);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery<Avatar> queryAll = this.getEntityManager()
+					.createQuery("Select a from Avatar a", Avatar.class);
+			avatares = queryAll.getResultList();
+		}	
+		return avatares;
+	}
+>>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
 }

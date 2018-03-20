@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +23,7 @@ public class CambiarPropietarioLibro extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	
-	//parece ser que no va a ser necesario
-    public CambiarPropietarioLibro() {
+	public CambiarPropietarioLibro() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,9 +35,15 @@ public class CambiarPropietarioLibro extends HttpServlet {
 		// TODO Auto-generated method stub
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idlibro"));
-		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("olduser"));
-		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("newuser"));
-		String mensaje =wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario);
+		String nickname = (String) request.getSession(false).getAttribute("me");
+		Usuario antiguoPropietario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("idRemitente"));
+		if (wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario)) {
+			wallabookDAO.enviarNotificacionesCambioLibroOK(libro, antiguoPropietario, nuevoPropietario);
+		}
+		else {
+			wallabookDAO.enviarNotificacionesCambioLibroError(libro, antiguoPropietario, nuevoPropietario);
+		}
 		
 	}
 
