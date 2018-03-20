@@ -39,6 +39,22 @@ header {
     margin:0;
     border-bottom: 5px solid orange;
 }
+.volver{
+	float: right;
+	margin: 15px;
+	text-align: center;
+	color:white;
+	
+	
+}
+.volver:hover{
+	float: right;
+	margin: 15px;
+	text-align: center;
+	color:orange;
+	cursor:pointer;
+	
+}
 .logo {
     height: 49px;
 }

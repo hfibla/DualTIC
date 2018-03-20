@@ -14,6 +14,7 @@
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/MostrarLibros/img/Logo-login.png">
+        <a href="/Wallabook/ConsultarLibrosAvanzado" class="volver">Volver a buscar</a>
      </div>
 </header>
 <main>

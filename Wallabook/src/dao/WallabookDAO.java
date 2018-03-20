@@ -169,54 +169,62 @@ public class WallabookDAO {
 			return false;
 		}
 	}
-	
+
 	public void enviarNotificacionesCambioLibroOK(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
-		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.", antiguoPropietario);
-		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.", nuevoPropietario);
+		Notificacion notificacionExPropietario = new Notificacion(
+				"El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.",
+				antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion(
+				"La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.",
+				nuevoPropietario);
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(notificacionExPropietario);
-		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		this.getEntityManager().persist(notificacionNuevoPropietario);
 		entityTransaction.commit();
 	}
-	
-	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
-		Notificacion notificacionExPropietario = new Notificacion ("El cambio referente a su libro " + libro.getTitulo() + "no ha podido realizarse.", antiguoPropietario);
-		Notificacion notificacionNuevoPropietario = new Notificacion ("La petición del libro " + libro.getTitulo() + " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
+
+	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario,
+			Usuario nuevoPropietario) {
+		Notificacion notificacionExPropietario = new Notificacion(
+				"El cambio referente a su libro " + libro.getTitulo() + "no ha podido realizarse.", antiguoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion("La petición del libro " + libro.getTitulo()
+				+ " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(notificacionExPropietario);
-		this.getEntityManager().persist(notificacionNuevoPropietario);		
+		this.getEntityManager().persist(notificacionNuevoPropietario);
 		entityTransaction.commit();
 	}
-	
-	public List<Peticion> consultarPeticionesLibro (Libro libro){
-		List <Peticion> peticiones = Collections.emptyList();
+
+	public List<Peticion> consultarPeticionesLibro(Libro libro) {
+		List<Peticion> peticiones = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
-				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc",
+				Peticion.class);
 		queryCount.setParameter("libro", libro);
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
-			TypedQuery<Peticion> queryAll = this.getEntityManager()
-					.createQuery("Select p from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc", Peticion.class);
+			TypedQuery<Peticion> queryAll = this.getEntityManager().createQuery(
+					"Select p from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc",
+					Peticion.class);
 			queryAll.setParameter("libro", libro);
 			peticiones = queryAll.getResultList();
 		}
 		return peticiones;
 	}
-	
+
 	public void gestionarPeticionLibro(Libro libro, Usuario nuevoPropietario) {
-		List <Peticion> peticiones = consultarPeticionesLibro(libro);
-		boolean porEncontrar = true;		
-		for (int i=0; i<peticiones.size();i++) {
+		List<Peticion> peticiones = consultarPeticionesLibro(libro);
+		boolean porEncontrar = true;
+		for (int i = 0; i < peticiones.size(); i++) {
 			PeticionPK idPeticion = peticiones.get(i).getId();
 			Peticion peticion = this.getEntityManager().find(Peticion.class, idPeticion);
 			this.getEntityManager().getTransaction().begin();
 			if (porEncontrar && peticion.getId().getIdRemitente() == nuevoPropietario.getIdUsuario()) {
 				peticion.getId().setConfirmada("aceptada");
 				porEncontrar = false;
-			}
-			else {
+			} else {
 				peticion.getId().setConfirmada("denegada");
 			}
 			this.getEntityManager().getTransaction().commit();
@@ -289,45 +297,51 @@ public class WallabookDAO {
 		return libros;
 	}
 
-//	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, String categoriaInput, Usuario usuario){
-	public List <Libro> buscarLibrosAvanzado (String titulo, String autor, Categoria categoria, Usuario usuario){
-		List<Libro> libros = Collections.emptyList();	
-		Query queryCountAvanzada = this.getEntityManager().createQuery(
-				"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
-<<<<<<< HEAD
-						+ " l.categoria like :categoria ",
-=======
-						+ "l.categoria like :categoriaInput ",
->>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
-						Libro.class);	
-				queryCountAvanzada.setParameter("user", usuario); 
-				if (titulo != null) {	
-					queryCountAvanzada.setParameter("titulo", titulo);}
-				else {
-					titulo = "%";}
-				queryCountAvanzada.setParameter("autor", autor);
-//				queryCountAvanzada.setParameter("categoria", categoriaInput); 	
-				queryCountAvanzada.setParameter("categoria", categoria); 
-				Long count = (Long) queryCountAvanzada.getSingleResult();
-				if (!count.equals(0L)) {
-					TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
-					"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and "
-<<<<<<< HEAD
-							+ " l.categoria like :categoria ",
-=======
-							+ "l.categoria like :categoriaInput ",
->>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
-							Libro.class);		
-					queryAvanzada.setParameter("user", usuario);
-					queryAvanzada.setParameter("titulo", titulo);
-					queryAvanzada.setParameter("autor", autor);
-//					queryAvanzada.setParameter("categoria", categoriaInput);
-					queryAvanzada.setParameter("categoria", categoria);
-			libros = queryAvanzada.getResultList();											
+	public List<Libro> buscarLibrosAvanzado(String titulo, String autor, Categoria categoria, Usuario usuario) {
+		List<Libro> libros = Collections.emptyList();
+		if (!categoria.isValid()) {
+			Query queryCountAvanzadaSinCategoria = this.getEntityManager().createQuery(
+					"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor",
+					Libro.class);
+			queryCountAvanzadaSinCategoria.setParameter("user", usuario);
+			queryCountAvanzadaSinCategoria.setParameter("titulo", "%" + titulo + "%");
+			queryCountAvanzadaSinCategoria.setParameter("autor", "%" + autor + "%");
+
+			Long countS = (Long) queryCountAvanzadaSinCategoria.getSingleResult();
+			if (!countS.equals(0L)) {
+				TypedQuery<Libro> queryAvanzadaSinCategoria = this.getEntityManager().createQuery(
+						"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor",
+						Libro.class);
+				queryAvanzadaSinCategoria.setParameter("user", usuario);
+				queryAvanzadaSinCategoria.setParameter("titulo", "%" + titulo + "%");
+				queryAvanzadaSinCategoria.setParameter("autor", "%" + autor + "%");
+				libros = queryAvanzadaSinCategoria.getResultList();
 			}
+		} else {
+			Query queryCountAvanzada = this.getEntityManager().createQuery(
+					"Select count (l) from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and l.categoria = :categoria",
+					Libro.class);
+			queryCountAvanzada.setParameter("user", usuario);
+			queryCountAvanzada.setParameter("titulo", "%" + titulo + "%");
+			queryCountAvanzada.setParameter("autor", "%" + autor + "%");		
+			queryCountAvanzada.setParameter("categoria", categoria);
+
+			Long count = (Long) queryCountAvanzada.getSingleResult();
+			if (!count.equals(0L)) {
+				TypedQuery<Libro> queryAvanzada = this.getEntityManager().createQuery(
+						"Select l from Libro l where l.disponible = 1 and l.usuario !=:user and l.titulo like :titulo and l.autor like :autor and l.categoria = :categoria",
+						Libro.class);
+				queryAvanzada.setParameter("user", usuario);
+				queryAvanzada.setParameter("titulo", "%" + titulo + "%");
+				queryAvanzada.setParameter("autor", "%" + autor + "%");
+				queryAvanzada.setParameter("categoria", categoria);
+				libros = queryAvanzada.getResultList();
+			}
+		}
+
 		return libros;
 	}
-	
+
 	public void cambiarDisponibilidadLibros(String[] idLibros, Usuario usuario) {
 		List<Libro> libros = consultarLibrosUsuario(usuario);
 		for (int i = 0; i < libros.size(); i++) {
@@ -348,27 +362,23 @@ public class WallabookDAO {
 		}
 
 	}
-	
+
 	public void cambiarAvatar(Usuario usuario, Avatar avatar) {
 		Usuario usuarioEditado = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
 		this.getEntityManager().getTransaction().begin();
 		usuarioEditado.setAvatar(avatar);
 		this.getEntityManager().getTransaction().commit();
 	}
-<<<<<<< HEAD
-=======
-	
-	public List <Avatar> obtenerAvatares(){
-		List <Avatar> avatares = Collections.emptyList();
-		Query queryCount = this.getEntityManager().createQuery(
-				"Select count (a) from Avatar a", Avatar.class);
+
+	public List<Avatar> obtenerAvatares() {
+		List<Avatar> avatares = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery("Select count (a) from Avatar a", Avatar.class);
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
-			TypedQuery<Avatar> queryAll = this.getEntityManager()
-					.createQuery("Select a from Avatar a", Avatar.class);
+			TypedQuery<Avatar> queryAll = this.getEntityManager().createQuery("Select a from Avatar a", Avatar.class);
 			avatares = queryAll.getResultList();
-		}	
+		}
 		return avatares;
 	}
->>>>>>> 38d7197397561bc2e60011974c46401e65e6b275
+
 }
