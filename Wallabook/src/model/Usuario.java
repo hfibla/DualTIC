@@ -63,6 +63,7 @@ public class Usuario implements Serializable {
 		this.localidad = localidad;
 		this.nickname = nickname;
 		this.password = password;
+		this.avatar = new Avatar(1);
 	}
 
 	public int getIdUsuario() {

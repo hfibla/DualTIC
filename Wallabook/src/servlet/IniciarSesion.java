@@ -12,13 +12,13 @@ import dao.WallabookDAO;
 import model.Usuario;
 
 /**
- * Servlet implementation class Registrarse
+ * Servlet implementation class IniciarSesion
  */
-@WebServlet("/Registrarse")
-public class Registrarse extends HttpServlet {
+@WebServlet("/IniciarSesion")
+public class IniciarSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public Registrarse() {
+	public IniciarSesion() {
 		super();
 	}
 
@@ -27,13 +27,14 @@ public class Registrarse extends HttpServlet {
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
-		String localidad = request.getParameter("localidad");
-		String correo = request.getParameter("correo");
-		Usuario usuario = new Usuario(correo, localidad, nickname, password);
-		if (wallabookDAO.registrarUsuario(usuario)) {
-			response.sendRedirect("/Wallabook/LogIn/index.html?registro=1");
+		Usuario usuario = new Usuario(nickname, password);
+		if (wallabookDAO.comprobarLogin(usuario.getNickname(), usuario.getPassword())) {
+			request.getSession(true).setAttribute("me", usuario.getNickname());
+			response.sendRedirect("/Wallabook/PaginaPrincipal");
 		} else {
-			response.sendRedirect("/Wallabook/Registro/index.html?registro=0");
+			response.sendRedirect("/Wallabook/LogIn/index.html?registro=0");
 		}
+
 	}
+
 }
