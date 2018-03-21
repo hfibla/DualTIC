@@ -4,34 +4,33 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the categorias database table.
  * 
  */
 @Entity
-@Table(name="categorias")
-@NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
+@Table(name = "categorias")
+@NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_CATEGORIA")
+	@Column(name = "ID_CATEGORIA")
 	private int idCategoria;
 
-	@Column(name="NOMBRE_CATEGORIA")
+	@Column(name = "NOMBRE_CATEGORIA")
 	private String nombreCategoria;
 
-	//bi-directional many-to-one association to Libro
-	@OneToMany(mappedBy="categoria")
+	// bi-directional many-to-one association to Libro
+	@OneToMany(mappedBy = "categoria")
 	private List<Libro> libros;
 
 	public Categoria() {
 	}
-	
+
 	public boolean isValid() {
-	    return this.nombreCategoria != null;
-	  }
+		return this.nombreCategoria != null;
+	}
 
 	public int getIdCategoria() {
 		return this.idCategoria;

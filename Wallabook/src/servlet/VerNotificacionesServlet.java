@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import javax.persistence.metamodel.SetAttribute;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

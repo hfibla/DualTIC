@@ -46,6 +46,7 @@
 				<c:if test="${libro.editorial != '0'}">
 					<p>${libro.editorial}</p>
 				</c:if>
+				<p>${libro.categoria.getNombreCategoria()}</p>
 				<c:choose>
 					<c:when test="${libro.disponible == 0}">
 						<p id="nodisponible">No disponible</p>

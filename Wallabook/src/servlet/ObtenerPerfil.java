@@ -23,13 +23,8 @@ public class ObtenerPerfil extends HttpServlet {
 	 */
 	public ObtenerPerfil() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		WallabookDAO wallabookDAO = new WallabookDAO();
@@ -48,6 +43,9 @@ public class ObtenerPerfil extends HttpServlet {
 					request.getRequestDispatcher("/perfilPropio/editarPerfil.jsp").forward(request, response);
 				}
 			} else {
+				if (wallabookDAO.hayNotificacionesNuevas(usuario)) {
+					request.setAttribute("notificacionesNuevas", "1");
+				}
 				request.setAttribute("usuario", usuario);
 				request.getRequestDispatcher("/perfilPropio/miPerfil.jsp").forward(request, response);
 			}

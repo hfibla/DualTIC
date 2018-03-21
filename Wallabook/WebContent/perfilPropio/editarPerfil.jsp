@@ -23,9 +23,14 @@
      </div>
 </header>
 <main>
+
     
 
    
+    <div class="avatar">
+    <img src="${usuario.avatar.getLinkAvatar()}">
+
+
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}">
 
@@ -37,7 +42,7 @@
                     title="Sólo caracteres del alfabeto español (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+"/></p>
                 <p class="formu">Localidad: <input class="input" type="text" name="localidad" value="${usuario.localidad}" placeholder="Introduce aquí tu localidad (Obligatorio)"
                     title="Sólo caracteres del alfabeto español (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+" required/></p>
-                <p class="formu">Correo: <input class="input" ype="text" value="${usuario.correo}" title="Este atributo no es modificable" disabled/></p>
+                <p class="formu">Correo: <input class="input" type="text" value="${usuario.correo}" title="Este atributo no es modificable" disabled/></p>
                 <p class="formu">Teléfono: <input class="input" type="text" name="telefono" value="${usuario.telefono}" placeholder="Introduce aquí tu teléfono fijo o móvil (Opcional)"
                     title="9 caracteres numéricos" pattern="[0-9]+"/></p>
             <input class="save" type="submit" value="Guardar cambios"/>

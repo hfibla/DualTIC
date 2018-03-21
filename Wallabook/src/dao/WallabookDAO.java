@@ -160,7 +160,8 @@ public class WallabookDAO {
 	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario,
 			Usuario nuevoPropietario) {
 		Notificacion notificacionExPropietario = new Notificacion(
-				"El cambio referente a su libro " + libro.getTitulo() + "no ha podido realizarse.", antiguoPropietario);
+				"El cambio referente a su libro " + libro.getTitulo() + " no ha podido realizarse.",
+				antiguoPropietario);
 		Notificacion notificacionNuevoPropietario = new Notificacion("La petición del libro " + libro.getTitulo()
 				+ " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
@@ -222,7 +223,7 @@ public class WallabookDAO {
 		}
 	}
 
-	public List<Peticion> consultarPeticionesLibro(Libro libro) {
+	public List<Peticion> consultarPeticionesPendientesLibro(Libro libro) {
 		List<Peticion> peticiones = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc",
@@ -240,7 +241,7 @@ public class WallabookDAO {
 	}
 
 	public void gestionarPeticionLibro(Libro libro, Usuario nuevoPropietario) {
-		List<Peticion> peticiones = consultarPeticionesLibro(libro);
+		List<Peticion> peticiones = consultarPeticionesPendientesLibro(libro);
 		boolean porEncontrar = true;
 		for (int i = 0; i < peticiones.size(); i++) {
 			PeticionPK idPeticion = peticiones.get(i).getId();
@@ -256,19 +257,21 @@ public class WallabookDAO {
 		}
 	}
 
-	public List<Notificacion> verNotificacionesUsuario (Usuario usuario){
-	List <Notificacion> notificaciones =Collections.emptyList();
-		Query queryCount = this.getEntityManager().createQuery("SELECT n FROM Notificacion n where usuario =:user", Notificacion.class);
+	public List<Notificacion> verNotificacionesUsuario(Usuario usuario) {
+		List<Notificacion> notificaciones = Collections.emptyList();
+		Query queryCount = this.getEntityManager()
+				.createQuery("SELECT count (n) FROM Notificacion n where n.usuario =:user", Notificacion.class);
 		queryCount.setParameter("user", usuario);
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
-			TypedQuery <Notificacion> query = this.getEntityManager().createQuery("SELECT n FROM Notificacion n where usuario =:user", Notificacion.class);
+			TypedQuery<Notificacion> query = this.getEntityManager()
+					.createQuery("SELECT n FROM Notificacion n where n.usuario =:user", Notificacion.class);
 			query.setParameter("user", usuario);
 			notificaciones = query.getResultList();
-		}		
-		return notificaciones;	
+		}
+		return notificaciones;
 	}
-	
+
 	public Categoria consultarCategoriaNombre(String nombreCategoria) {
 		TypedQuery<Categoria> query = this.getEntityManager()
 				.createQuery("SELECT c FROM Categoria c where c.nombreCategoria = :nombreCategoria", Categoria.class);
@@ -409,12 +412,22 @@ public class WallabookDAO {
 		}
 		return avatares;
 	}
-	
-	public void eliminarUsuario (Usuario usuario) {
+
+	public void eliminarUsuario(Usuario usuario) {
 		Usuario usuarioParaEliminar = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
 		this.getEntityManager().getTransaction().begin();
 		this.getEntityManager().remove(usuarioParaEliminar);
 		this.getEntityManager().getTransaction().commit();
+	}
+
+	public boolean hayNotificacionesNuevas(Usuario usuario) {
+		Query queryCount = this.getEntityManager()
+				.createQuery("Select count (n) from Notificacion n where n.leido = 0");
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			return true;
+		}
+		return false;
 	}
 
 }
