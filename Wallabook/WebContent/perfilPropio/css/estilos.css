@@ -57,10 +57,7 @@ header {
 .notificacion-on:hover {
 	float: right;
 	margin-top: -13px;
-	height: 45px;
-<<<<<<< HEAD
-	cursor: pointer;
-=======
+	height: 45px;	
 	cursor:pointer;
 }
 .avatar{
@@ -68,8 +65,7 @@ header {
     background-color: #fff;
     border: solid 5px grey;
     width: 190px;
-    height: 200px;
-    
+    height: 200px;    
     border-radius: 2px;
 }
 
@@ -78,8 +74,7 @@ header {
 .formulario{
     margin-left: 42%;
     background-color: grey;
-    width: 200px;     
-    
+    width: 200px; 
     border-radius: 2px;
     
 }
@@ -241,7 +236,6 @@ header {
   }
 .modal-wrapper{
 	float: right;
->>>>>>> 082d9521559b2d1c61f02705686eec35b2919b0c
 }
 
 .avatar {
@@ -252,8 +246,6 @@ header {
 	height: 200px;
 	border-radius: 2px;
 }
-
-<<<<<<< HEAD
 .avatar img {
 	height: 190px;
 }
@@ -718,7 +710,7 @@ footer {
 		height: 50px;
 	}
 }
-=======
+
 .return-btn {
     text-decoration: none;  
     float: right;
@@ -811,4 +803,3 @@ footer {
 	width: 50px;
 	height: 50px;
 }
->>>>>>> 082d9521559b2d1c61f02705686eec35b2919b0c
