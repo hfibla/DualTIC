@@ -35,6 +35,9 @@ public class ObtenerLibros extends HttpServlet {
 		request.setAttribute("miUsuario", miUsuario);
 		request.setAttribute("suUsuario", suUsuario);
 	    request.setAttribute("libros", libros);
+	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
+	    	request.setAttribute("noPuedePedir", "1");
+	    }
 	    request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
 		}
 		else {

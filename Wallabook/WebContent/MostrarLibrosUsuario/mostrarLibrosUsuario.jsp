@@ -13,12 +13,9 @@
 </head>
 <body>
 	<header>
-
 		<div id="separador"></div>
 		<div class="contenedor">
-
 			<img id="logo" src="/Wallabook/MostrarLibrosUsuario/img/logotipo.png">
-
 			<div class="contenedor-botton"></div>
 		</div>
 		<a href="/Wallabook/PaginaPrincipal" class="volver">Volver al menú principal</a>
@@ -45,7 +42,12 @@
 								<p id="disponible">Disponible</p>
 							</c:otherwise>
 						</c:choose>
-						<a href="#" class="boton-solicitar">Solicitar libro</a>
+						<c:if test="${empty noPuedePedir}">
+							<form method="post" action="/Wallabook/peticionLibro">							
+								<input type="hidden" name="idLibro" value="${libro.idLibro}"/>
+								<input type="submit" value="Solicitar libro" class="boton-solicitar">
+							</form>
+						</c:if>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -62,7 +64,12 @@
 								<p id="disponible">Disponible</p>
 							</c:otherwise>
 						</c:choose>
-						<a href="#" class="boton-solicitar">Solicitar libro</a>
+						<c:if test="${empty noPuedePedir}">
+							<form method="post" action="/Wallabook/peticionLibro">							
+								<input type="hidden" name="idLibro" value="${libro.idLibro}"/>
+								<input type="submit" value="Solicitar libro" class="boton-solicitar">
+							</form>
+						</c:if>
 					</div>
 				</c:otherwise>
 			</c:choose>

@@ -37,6 +37,7 @@ public class Notificacion implements Serializable {
 		super();
 		this.mensaje = mensaje;
 		this.usuario = usuario;
+		this.fecha = new Date();
 	}
 
 	public int getIdNotificacion() {

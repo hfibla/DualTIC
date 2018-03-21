@@ -35,13 +35,18 @@ public class PeticionLibroServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
 		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idLibro"));		
-		wallabookDAO.peticionLibro(new Peticion(libro,usuario));
-		wallabookDAO.notificacionPeticionLibro(new Notificacion("Usuario quiere libro", libro.getUsuario()));
-		response.sendRedirect("/MostrarLibros/mostrarLibros.jsp");
+		wallabookDAO.crearPeticionLibro(new Peticion(libro,usuario));
+		wallabookDAO.crearNotificacionPeticionLibro(new Notificacion(usuario.getNickname() + " desea tu libro " + libro.getTitulo(), libro.getUsuario()));
+		request.setAttribute("miUsuario", usuario);
+		request.setAttribute("suUsuario", libro.getUsuario());
+	    request.setAttribute("libros", libro.getUsuario().getLibros());
+	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(usuario) == 5) {
+	    	request.setAttribute("noPuedePedir", "1");
+	    }
+		request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
 		}		
 	}
 
