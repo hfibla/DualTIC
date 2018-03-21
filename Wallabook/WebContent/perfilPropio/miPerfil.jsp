@@ -24,18 +24,21 @@
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
-         <a href="##" class="return-btn">Página principal</a>
+         <a href="/Wallabook/PaginaPrincipal" class="return-btn">Página principal</a>
                 <nav class="menu">
-<<<<<<< HEAD
-                
-                    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
-=======
                     <a href="/Wallabook/ObtenerLibros">Mis libros</a>
->>>>>>> 4070fb1795b9a46bee468f90d66e7ada9a83b473
                     <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
-                    <a href="#popup" class="popup-link">Eliminar cuenta</a>       
-                    <img href="#" class="notificacion" src="/Wallabook/perfilPropio/img/notificacion.png">
-                    <img href="#" class="notificacion-on" src="/Wallabook/perfilPropio/img/notificacion-on.png">             
+                    <a href="#popup" class="popup-link">Eliminar cuenta</a> 
+                    <a href="/Wallabook/verNotificaciones">
+                    <c:choose>
+                    	<c:when test="${empty notificacionesNuevas}">     
+                    		<img class="notificacion" src="/Wallabook/perfilPropio/img/notificacion.png">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="notificacion-on" src="/Wallabook/perfilPropio/img/notificacion-on.png">
+                    	</c:otherwise>
+                    </c:choose>
+                    </a>     
                 </nav>
      </div>
 </header>

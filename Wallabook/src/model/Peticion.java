@@ -4,14 +4,13 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the peticiones database table.
  * 
  */
 @Entity
-@Table(name="peticiones")
-@NamedQuery(name="Peticion.findAll", query="SELECT p FROM Peticion p")
+@Table(name = "peticiones")
+@NamedQuery(name = "Peticion.findAll", query = "SELECT p FROM Peticion p")
 public class Peticion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -21,30 +20,33 @@ public class Peticion implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
-	//bi-directional many-to-one association to Libro
+	// bi-directional many-to-one association to Libro
 	@ManyToOne
-	@JoinColumn(name="ID_LIBRO")
+	@JoinColumn(name = "ID_LIBRO")
 	private Libro libro;
 
-	//bi-directional many-to-one association to Usuario
+	// bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="ID_REMITENTE")
+	@JoinColumn(name = "ID_REMITENTE")
 	private Usuario usuario;
 
 	public Peticion() {
 	}
-	
+
 	public Peticion(PeticionPK id) {
 		super();
 		this.id = id;
 	}
 
+<<<<<<< HEAD
 	public Peticion(Libro libro, Usuario usuario) {
 		super();
 		this.libro = libro;
 		this.usuario = usuario;
 	}
 
+=======
+>>>>>>> 9794f9525b630e02473ab5dfd46bdb847deff076
 	public PeticionPK getId() {
 		return this.id;
 	}

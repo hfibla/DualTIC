@@ -14,8 +14,8 @@
 	<IMG id="logo-login" src="/Wallabook/Buscar/img/Logo-login.png" title="WallaBook">
 	
 	<form id="loginform" method="post" action="/Wallabook/ConsultarLibrosAvanzado">
-		<input type="text" class="input" placeholder="Buscar por título" name="titulo" title="Título del libro" > 
-		<input type="text" name="autor"	class="input" placeholder="Buscar por autor" title="Autor del libro"> 
+		<input type="text" class="input" placeholder="Buscar por título" name="titulo" title="Sólo caracteres alfanuméricos" pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+"> 
+		<input type="text" name="autor"	class="input" placeholder="Buscar por autor" title="Sólo caracteres del alfabeto español (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+"> 
 <SELECT class="input" NAME="categoria" SIZE=1> 
 <OPTION VALUE="default">Buscar por categoría</OPTION>
 <c:forEach items="${categorias}" var="categoria">
