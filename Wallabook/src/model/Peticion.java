@@ -38,6 +38,15 @@ public class Peticion implements Serializable {
 		this.id = id;
 	}
 
+<<<<<<< HEAD
+	public Peticion(Libro libro, Usuario usuario) {
+		super();
+		this.libro = libro;
+		this.usuario = usuario;
+	}
+
+=======
+>>>>>>> 9794f9525b630e02473ab5dfd46bdb847deff076
 	public PeticionPK getId() {
 		return this.id;
 	}

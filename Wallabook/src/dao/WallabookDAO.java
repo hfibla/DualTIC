@@ -197,7 +197,7 @@ public class WallabookDAO {
 			}
 		}
 	}
-
+	
 	public void denegarPeticion(Libro libro, Usuario usuario) {
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (p) from Peticion p where p.libro = :libro and p.id.idRemitente = :user", Peticion.class);
@@ -223,7 +223,25 @@ public class WallabookDAO {
 		}
 	}
 
+<<<<<<< HEAD
+	public void peticionLibro (Peticion peticion) {
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(peticion);
+		entityTransaction.commit();		
+	}
+	
+	public void notificacionPeticionLibro (Notificacion notificacion) {
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacion);
+		entityTransaction.commit();		
+	}
+	
+	public List<Peticion> consultarPeticionesLibro(Libro libro) {
+=======
 	public List<Peticion> consultarPeticionesPendientesLibro(Libro libro) {
+>>>>>>> 9794f9525b630e02473ab5dfd46bdb847deff076
 		List<Peticion> peticiones = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' order by p.fecha desc",
