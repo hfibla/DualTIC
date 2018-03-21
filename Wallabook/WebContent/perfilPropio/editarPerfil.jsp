@@ -24,11 +24,14 @@
      </div>
 </header>
 <main>
+<<<<<<< HEAD
 
     
 
    
 
+=======
+>>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}">
 
@@ -54,11 +57,11 @@
               
             
             <div class="social">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
                   
             

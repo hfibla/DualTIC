@@ -27,6 +27,11 @@ public class PeticionPK implements Serializable {
 		super();
 		this.idRemitente = idRemitente;
 	}
+	
+	public PeticionPK(String confirmada) {
+		super();
+		this.confirmada = confirmada;
+	}
 
 	public String getConfirmada() {
 		return this.confirmada;

@@ -32,13 +32,21 @@ header {
     margin-left: 10px;
 }
 
+<<<<<<< HEAD
+=======
+.notificacion-on:hover {
+	float: right;
+	margin-top: -13px;
+	height: 45px;	
+	cursor:pointer;
+}
+>>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
 .avatar{
     margin-left: 42%;
     background-color: #fff;
     border: solid 5px grey;
     width: 190px;
-    height: 200px;
-    
+    height: 200px;    
     border-radius: 2px;
 }
 
@@ -47,8 +55,7 @@ header {
 .formulario{
     margin-left: 42%;
     background-color: grey;
-    width: 200px;     
-    
+    width: 200px; 
     border-radius: 2px;
     
 }
@@ -242,6 +249,132 @@ header {
   }
 .modal-wrapper{
 	float: right;
+<<<<<<< HEAD
+=======
+}
+
+.avatar {
+	margin-left: 45%;
+	background-color: #fff;
+	border: solid 5px grey;
+	width: 190px;
+	height: 200px;
+	border-radius: 2px;
+}
+.avatar img {
+	height: 190px;
+}
+
+.formulario {
+	margin-left: 45%;
+	background-color: grey;
+	width: 200px;
+	border-radius: 2px;
+}
+
+.formu {
+	margin-left: 45%;;
+	color: orange;
+	margin: 5px;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+.input {
+	margin-left: 45%;
+	font-family: sans-serif;
+	margin: 5px;
+	color: #fff;
+	background-color: grey;
+	border: solid 2px #505050;
+	padding: 5px;
+	border-radius: 2px;
+	overflow: hidden;
+	white-space: nowrap;
+	a text-overflow: ellipsis;
+}
+
+.input:hover {
+	margin-left: 45%;
+	font-family: sans-serif;
+	margin: 5px;
+	color: #606060;
+	background-color: grey;
+	border: solid 2px #505050;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+.save {
+	margin-left: 45%;
+	text-align: center;
+	margin: 5px;
+	margin-left: 40px;
+	background-color: orange;
+	border-radius: 1px;
+	border: solid 2px orange;
+	color: white;
+}
+
+.save:hover {
+	margin-left: 45%;
+	text-align: center;
+	margin: 5px;
+	margin-left: 40px;
+	background-color: darkorange;
+	border-radius: 1px;
+	border: solid 2px orange;
+	color: white;
+}
+
+.menu a {
+	text-decoration: none;
+	color: white;
+	margin-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.menu a:hover {
+	background-color: #b7b7b7;
+	color: white;
+}
+
+.menu {
+	background-color: #616161;
+	margin-top: -5px;
+	border-top: 2px solid orange;
+	padding: 10px;
+}
+
+.si-button {
+	color: black;
+	margin-left: 300px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.no-button {
+	border-bottom: solid 3px orange;
+	border-radius: 3px;
+	padding: 2px;
+	color: orange;
+	margin-left: 17px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.no-button:hover {
+	border-bottom: solid 3px darkorange;
+	border-radius: 3px;
+	padding: 2px;
+	color: darkorange;
+	margin-left: 17px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 25px;
+>>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
 }
 #popup {
    visibility: hidden;
@@ -297,6 +430,34 @@ border-radius: 3px;
    color:#fff;
 }
 
+<<<<<<< HEAD
+=======
+@media ( min-width :1080px) {
+	.avatar {
+		margin-left: 45%;
+		background-color: #fff;
+		border: solid 5px grey;
+		width: 190px;
+		height: 200px;
+		border-radius: 2px;
+	}
+	.avatar img {
+		height: 190px;
+	}
+	.social {
+		widht: 100%;
+		height: 50px;
+		bottom: 0;
+		position: fixed;
+		right: 0;
+	}
+	.social-icon {
+		widht: 50px;
+		height: 50px;
+	}
+}
+
+>>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
 .return-btn {
     text-decoration: none;  
     float: right;

@@ -108,6 +108,31 @@ main {
 	margin-left: 130px;
 }
 
+<<<<<<< HEAD
+=======
+#limite-nodisp {
+	border: solid 1px #ff0000;
+	background: #f49a9a;
+	color: #ff0000;
+	padding: 0px;
+	text-align: center;
+	margin: 5px;
+	width: 70%;
+	margin-left: 190px;
+}
+
+footer {
+	background-color: #505050;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 1px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: 50px;
+}
+>>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
 
 
 #nodisponible {

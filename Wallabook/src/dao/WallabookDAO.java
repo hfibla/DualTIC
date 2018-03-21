@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -197,18 +198,18 @@ public class WallabookDAO {
 			}
 		}
 	}
-
+	
 	public void denegarPeticion(Libro libro, Usuario usuario) {
 		Query queryCount = this.getEntityManager().createQuery(
 				"Select count (p) from Peticion p where p.libro = :libro and p.id.idRemitente = :user", Peticion.class);
 		queryCount.setParameter("libro", libro);
-		queryCount.setParameter("user", usuario);
+		queryCount.setParameter("user", usuario.getIdUsuario());
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
 			TypedQuery<Peticion> query = this.getEntityManager().createQuery(
 					"Select p from Peticion p where p.libro = :libro and p.id.idRemitente = :user", Peticion.class);
 			query.setParameter("libro", libro);
-			query.setParameter("user", usuario);
+			query.setParameter("user", usuario.getIdUsuario());
 			Peticion peticionDenegada = query.getSingleResult();
 			Peticion peticion = this.getEntityManager().find(Peticion.class, peticionDenegada.getId());
 			this.getEntityManager().getTransaction().begin();
@@ -223,6 +224,20 @@ public class WallabookDAO {
 		}
 	}
 
+	public void crearPeticionLibro (Peticion peticion) {
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(peticion);
+		entityTransaction.commit();		
+	}
+	
+	public void crearNotificacionPeticionLibro (Notificacion notificacion) {
+		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
+		entityTransaction.begin();
+		this.getEntityManager().persist(notificacion);
+		entityTransaction.commit();		
+	}
+	
 	public List<Peticion> consultarPeticionesPendientesLibro(Libro libro) {
 		List<Peticion> peticiones = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
@@ -256,7 +271,44 @@ public class WallabookDAO {
 			this.getEntityManager().getTransaction().commit();
 		}
 	}
-
+	
+	public List<Libro> consultarLibrosPedidoPendienteUsuario (Usuario miUsuario, Usuario suUsuario) {
+		List <Libro> librosSuUsuario = consultarLibrosUsuario(suUsuario);
+		List <Libro> libros = new ArrayList<Libro>();
+			for (int i=0; i<librosSuUsuario.size(); i++) {
+				Libro libro = librosSuUsuario.get(i);
+				if (existePeticionPendienteLibroUsuario(libro, miUsuario)) {
+					libros.add(libro);
+				}
+			}		
+		return libros;
+	}
+	
+	public List<Libro> consultarLibrosPedidoNoPendienteUsuario (Usuario miUsuario, Usuario suUsuario) {
+		List <Libro> librosSuUsuario = consultarLibrosUsuario(suUsuario);
+		List <Libro> libros = new ArrayList<Libro>();
+			for (int i=0; i<librosSuUsuario.size(); i++) {
+				Libro libro = librosSuUsuario.get(i);
+				if (!existePeticionPendienteLibroUsuario(libro, miUsuario)) {
+					libros.add(libro);
+				}
+			}
+		return libros;
+	}
+	
+	
+	public boolean existePeticionPendienteLibroUsuario(Libro libro, Usuario usuario) {		
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (p) from Peticion p where p.libro = :libro and p.id.confirmada = 'pendiente' and p.id.idRemitente = :user",
+				Peticion.class);
+		queryCount.setParameter("libro", libro);
+		queryCount.setParameter("user", usuario.getIdUsuario());		
+		if (queryCount.getSingleResult() != null) {
+			return true;
+		}
+		return false;
+	}
+	
 	public List<Notificacion> verNotificacionesUsuario(Usuario usuario) {
 		List<Notificacion> notificaciones = Collections.emptyList();
 		Query queryCount = this.getEntityManager()

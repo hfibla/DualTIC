@@ -1,8 +1,16 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the peticiones database table.
@@ -36,6 +44,14 @@ public class Peticion implements Serializable {
 	public Peticion(PeticionPK id) {
 		super();
 		this.id = id;
+	}
+
+	public Peticion(Libro libro, Usuario usuario) {
+		super();
+		this.libro = libro;
+		this.usuario = usuario;
+		this.id = new PeticionPK("pendiente");
+		this.fecha = new Date();
 	}
 
 	public PeticionPK getId() {

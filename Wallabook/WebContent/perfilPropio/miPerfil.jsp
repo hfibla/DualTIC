@@ -9,6 +9,7 @@
     <title>WallaBook - Perfil</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
+    <link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
     <script type="text/javascript" src="/Wallabook/perfilPropio/miPerfil.js"></script>
     <link rel="shortcut icon" href="/Wallabook/perfilPropio/img/favicon.png" />
 </head>
