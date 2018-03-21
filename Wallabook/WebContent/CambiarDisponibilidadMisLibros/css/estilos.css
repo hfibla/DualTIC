@@ -29,7 +29,9 @@ header{
 
 
 /** CSS BOTONES GUARDAR CANCELAR **/
-
+.contenedor-buttons{
+	margin-top: 55px;
+}
 #save-changes {
     border : solid 0px #616161;
 	font-size : 20px;
@@ -37,9 +39,11 @@ header{
     float: right;
     margin: 5px;
     margin-right: 15px; 
-    padding-top: 6px;
-    padding-bottom: 5px;
+   	padding-top: 10px;
+    padding-bottom: 9px;
     background: grey;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #save-changes:hover {
@@ -49,8 +53,8 @@ header{
     float: right;
     margin: 5px;
     margin-right: 15px; 
-    padding-top: 6px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 11px;
 	background : #616161;
 	background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#616161), color-stop(100%,#616161));
 	background : -moz-linear-gradient(top, #616161 0%, #616161 100%);
@@ -58,17 +62,23 @@ header{
 	background : -o-linear-gradient(top, #616161 0%, #616161 100%);
 	background : -ms-linear-gradient(top, #616161 0%, #616161 100%);
 	background : linear-gradient(top, #616161 0%, #616161 100%);
-	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#616161', endColorstr='#616161',GradientType=0 )  
+	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#616161', endColorstr='#616161',GradientType=0 );  
+	border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #discard-changes {
-    color: orange;
+    color : #ffa600;
     text-decoration: none;
     float: right;
     margin: 5px;
-    padding-top: 6px;
-    padding-bottom: 7px;
+    margin-right: 15px; 
+    padding-top: 10px;
+    padding-bottom: 11px;
     margin-right: 15px;
+    background: grey;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #discard-changes:hover {
@@ -76,10 +86,13 @@ header{
     text-decoration: none;
     float: right;
     margin: 5px;
-    padding-top: 6px;
-    padding-bottom: 7px;
+    margin-right: 15px; 
+    padding-top: 10px;
+    padding-bottom: 11px;
     background-color: #616161;
-    margin-right: 15px;  
+    margin-right: 15px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #logo {
@@ -116,21 +129,21 @@ main {
     border-radius: 2%;
 }
 
-.volver{
+#registro-btn{
     float: right;
     top: 0;
-    margin-top: -40px;
+    margin-top: 20px;
     margin-right: 15px;
-    color:orange;
+    color:#fff;
     font-size: 17px;
     text-decoration: none;
 }
-.volver:hover{
+#registro-btn:hover{
     float: right;
     top: 0;
-    margin-top: -40px;
+    margin-top: 20px;
     margin-right: 15px;
-    color:darkorange;
+    color:orange;
     font-size: 17px;
     text-decoration: none;
     font-weight: bold;
@@ -217,4 +230,17 @@ main {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right:0;
+}
+.social-icon{
+widht: 50px;
+height: 50px;
+
 }

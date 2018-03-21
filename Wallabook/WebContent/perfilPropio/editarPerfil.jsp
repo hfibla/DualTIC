@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,12 +9,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
     <script type="text/javascript" src="miPerfil.js"></script>
+    <link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
 <body>
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
-        <!--  <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a> -->
+        <!--  <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar SesiÃ³n</a> -->
                 <nav class="menu">
                   <!--    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a> -->
                     <!--  <a href="/Wallabook/ObtenerPerfil?edit=commit">Guardar cambios</a>  -->                  
@@ -23,22 +24,22 @@
 </header>
 <main>
     
-    <div class="avatar">
-    <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
+   <div class="avatar">
+        <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
     </div>
-<form method="post" action="/Wallabook/ObtenerPerfil">
-    <p>Usuario:<input type="text" value="${usuario.nickname}" title="Este atributo no es modificable" disabled/></p>
-    <p>Nombre real: <input type="text" name="nombreReal" value="${usuario.nombreReal}" placeholder="Introduce aquí tu nombre real (Opcional)" 
-    title="Sólo caracteres del alfabeto español (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+"/></p>
-    <p>Localidad: <input type="text" name="localidad" value="${usuario.localidad}" placeholder="Introduce aquí tu localidad (Obligatorio)"
-     title="Sólo caracteres del alfabeto español (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+" required/></p>
-    <p>Correo: <input type="text" value="${usuario.correo}" title="Este atributo no es modificable" disabled/></p>
-    <p>Teléfono: <input type="text" name="telefono" value="${usuario.telefono}" placeholder="Introduce aquí tu teléfono fijo o móvil (Opcional)"
-    title="9 caracteres numéricos" pattern="[0-9]+"/></p>
-    <input type="submit" value="Guardar cambios"/>
-</form>
-    
-      
+    <section class="formulario">
+            <form method="post" action="/Wallabook/ObtenerPerfil">
+                <p class="formu">Usuario:<input class="input" type="text" value="${usuario.nickname}" title="Este atributo no es modificable" disabled/></p>
+                <p class="formu">Nombre real: <input class="input" type="text" name="nombreReal" value="${usuario.nombreReal}" placeholder="Introduce aquÃ­ tu nombre real (Opcional)" 
+                    title="SÃ³lo caracteres del alfabeto espaÃ±ol (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ Ã¨Ã²Ã€ÃˆÃ’Ã§Ã‡\s]+"/></p>
+                <p class="formu">Localidad: <input class="input" type="text" name="localidad" value="${usuario.localidad}" placeholder="Introduce aquÃ­ tu localidad (Obligatorio)"
+                    title="SÃ³lo caracteres del alfabeto espaÃ±ol (o cualesquiera lenguas oficiales)" pattern="[a-zA-ZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ Ã¨Ã²Ã€ÃˆÃ’Ã§Ã‡\s]+" required/></p>
+                <p class="formu">Correo: <input class="input" ype="text" value="${usuario.correo}" title="Este atributo no es modificable" disabled/></p>
+                <p class="formu">TelÃ©fono: <input class="input" type="text" name="telefono" value="${usuario.telefono}" placeholder="Introduce aquÃ­ tu telÃ©fono fijo o mÃ³vil (Opcional)"
+                    title="9 caracteres numÃ©ricos" pattern="[0-9]+"/></p>
+            <input class="save" type="submit" value="Guardar cambios"/>
+            </form>
+</section>
     
 </main>
     </body>
@@ -47,5 +48,13 @@
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
                 
             </div>
+            <div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
+            
         </footer>
 </html>

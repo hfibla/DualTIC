@@ -63,7 +63,7 @@ main {
     top: 0;
     margin-top: -40px;
     margin-right: 15px;
-    color:orange;
+    color:#fff;
     font-size: 17px;
     text-decoration: none;
 }
@@ -72,7 +72,7 @@ main {
     top: 0;
     margin-top: -40px;
     margin-right: 15px;
-    color:darkorange;
+    color:orange;
     font-size: 17px;
     text-decoration: none;
     font-weight: bold;
@@ -109,7 +109,7 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     padding: 1px;
-    border-top: 5px solid orange;
+   
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -134,6 +134,17 @@ footer {
    border-radius: 4px;
     font-weight: bold;
 }
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right:0;
+}
+.social-icon{
+widht: 50px;
+height: 50px;
+}
 
 
 
@@ -142,7 +153,7 @@ footer {
     background-color: #505050;
     display: flex;
     flex-wrap: wrap;
-    border-top: 5px solid orange;
+    
     justify-content: center;
     padding: 1px;
     position: absolute;
@@ -153,6 +164,18 @@ footer {
    .copy {
     text-align: center;
    }
+
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right:0;
+}
+.social-icon{
+widht: 50px;
+height: 50px;
+}
 
 
 }

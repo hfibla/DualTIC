@@ -8,6 +8,7 @@
     <title>WallaBook - Perfil</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/Perfil/css/estilos.css">
+<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
 <body>
 <header>
@@ -16,7 +17,7 @@
  
         <a href="/Wallabook/PaginaPrincipal" class="closesesion-btn">Volver al menú principal</a>
                 <nav class="menu">
-                    <a href="/Wallabook/ObtenerLibros?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
+                    <a href="/Wallabook/ObtenerLibros?usr=${usuario.nickname}">Perfil de ${usuario.nickname}</a>
                     
                     
                 </nav>
@@ -49,5 +50,12 @@
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
                 
             </div>
+            <div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
         </footer>
 </html>

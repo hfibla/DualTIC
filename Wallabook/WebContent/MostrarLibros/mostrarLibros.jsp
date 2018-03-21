@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +8,7 @@
     <title>WallaBook - Todos los libros</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/MostrarLibros/css/estilos.css">
-    
+    <link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
     <body>
 <header>
@@ -58,7 +58,7 @@
             
             </c:choose>
 </div>
-        <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la p·gina principal</a>
+        <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la p√°gina principal</a>
 </main>
  <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">

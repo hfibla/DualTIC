@@ -5,11 +5,11 @@
 <html lang="es">
 <head>
 <title>WallaBook - Mis libros</title>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
-
-<!--  <link rel="stylesheet" href="/Wallabook/CambiarDisponibilidadMisLibros/css/estilos.css">-->
+<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
+ <link rel="stylesheet" href="/Wallabook/CambiarDisponibilidadMisLibros/css/estilos.css">
 </head>
 <body>
 	<header>
@@ -17,17 +17,15 @@
 		<div id="separador"></div>		
 
 			<img id="logo" src="/Wallabook/CambiarDisponibilidadMisLibros/img/Logo-login.png">
-			
+			<a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
 	</header>
 	
 	 <!--BOTONES GUARDAR CANCELAR -->
 			<div class="contenedor-buttons">
              <a href="/Wallabook/ObtenerMisLibros" id="discard-changes">Cancelar</a>
           <form method="post" action="/Wallabook/CambiarDisponibilidadLibro">
-           <a><button id="save-changes" type="submit">Guardar cambios</button></a>
-              
-		
-	
+           <a><button id="save-changes" type="submit">Guardar cambios</button></a> 
+          
 	<DIV id="contenedor-general">
 		<c:forEach items="${libros}" var="libro">
 			<div class="contenedor-libros">
@@ -38,7 +36,7 @@
 					<p>${libro.editorial}</p>
 				</c:if>
 								
-				<!-- ----------------BotÃ³n switch----------------- -->
+				<!-- ----------------Botón switch----------------- -->
 				  
 				<p id="disponibilidadcss">
 					<label class="container">Disponibilidad:  
@@ -61,10 +59,13 @@
 	
 
 	<footer>
-		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
-
-		</div>
+		<div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
 	</footer>
 </body>
 </html>

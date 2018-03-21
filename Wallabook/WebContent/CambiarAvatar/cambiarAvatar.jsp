@@ -8,6 +8,7 @@
 <title>WallaBook - Cambiar Avatar</title>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
 <link rel="stylesheet" href="/Wallabook/CambiarAvatar/css/estilos.css">
+<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
 <body>
 <form class="general" method="post" action="/Wallabook/CambiarAvatar">
