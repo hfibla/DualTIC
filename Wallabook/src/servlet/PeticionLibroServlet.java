@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,16 +37,20 @@ public class PeticionLibroServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = (String) request.getSession(false).getAttribute("me");
-		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
-		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idLibro"));		
-		wallabookDAO.crearPeticionLibro(new Peticion(libro,usuario));
-		wallabookDAO.crearNotificacionPeticionLibro(new Notificacion(usuario.getNickname() + " desea tu libro " + libro.getTitulo(), libro.getUsuario()));
-		request.setAttribute("miUsuario", usuario);
-		request.setAttribute("suUsuario", libro.getUsuario());
-	    request.setAttribute("libros", libro.getUsuario().getLibros());
-	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(usuario) == 5) {
-	    	request.setAttribute("noPuedePedir", "1");
-	    }
+		Usuario miUsuario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idLibro"));
+		Usuario suUsuario = libro.getUsuario();
+		wallabookDAO.crearPeticionLibro(new Peticion(libro,miUsuario));
+		wallabookDAO.crearNotificacionPeticionLibro(new Notificacion(miUsuario.getNickname() + " desea tu libro " + libro.getTitulo(), suUsuario));
+		List<Libro> librosSolicitables = wallabookDAO.consultarLibrosPedidoNoPendienteUsuario(miUsuario, suUsuario);
+		List<Libro> librosNoSolicitables = wallabookDAO.consultarLibrosPedidoPendienteUsuario(miUsuario, suUsuario);
+		request.setAttribute("miUsuario", miUsuario);
+		request.setAttribute("suUsuario", suUsuario);
+	    request.setAttribute("librosSol", librosSolicitables);
+	    request.setAttribute("librosNoSol", librosNoSolicitables);
+	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
+			request.setAttribute("maxLibros", "Has alcanzado el límite de libros no disponibles. No podrás pedir libros hasta que reduzcas esa cantidad.");
+		}
 		request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
 		}		
 	}

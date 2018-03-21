@@ -121,6 +121,17 @@ main {
 	margin-left: 130px;
 }
 
+#limite-nodisp {
+	border: solid 1px #ff0000;
+	background: #f49a9a;
+	color: #ff0000;
+	padding: 0px;
+	text-align: center;
+	margin: 5px;
+	width: 70%;
+	margin-left: 190px;
+}
+
 footer {
 	background-color: #505050;
 	display: flex;

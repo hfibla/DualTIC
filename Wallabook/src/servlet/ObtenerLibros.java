@@ -28,23 +28,22 @@ public class ObtenerLibros extends HttpServlet {
 		WallabookDAO wallabookDAO = new WallabookDAO();
 		String miNickname = (String) request.getSession(false).getAttribute("me");
 		Usuario miUsuario =  wallabookDAO.consultarUsuarioNickname(miNickname);
+		if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
+			request.setAttribute("maxLibros", "Has alcanzado el límite de libros no disponibles. No podrás pedir libros hasta que reduzcas esa cantidad.");
+		}
 		if (request.getParameterMap().containsKey("usr")) {
 	    String suNickname = request.getParameter("usr");
 		Usuario suUsuario =  wallabookDAO.consultarUsuarioNickname(suNickname);
-		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(suUsuario);
+		List<Libro> librosSolicitables = wallabookDAO.consultarLibrosPedidoNoPendienteUsuario(miUsuario, suUsuario);
+		List<Libro> librosNoSolicitables = wallabookDAO.consultarLibrosPedidoPendienteUsuario(miUsuario, suUsuario);
 		request.setAttribute("miUsuario", miUsuario);
 		request.setAttribute("suUsuario", suUsuario);
-	    request.setAttribute("libros", libros);
-	    if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
-	    	request.setAttribute("noPuedePedir", "1");
-	    }
+	    request.setAttribute("librosSol", librosSolicitables);
+	    request.setAttribute("librosNoSol", librosNoSolicitables);
 	    request.getRequestDispatcher("/MostrarLibrosUsuario/mostrarLibrosUsuario.jsp").forward(request, response);
 		}
 		else {
-			List<Libro> libros = wallabookDAO.consultarLibrosUsuario(miUsuario);
-			if (wallabookDAO.numLibrosNoDisponiblesUsuario(miUsuario) == 5) {
-				request.setAttribute("maxLibros", "Has alcanzado el límite de libros no disponibles. No podrás pedir libros hasta que reduzcas esa cantidad.");
-			}
+			List<Libro> libros = wallabookDAO.consultarLibrosUsuario(miUsuario);			
 			request.setAttribute("usuario", miUsuario);
 		    request.setAttribute("libros", libros);
 		    request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);

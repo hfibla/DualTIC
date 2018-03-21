@@ -22,10 +22,15 @@
 	</header>
 	<main>
 	<p>Libros de <a href="/Wallabook/ObtenerPerfil?usr=${suUsuario.nickname}">${suUsuario.nickname}</a></p>
-	</main>
+	</main>	
+	<c:if test="${not empty maxLibros}">
+		<div id="limite-nodisp">
+			<p>${maxLibros}</p>
+		</div>
+	</c:if>
 	<DIV id="contenedor-general">
-
-		<c:forEach items="${libros}" var="libro">
+		<c:if test="${not empty librosSol}">
+		<c:forEach items="${librosSol}" var="libro">
 			<c:choose>
 				<c:when test="${libro.editorial != '0'}">
 					<div class="contenedor-libros-con-ed">
@@ -42,7 +47,7 @@
 								<p id="disponible">Disponible</p>
 							</c:otherwise>
 						</c:choose>
-						<c:if test="${empty noPuedePedir}">
+						<c:if test="${empty maxLibros}">
 							<form method="post" action="/Wallabook/peticionLibro">							
 								<input type="hidden" name="idLibro" value="${libro.idLibro}"/>
 								<input type="submit" value="Solicitar libro" class="boton-solicitar">
@@ -64,16 +69,58 @@
 								<p id="disponible">Disponible</p>
 							</c:otherwise>
 						</c:choose>
-						<c:if test="${empty noPuedePedir}">
+						<c:if test="${empty maxLibros}">							
 							<form method="post" action="/Wallabook/peticionLibro">							
 								<input type="hidden" name="idLibro" value="${libro.idLibro}"/>
 								<input type="submit" value="Solicitar libro" class="boton-solicitar">
-							</form>
+							</form>									
 						</c:if>
 					</div>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+		</c:if>
+		<c:if test="${not empty librosNoSol}">
+		<c:forEach items="${librosNoSol}" var="libro">
+			<c:choose>
+				<c:when test="${libro.editorial != '0'}">
+					<div class="contenedor-libros-con-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.editorial}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>
+						<input type="submit" value="Ya solicitado" class="boton-solicitar" disabled>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="contenedor-libros-sin-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>						
+							<input type="submit" value="Ya solicitado" class="boton-solicitar" disabled>						
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		</c:if>		
 	</div>
 
 	<footer>
