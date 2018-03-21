@@ -79,7 +79,7 @@ main .avatar{
     width:180px; 
     border: solid 3px #616161; 
     margin-top: -50px;
-    margin-left: 75px;
+    margin: 0 auto;
     background-color: #fff;
 }
 .avatar img {

@@ -17,7 +17,7 @@
 		<div id="separador"></div>
 		<div class="contenedor">
 
-			<img id="logo" src="/Wallabook/MostrarMisLibros/img/logotipo.png">
+			<img id="logo" src="/Wallabook/Perfil/img/Logo-login.png">
 
 			<div class="contenedor-botton"></div>
 		</div>
@@ -58,10 +58,7 @@
 			</div>
 		</c:forEach>
 	</DIV>
-	<footer>
-		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev:Moha</p>
-		</div>
+	<
 		 <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
@@ -70,6 +67,6 @@
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
 		
-	</footer>
+	
 </body>
 </html>
