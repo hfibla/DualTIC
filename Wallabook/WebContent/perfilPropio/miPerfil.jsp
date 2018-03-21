@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +10,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.1, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/Wallabook/perfilPropio/css/estilos.css">
     <script type="text/javascript" src="/Wallabook/perfilPropio/miPerfil.js"></script>
+    <link rel="shortcut icon" href="/Wallabook/perfilPropio/img/favicon.png" />
 </head>
 <body onload="checkEditOk(${editok})">
 <header>
@@ -25,10 +27,10 @@
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
          <a href="/Wallabook/PaginaPrincipal" class="return-btn">Página principal</a>
-                <nav class="menu">
-                    <a href="/Wallabook/ObtenerLibros">Mis libros</a>
-                    <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
-                    <a href="#popup" class="popup-link">Eliminar cuenta</a> 
+        <nav><section class="menu-bar">
+                     <a class="menuas" href="/Wallabook/ObtenerLibros">Mis libros</a>
+                    <a class="menuas" href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
+                    <a class="menuas" href="#popup" class="popup-link">Eliminar cuenta</a> 
                     <a href="/Wallabook/verNotificaciones">
                     <c:choose>
                     	<c:when test="${empty notificacionesNuevas}">     
@@ -38,8 +40,8 @@
                     		<img class="notificacion-on" src="/Wallabook/perfilPropio/img/notificacion-on.png">
                     	</c:otherwise>
                     </c:choose>
-                    </a>     
-                </nav>
+                    </a>
+               </section></nav>
      </div>
 </header>
 <main>
@@ -66,9 +68,7 @@
     
 </main>
     </body>
-    <footer>
-            <div class="contenedor">
-                <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
+            
                 <div class="social">
 				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
 				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
@@ -76,6 +76,5 @@
 				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
 				<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 				</div>
-            </div>	
-        </footer>
+           
 </html>

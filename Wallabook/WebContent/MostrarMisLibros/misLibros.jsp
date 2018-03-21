@@ -18,13 +18,8 @@
 
 		<div id="separador"></div>
 		<div class="contenedor">
-<<<<<<< HEAD
-
-			<img id="logo" src="/Wallabook/Perfil/img/Logo-login.png">
-
-=======
 			<img id="logo" src="/Wallabook/MostrarMisLibros/img/logotipo.png">
->>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
+
 			<div class="contenedor-botton"></div>
 		</div>
 		<a href="/Wallabook/CambiarDisponibilidadLibro" class="cambiar-dispo">Editar
@@ -83,22 +78,10 @@
 			</c:choose>
 		</c:forEach>
 	</DIV>
-<<<<<<< HEAD
-	<
-		 <div class="social">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
-</div>
+
 		
 	
-=======
-	<footer>
-		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev:Moha</p>
-		</div>
+		
 		<div class="social">
 			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png"> 
 			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png"> 
@@ -106,7 +89,7 @@
 			<img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png"> 
 			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 		</div>
-	</footer>
->>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
+
+
 </body>
 </html>

@@ -17,7 +17,7 @@
         <a href="/Wallabook/ConsultarLibrosAvanzado" class="volver">Búsqueda avanzada</a>
      </div>
 </header>
-<main>
+<body>
     
     <div class="contenedor1">
     <h4>Listado de libros</h4>
@@ -61,7 +61,7 @@
             </c:choose>
 </div>
         <a id="registro-btn" href="/Wallabook/PaginaPrincipal">Volver a la página principal</a>
-</main>
+</body>
  <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
@@ -70,11 +70,4 @@
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
 
-         <!-- <footer>
-            <div class="contenedor">
-                <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
-                
-            </div>
-        </footer>-->
-    </body>
 </html>

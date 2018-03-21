@@ -18,7 +18,6 @@
 		<div class="contenedor">
 
 			<img id="logo" src="/Wallabook/MostrarLibrosUsuario/img/logotipo.png">
-
 			<div class="contenedor-botton"></div>
 		</div>
 		<a href="/Wallabook/PaginaPrincipal" class="volver">Volver al menú principal</a>
@@ -69,11 +68,7 @@
 		</c:forEach>
 	</div>
 
-	<footer>
-		<div class="contenedor">
-			<p class="copy">WallaBook &copy; 2018 Dev: Ivan - Moha</p>
-
-		</div>
+	
 		<div class="social">
 <img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
 <img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
@@ -81,6 +76,6 @@
 <img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
 <img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
-	</footer>
+	
 </body>
 </html>

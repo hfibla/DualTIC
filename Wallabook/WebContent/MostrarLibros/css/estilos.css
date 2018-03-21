@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+ font-family: 'FontAwesome', sans-serif;
 }
 
 * {
@@ -9,35 +10,32 @@
     padding: 0;
     box-sizing: border-box;
 }
-/*body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #b7b7b7;
-    
-}*/
+
 
 body{
-	background-color:white;
+	background-color:#b7b7b7;
 	color:#f5f5f5;
 	text-align:center;
-	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 a{
 	color:black;
 	text-decoration:none;
+	
 }
 
 header {
     width: 100%;;
     background: #616161;
     color: #fff;
-    
+    hight:50px;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     margin:0;
-    border-bottom: 5px solid orange;
+    
 }
 .volver{
 	float: right;
@@ -62,8 +60,8 @@ header {
 }
 
 .linea {
-    margin-bottom: px;
-    height: 5px;
+    
+    height: 2px;
     background-color: orange;
 }
 .contenedor1 {
@@ -93,21 +91,7 @@ background-color: #616161;
     margin-left:40px;
     
 }
-/*footer {
-    background-color: #616161;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-    border-top: 5px solid orange;
-    bottom:0;
-    position:relative;
-}
-.copy {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    color: orange;
-}*/
+
 .contenedor-libros-con-ed {
     width: 300px;
     height: 150px;
@@ -162,42 +146,18 @@ background-color: #616161;
     color:orange;
 }
 
-.social{
-width: 100%;
-height: 50px;
-bottom:0;
-position:fixed;
-right: 0;
-}
-.social-icon{
-width: 50px;
-height: 50px;
+.social {
+	widht: 100%;
+	height: 50px;
+	bottom: 0;
+	position: fixed;
+	right: 0;
 }
 
-/* RESPONSIVE */
-
-/* @media (min-width:1080px) { 
-    footer {
-        background-color: #616161;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 25px;
-        bottom:0;
-   		 position:relative;
+.social-icon {
+	widht: 50px;
+	height: 50px;
 }
-    .copy {
-                margin-left: 80px;
-    }
-}**/
-
-
-
-
-
-
-
-
 
 
 

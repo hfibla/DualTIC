@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,9 +28,6 @@
     
 
    
-    <div class="avatar">
-    <img src="${usuario.avatar.getLinkAvatar()}">
-
 
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}">
@@ -53,9 +51,7 @@
 </main>
     
     
-                <footer>
-            <div class="contenedor">
-                <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
+              
             
             <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
@@ -65,7 +61,7 @@
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
                   
-            </div>     
-        </footer>   
+            
+        
         
 </html>
