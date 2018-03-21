@@ -4,19 +4,18 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the libros database table.
  * 
  */
 @Entity
-@Table(name="libros")
-@NamedQuery(name="Libro.findAll", query="SELECT l FROM Libro l")
+@Table(name = "libros")
+@NamedQuery(name = "Libro.findAll", query = "SELECT l FROM Libro l")
 public class Libro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_LIBRO")
+	@Column(name = "ID_LIBRO")
 	private int idLibro;
 
 	private String autor;
@@ -29,47 +28,44 @@ public class Libro implements Serializable {
 
 	private String titulo;
 
-	//bi-directional many-to-one association to Categoria
+	// bi-directional many-to-one association to Categoria
 	@ManyToOne
-	@JoinColumn(name="ID_CATEGORIA")
+	@JoinColumn(name = "ID_CATEGORIA")
 	private Categoria categoria;
 
-	//bi-directional many-to-one association to Usuario
+	// bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="ID_USUARIO")
+	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
-	//bi-directional many-to-one association to Peticion
-	@OneToMany(mappedBy="libro")
+	// bi-directional many-to-one association to Peticion
+	@OneToMany(mappedBy = "libro")
 	private List<Peticion> peticiones;
 
 	public Libro() {
 	}
-	
-	public Libro(String autor, int disponible, String idioma, String titulo, Categoria categoria,
+
+	public Libro(String autor, int disponible, String idioma, String titulo, Categoria categoria, Usuario usuario) {
+		super();
+		this.autor = autor;
+		this.disponible = disponible;
+		this.idioma = idioma;
+		this.titulo = titulo;
+		this.categoria = categoria;
+		this.usuario = usuario;
+	}
+
+	public Libro(String autor, int disponible, String editorial, String idioma, String titulo, Categoria categoria,
 			Usuario usuario) {
-		    super();
-		    this.autor = autor;
-		    this.disponible = disponible;
-		    this.idioma = idioma;
-		    this.titulo = titulo;
-		    this.categoria = categoria;
-		    this.usuario = usuario;
-		}
-
-
-
-		public Libro(String autor, int disponible, String editorial, String idioma, String titulo, Categoria categoria,
-				Usuario usuario) {
-			super();
-			this.autor = autor;
-			this.disponible = disponible;
-			this.editorial = editorial;
-			this.idioma = idioma;
-			this.titulo = titulo;
-			this.categoria = categoria;
-			this.usuario = usuario;
-		}
+		super();
+		this.autor = autor;
+		this.disponible = disponible;
+		this.editorial = editorial;
+		this.idioma = idioma;
+		this.titulo = titulo;
+		this.categoria = categoria;
+		this.usuario = usuario;
+	}
 
 	public int getIdLibro() {
 		return this.idLibro;

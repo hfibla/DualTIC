@@ -35,6 +35,7 @@
 								<p>${libro.autor}</p>
 								<p>${libro.idioma}</p>
 								<p>${libro.editorial}</p>
+								<p>${libro.categoria.getNombreCategoria()}</p>
 								<p>${libro.usuario.getNickname()}</p>
 								<p>${libro.usuario.getLocalidad()}</p>
 							</div>
@@ -43,7 +44,8 @@
 			                <div class="contenedor-libros-sin-ed">
 								<p>${libro.titulo}</p>
 			                    <p>${libro.autor}</p>
-								<p>${libro.idioma}</p>					
+								<p>${libro.idioma}</p>
+								<p>${libro.categoria.getNombreCategoria()}</p>					
 								<p>${libro.usuario.getNickname()}</p>
 								<p>${libro.usuario.getLocalidad()}</p>
 			                 </div>  
