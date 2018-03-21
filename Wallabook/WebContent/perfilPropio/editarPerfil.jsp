@@ -23,14 +23,6 @@
      </div>
 </header>
 <main>
-
-    
-
-   
-    <div class="avatar">
-    <img src="${usuario.avatar.getLinkAvatar()}">
-
-
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}">
 
@@ -58,11 +50,11 @@
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
             
             <div class="social">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
                   
             </div>     
