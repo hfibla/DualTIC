@@ -56,6 +56,24 @@ body {
 	width: 100%;
 	margin: 0;
 }
+<<<<<<< HEAD
+header{
+    background-color: #616161;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:50px;
+    z-index: 100;
+    border-bottom: solid 5px orange;
+}
+
+#logo {
+    height: 50px;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+=======
 
 header {
 	background-color: #616161;
@@ -72,6 +90,7 @@ header {
 	top: 0;
 	left: 0;
 	margin-left: 20px;
+>>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
 }
 
 main {
@@ -204,6 +223,21 @@ main {
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
+.contenedor-libros p {
+   margin: 5px;
+   margin-top: 6px;
+}
+
+
+
+.social{
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right:0;
+=======
 footer {
 	background-color: #505050;
 	display: flex;
@@ -237,6 +271,7 @@ footer {
 	bottom: 0;
 	position: fixed;
 	right: 0;
+>>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
 }
 
 .social-icon {
