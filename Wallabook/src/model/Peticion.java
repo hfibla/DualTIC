@@ -39,7 +39,11 @@ public class Peticion implements Serializable {
 		this.id = id;
 	}
 
-
+	public Peticion(Libro libro, Usuario usuario) {
+		super();
+		this.libro = libro;
+		this.usuario = usuario;
+	}
 
 	public PeticionPK getId() {
 		return this.id;
