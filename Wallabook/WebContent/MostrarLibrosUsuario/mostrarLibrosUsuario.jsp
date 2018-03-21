@@ -29,24 +29,43 @@
 	<DIV id="contenedor-general">
 
 		<c:forEach items="${libros}" var="libro">
-			<div class="contenedor-libros">
-				<p>${libro.titulo}</p>
-				<p>${libro.autor}</p>
-				<p>${libro.idioma}</p>
-				<c:if test="${libro.editorial != '0'}">
-					<p>${libro.editorial}</p>
-				</c:if>
-				<p>${libro.categoria.getNombreCategoria()}</p>
-				<c:choose>
-					<c:when test="${libro.disponible == 0}">
-						<p id="nodisponible">No disponible</p>
-					</c:when>
-					<c:otherwise>
-						<p id="disponible">Disponible</p>
-					</c:otherwise>
-				</c:choose>
-				<a href="#" class="boton-solicitar">Solicitar libro</a>
-			</div>
+			<c:choose>
+				<c:when test="${libro.editorial != '0'}">
+					<div class="contenedor-libros-con-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.editorial}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>
+						<a href="#" class="boton-solicitar">Solicitar libro</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="contenedor-libros-sin-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>
+						<a href="#" class="boton-solicitar">Solicitar libro</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
 	</div>
 
@@ -56,11 +75,11 @@
 
 		</div>
 		<div class="social">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
-<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
 	</footer>
 </body>

@@ -8,21 +8,28 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
-<link rel="stylesheet" href="/Wallabook/MostrarMisLibros/css/estilosperfil.css">
-<link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
+<link rel="stylesheet"
+	href="/Wallabook/MostrarMisLibros/css/estilosperfil.css">
+<link rel="shortcut icon"
+	href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
 <body>
 	<header>
 
 		<div id="separador"></div>
 		<div class="contenedor">
+<<<<<<< HEAD
 
 			<img id="logo" src="/Wallabook/Perfil/img/Logo-login.png">
 
+=======
+			<img id="logo" src="/Wallabook/MostrarMisLibros/img/logotipo.png">
+>>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
 			<div class="contenedor-botton"></div>
 		</div>
-		<a href="/Wallabook/CambiarDisponibilidadLibro" class="cambiar-dispo">Editar disponibilidad</a>
-		<a href="/Wallabook/ObtenerPerfil" class="volver">Mi perfil</a>
+		<a href="/Wallabook/CambiarDisponibilidadLibro" class="cambiar-dispo">Editar
+			disponibilidad</a> <a href="/Wallabook/ObtenerPerfil" class="volver">Mi
+			perfil</a>
 	</header>
 	<main>
 	<p>Mis Libros</p>
@@ -39,25 +46,44 @@
 	</c:if>
 	<DIV id="contenedor-general">
 		<c:forEach items="${libros}" var="libro">
-			<div class="contenedor-libros">
-				<p>${libro.titulo}</p>
-				<p>${libro.autor}</p>
-				<p>${libro.idioma}</p>
-				<c:if test="${libro.editorial != '0'}">
-					<p>${libro.editorial}</p>
-				</c:if>
-				<p>${libro.categoria.getNombreCategoria()}</p>
-				<c:choose>
-					<c:when test="${libro.disponible == 0}">
-						<p id="nodisponible">No disponible</p>
-					</c:when>
-					<c:otherwise>
-						<p id="disponible">Disponible</p>
-					</c:otherwise>
-				</c:choose>
-			</div>
+			<c:choose>
+				<c:when test="${libro.editorial != '0'}">
+					<div class="contenedor-libros-con-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.editorial}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="contenedor-libros-sin-ed">
+						<p>${libro.titulo}</p>
+						<p>${libro.autor}</p>
+						<p>${libro.idioma}</p>
+						<p>${libro.categoria.getNombreCategoria()}</p>
+						<c:choose>
+							<c:when test="${libro.disponible == 0}">
+								<p id="nodisponible">No disponible</p>
+							</c:when>
+							<c:otherwise>
+								<p id="disponible">Disponible</p>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
 	</DIV>
+<<<<<<< HEAD
 	<
 		 <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
@@ -68,5 +94,19 @@
 </div>
 		
 	
+=======
+	<footer>
+		<div class="contenedor">
+			<p class="copy">WallaBook &copy; 2018 Dev:Moha</p>
+		</div>
+		<div class="social">
+			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png"> 
+			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png"> 
+			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png"> 
+			<img class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png"> 
+			<img class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+		</div>
+	</footer>
+>>>>>>> 84e7e990f6e110c3525cc682e8491fe70b05a30e
 </body>
 </html>
