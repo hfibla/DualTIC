@@ -25,8 +25,7 @@
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a>
          <a href="/Wallabook/PaginaPrincipal" class="return-btn">Página principal</a>
-                <nav class="menu">                
-                    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a>
+                <nav class="menu">
                     <a href="/Wallabook/ObtenerLibros">Mis libros</a>
                     <a href="/Wallabook/ObtenerPerfil?edit=pending">Editar perfil</a>
                     <a href="#popup" class="popup-link">Eliminar cuenta</a> 

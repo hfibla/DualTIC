@@ -313,17 +313,17 @@ public class WallabookDAO {
 	public List<Libro> buscarLibrosTitulo(String titulo, Usuario usuario) {
 		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
-				"Select count (l) from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user",
+				"Select count (l) from Libro l where l.titulo like :titulo and l.disponible = 1 and l.usuario !=:user",
 				Libro.class);
 		queryCount.setParameter("user", usuario);
-		queryCount.setParameter("titulo", titulo);
+		queryCount.setParameter("titulo", "%" + titulo + "%");
 		Long count = (Long) queryCount.getSingleResult();
 		if (!count.equals(0L)) {
 			TypedQuery<Libro> queryAll = this.getEntityManager().createQuery(
-					"Select l from Libro l where l.titulo = :titulo and l.disponible = 1 and l.usuario !=:user",
+					"Select l from Libro l where l.titulo like :titulo and l.disponible = 1 and l.usuario !=:user",
 					Libro.class);
 			queryAll.setParameter("user", usuario);
-			queryAll.setParameter("titulo", titulo);
+			queryAll.setParameter("titulo", "%" + titulo + "%");
 			libros = queryAll.getResultList();
 		}
 		return libros;

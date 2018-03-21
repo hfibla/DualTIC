@@ -22,7 +22,8 @@
                <form id="ui_element" class="sb_wrapper" method="post" action="/Wallabook/ConsultarLibrosTitulo">
                    <p>
 
-	<input class="sb_input" placeholder="Buscar por título" name="titulo" type="text" required title="Escribe el nombre del libro que buscas"/>
+	<input class="sb_input" placeholder="Buscar por título" name="titulo" type="text" required title="Sólo caracteres alfanuméricos"
+		pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚàèòÀÈÒçÇ\s]+"/>
 	<input class="sb_search" type="submit" value=""/>
 
               </p>
