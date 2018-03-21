@@ -11,26 +11,24 @@
     <script type="text/javascript" src="miPerfil.js"></script>
     <link rel="shortcut icon" href="/Wallabook/MostrarMisLibros/img/favicon.png" />
 </head>
-<body>
+
 <header>
     <div class="contenedor">
         <img class="logo" src="/Wallabook/perfilPropio/img/Logo-login.png">
         <!--  <a href="/Wallabook/CerrarSesion" class="closesesion-btn">Cerrar Sesión</a> -->
-                <nav class="menu">
+                
                   <!--    <a href="/Wallabook/ObtenerMisLibros">Mis libros</a> -->
                     <!--  <a href="/Wallabook/ObtenerPerfil?edit=commit">Guardar cambios</a>  -->                  
-                </nav>
+               
      </div>
 </header>
 <main>
     
-<<<<<<< HEAD
-   <div class="avatar">
-        <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
-=======
+
+   
     <div class="avatar">
     <img src="${usuario.avatar.getLinkAvatar()}">
->>>>>>> 407c491cbf473a86b4d06adcbea5410e0beda215
+
     </div>
     <section class="formulario">
             <form method="post" action="/Wallabook/ObtenerPerfil">
@@ -43,16 +41,17 @@
                 <p class="formu">Teléfono: <input class="input" type="text" name="telefono" value="${usuario.telefono}" placeholder="Introduce aquí tu teléfono fijo o móvil (Opcional)"
                     title="9 caracteres numéricos" pattern="[0-9]+"/></p>
             <input class="save" type="submit" value="Guardar cambios"/>
+            <input class="discard" type="button" value="Cancelar"/>
             </form>
 </section>
     
 </main>
-    </body>
-    <footer>
+    
+    
+                <footer>
             <div class="contenedor">
                 <p class="copy">WallaBook &copy; 2018 Dev: Moha</p>
-                
-            </div>
+            
             <div class="social">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
@@ -60,6 +59,8 @@
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
 <img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
 </div>
-            
-        </footer>
+                  
+            </div>     
+        </footer>   
+        
 </html>
