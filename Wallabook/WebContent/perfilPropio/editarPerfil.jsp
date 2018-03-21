@@ -24,8 +24,13 @@
 </header>
 <main>
     
+<<<<<<< HEAD
    <div class="avatar">
         <img src="http://www.yumpabar.co.uk/images/srv/page-myaccount-associated-pages/My%20Account/icon-user.png">
+=======
+    <div class="avatar">
+    <img src="${usuario.avatar.getLinkAvatar()}">
+>>>>>>> 407c491cbf473a86b4d06adcbea5410e0beda215
     </div>
     <section class="formulario">
             <form method="post" action="/Wallabook/ObtenerPerfil">

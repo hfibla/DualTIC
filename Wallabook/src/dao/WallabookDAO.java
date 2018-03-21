@@ -3,7 +3,6 @@ package dao;
 import java.util.Collections;
 import java.util.List;
 
-import javax.management.Notification;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -35,12 +34,6 @@ public class WallabookDAO {
 		super();
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Wallabook");
 		this.setEntityManager(entityManagerFactory.createEntityManager());
-	}
-
-	public List<Libro> consultarLibros() {
-		TypedQuery<Libro> query = this.getEntityManager().createQuery("SELECT l FROM Libro l", Libro.class);
-		List<Libro> libros = query.getResultList();
-		return libros;
 	}
 
 	public boolean registrarUsuario(Usuario usuario) {
@@ -79,12 +72,6 @@ public class WallabookDAO {
 		return ((count.equals(0L)) ? false : true);
 	}
 
-	public List<Usuario> consultarUsuarios() {
-		TypedQuery<Usuario> query = this.getEntityManager().createQuery("SELECT u FROM Usuario", Usuario.class);
-		List<Usuario> usuarios = query.getResultList();
-		return usuarios;
-	}
-
 	public void anadirLibro(Libro libro) {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
@@ -115,21 +102,6 @@ public class WallabookDAO {
 		query.setParameter("id", idLibroParseada);
 		libro = query.getSingleResult();
 		return libro;
-	}
-
-	public List<Libro> consultarLibrosAutor(String autor) {
-		List<Libro> libros = Collections.emptyList();
-		Query queryCount = this.getEntityManager().createQuery("Select count (l) from Libro l where l.autor = :autor",
-				Libro.class);
-		queryCount.setParameter("autor", autor);
-		Long count = (Long) queryCount.getSingleResult();
-		if (!count.equals(0L)) {
-			TypedQuery<Libro> queryAll = this.getEntityManager()
-					.createQuery("Select l from Libro l where l.autor = :autor", Libro.class);
-			queryAll.setParameter("autor", autor);
-			libros = queryAll.getResultList();
-		}
-		return libros;
 	}
 
 	public List<Categoria> obtenerCategorias() {
@@ -305,15 +277,6 @@ public class WallabookDAO {
 		return categoria;
 	}
 
-	public Categoria consultarCategoriaID(int idCategoria) {
-		idCategoria = idCategoria - 1;
-		TypedQuery<Categoria> query = this.getEntityManager()
-				.createQuery("SELECT c FROM Categoria c where c.idCategoria = :idCat", Categoria.class);
-		query.setParameter("idCat", idCategoria);
-		Categoria categoria = query.getSingleResult();
-		return categoria;
-	}
-
 	public List<Libro> consultarLibrosDisponiblesNoPropios(Usuario usuario) {
 		List<Libro> libros = Collections.emptyList();
 		Query queryCount = this.getEntityManager().createQuery(
@@ -445,6 +408,13 @@ public class WallabookDAO {
 			avatares = queryAll.getResultList();
 		}
 		return avatares;
+	}
+	
+	public void eliminarUsuario (Usuario usuario) {
+		Usuario usuarioParaEliminar = this.getEntityManager().find(Usuario.class, usuario.getIdUsuario());
+		this.getEntityManager().getTransaction().begin();
+		this.getEntityManager().remove(usuarioParaEliminar);
+		this.getEntityManager().getTransaction().commit();
 	}
 
 }
