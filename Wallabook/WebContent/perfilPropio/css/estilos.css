@@ -32,15 +32,14 @@ header {
     margin-left: 10px;
 }
 
-<<<<<<< HEAD
-=======
+
 .notificacion-on:hover {
 	float: right;
 	margin-top: -13px;
 	height: 45px;	
 	cursor:pointer;
 }
->>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
+
 .avatar{
     margin-left: 42%;
     background-color: #fff;
@@ -249,8 +248,7 @@ header {
   }
 .modal-wrapper{
 	float: right;
-<<<<<<< HEAD
-=======
+
 }
 
 .avatar {
@@ -374,7 +372,6 @@ header {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 25px;
->>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
 }
 #popup {
    visibility: hidden;
@@ -430,100 +427,3 @@ border-radius: 3px;
    color:#fff;
 }
 
-<<<<<<< HEAD
-=======
-@media ( min-width :1080px) {
-	.avatar {
-		margin-left: 45%;
-		background-color: #fff;
-		border: solid 5px grey;
-		width: 190px;
-		height: 200px;
-		border-radius: 2px;
-	}
-	.avatar img {
-		height: 190px;
-	}
-	.social {
-		widht: 100%;
-		height: 50px;
-		bottom: 0;
-		position: fixed;
-		right: 0;
-	}
-	.social-icon {
-		widht: 50px;
-		height: 50px;
-	}
-}
-
->>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
-.return-btn {
-    text-decoration: none;  
-    float: right;
-    height: 50px;
-    color: #fff;
-    font-size:15px;
-    padding: 15px;
-    top: 0;
-    margin-right: 120px;    
-    cursor:pointer;
-}
-.return-btn:hover {
-    color: orange;
-    float:right;
-    text-decoration: none;
-    font-weight: bold;
-}
-.closesesion-btn {
-    text-decoration: none;  
-    height: 50px;
-    color: #fff;
-    font-size:15px;
-    padding: 15px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    
-    margin:0;
-    cursor:pointer;
-}
-.closesesion-btn:hover {
-    color: orange;
-    float:right;
-    text-decoration: none;
-    font-weight: bold;
-    padding: px;
-}
-main {
-    margin-top: 93px;
-    background-color: #b7b7b7;
-    height: 600px;
-    margin-top: 120px;
-} 
-
-
-.info-perfil {
-    background-color: #616161;
-    margin: 15px;
-    border: solid #616161;
-    padding: 5px;
-    color: white;
-    margin-top: 40px;
-}
-main p {
-    margin: 5px;
-}
-
-
-.social{
-width: 100%;
-height: 50px;
-bottom:0;
-position:fixed;
-right:0;
-}
-.social-icon{
-width: 50px;
-height: 50px;
-}
