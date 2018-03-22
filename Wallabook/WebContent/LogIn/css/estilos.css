@@ -18,7 +18,7 @@ a{
 	
 #loginform{
 	margin-top:10px;
-  margin-left:auto;
+  margin-left:580px;
   margin-right:auto;
 	width:270px;
 }
@@ -67,15 +67,15 @@ a{
 	background-color:darkorange;
 }
 #logo-login {
-    width: 450px;
+    width: 550px;
     margin-top: 150px;
-    padding-left: 100px;
+    margin-left: px;
 }
 #registro-btn:hover{
     color:darkorange;
 }
 #registro-btn {
-   padding-left:110px; 
+  
 }
 
 @media only screen and (max-width: 390px) {

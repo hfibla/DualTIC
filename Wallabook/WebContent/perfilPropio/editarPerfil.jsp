@@ -40,7 +40,8 @@
                 <p class="formu">Teléfono: <input class="input" type="text" name="telefono" value="${usuario.telefono}" placeholder="Introduce aquí tu teléfono fijo o móvil (Opcional)"
                     title="9 caracteres numéricos" pattern="[0-9]+"/></p>
             <input class="save" type="submit" value="Guardar cambios"/>
-            <input class="discard" type="button" value="Cancelar"/>
+           <!-- <input  class="discard" type="button" value="Cancelar"/> --> 
+             <a href="/Wallabook/ObtenerPerfil"  class="discard">Cancelar</a> 
             </form>
 </section>
     

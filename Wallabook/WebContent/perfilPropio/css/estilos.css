@@ -32,6 +32,35 @@ header {
     margin-left: 10px;
 }
 
+.closesesion-btn{
+	float: right;
+	margin: 15px;
+	text-decoration: none;
+	cursor:pointer;
+	color:#fff;
+}
+.return-btn{
+	float: right;
+	margin: 15px;
+	text-decoration: none;
+	cursor:pointer;
+	color:#fff;
+}
+
+.closesesion-btn:hover{
+	float: right;
+	margin: 15px;
+	text-decoration: none;
+	cursor:pointer;
+	color:orange;
+}
+.return-btn:hover{
+	float: right;
+	margin: 15px;
+	text-decoration: none;
+	cursor:pointer;
+	color:orange;
+}
 
 .notificacion-on:hover {
 	float: right;
@@ -40,11 +69,23 @@ header {
 	cursor:pointer;
 }
 
+.social {
+	widht: 100%;
+	height: 50px;
+	bottom: 0;
+	position: fixed;
+	right: 0;
+}
+
+.social-icon {
+	widht: 50px;
+	height: 50px;
+}
 .avatar{
     margin-left: 42%;
     background-color: #fff;
     border: solid 5px grey;
-    width: 190px;
+    width: 200px;
     height: 200px;    
     border-radius: 2px;
 }
@@ -227,8 +268,9 @@ header {
   -o-border-radius: 4px;
   background: #616161;
   color: orange;
- margin-left: 43.5%;
+ margin-left: 47%;
  margin-top: 5px;
+ margin-bottom: 47px;
 }
 #changebutton:hover{
   border: 1px solid #707070;
@@ -244,7 +286,8 @@ header {
   -o-border-radius: 4px;
   background: #707070;
   color: orange;
-    margin-left: 43.5%;
+    margin-left: 47%;
+    margin-bottom: 47px;
   }
 .modal-wrapper{
 	float: right;
@@ -255,9 +298,10 @@ header {
 	margin-left: 45%;
 	background-color: #fff;
 	border: solid 5px grey;
-	width: 190px;
+	width: 200px;
 	height: 200px;
 	border-radius: 2px;
+	margin-top: 130px;
 }
 .avatar img {
 	height: 190px;
@@ -306,8 +350,8 @@ header {
 .save {
 	margin-left: 45%;
 	text-align: center;
-	margin: 5px;
-	margin-left: 40px;
+	margin: 5px;	
+	margin-left: 11px;
 	background-color: orange;
 	border-radius: 1px;
 	border: solid 2px orange;
@@ -318,11 +362,38 @@ header {
 	margin-left: 45%;
 	text-align: center;
 	margin: 5px;
-	margin-left: 40px;
+	margin-left: 11px;
 	background-color: darkorange;
 	border-radius: 1px;
 	border: solid 2px orange;
 	color: white;
+}
+.discard {
+	margin-left: 45%;
+	text-align: center;
+	margin: 5px;	
+	margin-left: -1.5px;
+	background-color: orange;
+	border-radius: 1px;
+	border: solid 2px orange;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+	margin-top: 0.5px;
+}
+
+.discard:hover {
+	margin-left: 45%;
+	text-align: center;
+	margin: 5px;
+	margin-left: -1.5px;
+	background-color: darkorange;
+	border-radius: 1px;
+	border: solid 2px orange;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+	margin-top: 0.5px;
 }
 
 .menu a {
@@ -426,4 +497,16 @@ border-radius: 3px;
    line-height: 1;
    color:#fff;
 }
-
+.info-perfil{
+	width: 90%;
+	height: 145px;
+	margin: 0 auto;
+	background-color: grey;
+	padding: 15px;
+	 
+}
+.info-perfil p{
+	color: white;
+	padding: 1px;
+	 
+}

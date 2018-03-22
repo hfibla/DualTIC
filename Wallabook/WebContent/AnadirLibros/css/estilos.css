@@ -71,12 +71,16 @@ a{
     width: 300px;
     margin-top: 150px;
 }
-
-
+#registro-btn{
+    color:white;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+}
 #registro-btn:hover{
     color:darkorange;
-    
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 }
+
+
 <!--.seleccion {
    width:270px;
    padding:15px 0px;
