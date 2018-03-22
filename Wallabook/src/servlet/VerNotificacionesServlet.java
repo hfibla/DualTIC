@@ -20,17 +20,11 @@ import model.Usuario;
 public class VerNotificacionesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        WallabookDAO wallabookDAO = new WallabookDAO();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+     
     public VerNotificacionesServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
@@ -42,6 +36,6 @@ public class VerNotificacionesServlet extends HttpServlet {
 		else {
 		request.setAttribute("notificaciones", notificaciones);
 		}
-		request.getRequestDispatcher("Wallabook/verNotificaciones.jsp").forward(request, response);
+		request.getRequestDispatcher("/accDenPeticiones/verNotificaciones.jsp").forward(request, response);
 	}
 }
