@@ -24,9 +24,10 @@ header {
 	left: 0;
 	height:50px;
 	width: 100%;
-	z-index: 100;
-	
+	z-index: 100;	
 }
+
+
 
 #logo {
 	height: 50px;
@@ -105,6 +106,11 @@ main {
 	color: darkorange;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 #limite-nodisp {
 	border: solid 1px #ff0000;
 	background: #f49a9a;
@@ -127,6 +133,11 @@ footer {
 	bottom: 0;
 	height: 50px;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 
 #nodisponible {
 	color: red;

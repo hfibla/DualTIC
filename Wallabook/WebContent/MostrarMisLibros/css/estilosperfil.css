@@ -6,6 +6,7 @@
 	font-family: 'FontAwesome', sans-serif;
 }
 
+<<<<<<< HEAD
 * {
 	margin: 0;
 	padding: 0;
@@ -13,6 +14,23 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+=======
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #b7b7b7;
+    width: 100%;
+    margin: 0;
+    
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 }
 
 body {
@@ -179,6 +197,70 @@ ul {
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
+=======
+
+#demasiados-nodisp-cambiados {
+border:solid 1px #ff0000;
+background: #f49a9a;
+color:#ff0000;
+padding:0px;
+margin: 0 auto;
+margin-top: 5px;
+width: 70%;
+margin-left: 190px;
+
+}
+#limite-nodisp {
+border:solid 1px #ff0000;
+background: #f49a9a;
+color:#ff0000;
+padding:0px;
+margin: 0 auto;
+margin-top: 5px;
+width: 70%;
+margin-left: 190px;
+}
+
+.cambiar-dispo { 
+   float: right;
+   top: 0;
+   margin-top: -40px;
+   margin-right: 120px;
+   color:white;
+   font-size: 15px;
+   text-decoration: none;
+}
+.cambiar-dispo:hover { 
+   float: right;
+   top: 0;
+   margin-top: -40px;
+   margin-right: 120px;
+   color:orange;;
+   font-size: 15px;
+   text-decoration: none;
+   font-weight: bold;
+}
+.volver{
+    float: right;
+    top: 0;
+    margin-top: -45px;
+    margin-right: 15px;
+    color:white;
+    font-size: 20px;
+    text-decoration: none;
+}
+.volver:hover{
+    float: right;
+    top: 0;
+    margin-top: -45px;
+    margin-right: 15px;
+    color:orange;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 .volver:hover {
 	float: right;
 	top: 0;
@@ -203,6 +285,7 @@ ul {
 }
 
 #nodisponible {
+<<<<<<< HEAD
 	color: red;
 	border-radius: 4px;
 	font-weight: bold;
@@ -214,6 +297,19 @@ ul {
 	bottom: 0;
 	position: fixed;
 	right: 0;
+=======
+   color : red;
+   border-radius: 4px;
+   font-weight: bold;
+
+}
+.social {
+widht: 100%;
+height: 50px;
+bottom:0;
+position:fixed;
+right:0;
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 }
 
 footer {
@@ -237,12 +333,18 @@ footer {
 	height: 50px;
 }
 
+<<<<<<< HEAD
 .social {
 	widht: 100%;
 	height: 50px;
 	bottom: 0;
 	position: fixed;
 	right: 0;
+=======
+   color: limegreen;
+   border-radius: 4px;
+   font-weight: bold;
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 }
 
 .social-icon {
@@ -284,6 +386,7 @@ footer {
 		bottom: 0;
 		height: 50px;
 	}
+<<<<<<< HEAD
 	.copy {
 		margin-left: 80px;
 	}
@@ -321,6 +424,14 @@ footer {
 	
 	
 	;
+=======
+.copy {
+	margin-left: 80px;	
+	color:limegreen;   
+	border-radius:4	px;    
+	font-weight:bold;
+	
+>>>>>>> 4136d2cb25932e10712b8090072c745f51e7d92f
 }
 
 .cambiar-dispo {

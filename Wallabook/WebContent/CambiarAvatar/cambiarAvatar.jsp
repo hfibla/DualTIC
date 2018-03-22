@@ -22,6 +22,16 @@
     </c:forEach>
     <input id="save" type="submit" value="Guardar">
         <a href="/Wallabook/ObtenerPerfil"><input id="save" type="button" value="Cancelar"></a>
+        
 </form>
+<div class="social">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialfacebook.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialtwitter.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgoogle.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/sicialdropbox.png">
+<img href="#" class="social-icon" src="/Wallabook/perfilPropio/img/socialgps.png">
+</div>
+
+
 </body>
 </html>

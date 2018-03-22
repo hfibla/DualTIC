@@ -22,8 +22,8 @@
 	
 	 <!--BOTONES GUARDAR CANCELAR -->
 			<div class="contenedor-buttons">
-             <a href="/Wallabook/ObtenerMisLibros" id="discard-changes">Cancelar</a>
-          <form method="post" action="/Wallabook/CambiarDisponibilidadLibro">
+            <a href="/Wallabook/CambiarDisponibilidadLibro" id="discard-changes">Cancelar</a> 
+           <form method="post" action="/Wallabook/CambiarDisponibilidadLibro">
            <a><button id="save-changes" type="submit">Guardar cambios</button></a> 
           
 	<DIV id="contenedor-general">
