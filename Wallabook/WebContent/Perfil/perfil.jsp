@@ -17,7 +17,7 @@
  
         <a href="/Wallabook/PaginaPrincipal" class="closesesion-btn">Volver al menú principal</a>
                 <nav class="menu">
-                    <a href="/Wallabook/ObtenerLibros?usr=${usuario.nickname}">Perfil de ${usuario.nickname}</a>
+                    <a href="/Wallabook/ObtenerLibros?usr=${usuario.nickname}">Libros de ${usuario.nickname}</a>
                     
                     
                 </nav>

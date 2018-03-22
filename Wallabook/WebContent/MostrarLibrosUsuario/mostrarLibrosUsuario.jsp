@@ -25,7 +25,7 @@
 	</header>
 	<main>
 	<p>
-		Libros de <a href="/Wallabook/ObtenerPerfil?usr=${suUsuario.nickname}">${suUsuario.nickname}</a>
+		Perfil de <a href="/Wallabook/ObtenerPerfil?usr=${suUsuario.nickname}">${suUsuario.nickname}</a>
 	</p>
 	</main>
 	<c:if test="${not empty maxLibros}">
