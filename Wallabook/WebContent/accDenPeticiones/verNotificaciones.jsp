@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="es">
 <head>
-<title>WallaBook - Notificacion libro</title>
+<title>WallaBook - Notificaciones</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=1, minimum-scale=1">
@@ -35,13 +35,15 @@
 
 		<c:forEach items="${notificaciones}" var="notificacion">
 			<div class="contenedor-libros">
-				<p>${notificacion.mensaje}</p>
-				<input type="hidden" name="nickRemitente" value="${notificacion.usuario.getNickname()}"/>
-				<input type="hidden" name="idLibro" value="${notificacion.libro.getIdLibro()}"/>
+				<p>${notificacion.mensaje}</p>				
 				<c:if test="${notificacion.accionNecesaria == 1}">
-					<form method="post" action="/Wallabook/GestionarPeticion">
-						<input type="submit" name="peticion" value="Aceptar" /> 
-						<input type="submit" name="peticion" value="Rechazar" />
+					<form name="frm" method="post" action="/Wallabook/GestionarPeticion">
+						<input type="hidden" name="nickRemitente" value="${notificacion.usuario.getNickname()}"/>
+						<input type="hidden" name="idLibro" value="${notificacion.libro.getIdLibro()}"/>
+						<input type="hidden" name="aceptar" value="Aceptar"/>
+						<input type="hidden" name="rechazar" value="Rechazar"/>
+						<input type="submit" name="peticion" value="Aceptar" onclick="{document.frm.aceptar.value=this.value;document.frm.submit();}" />
+						<input type="submit" name="peticion" value="Rechazar" onclick="{document.frm.rechazar.value=this.value;document.frm.submit();}" />
 					</form>
 				</c:if>
 			</div>	

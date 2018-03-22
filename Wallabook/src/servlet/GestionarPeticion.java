@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.WallabookDAO;
 import model.Libro;
+import model.Notificacion;
 import model.Usuario;
 
 /**
@@ -24,40 +25,44 @@ public class GestionarPeticion extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		WallabookDAO wallabookDAO = new WallabookDAO();
-		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idlibro"));
+		int idLibro = Integer.parseInt(request.getParameter("idLibro"));
+		Libro libro = wallabookDAO.consultarLibroID(idLibro);
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario antiguoPropietario = wallabookDAO.consultarUsuarioNickname(nickname);
-		List<Libro> libros = wallabookDAO.consultarLibrosUsuario(antiguoPropietario);
-		String mensaje = "";
-		if (request.getParameter("peticion").equals("aceptar")) {
-			mensaje = "Se ha aceptado la petición";
-			Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("idRemitente"));
+		String mensajeAlert = "";
+		if (request.getParameter("peticion").equals("Aceptar")) {
+			mensajeAlert = "Se ha aceptado la petición";
+			Usuario nuevoPropietario = wallabookDAO.consultarUsuarioNickname(request.getParameter("nickRemitente"));
 			if (wallabookDAO.cambiarPropietarioLibro(libro, antiguoPropietario, nuevoPropietario)) {
 				wallabookDAO.enviarNotificacionesCambioLibroOK(libro, antiguoPropietario, nuevoPropietario);
 				wallabookDAO.enviarNotificacionesOtrosCambioLibroDenegado(libro, nuevoPropietario);
 			} else {
 				wallabookDAO.enviarNotificacionesCambioLibroError(libro, antiguoPropietario, nuevoPropietario);
 			}
-		} else if (request.getParameter("peticion").equals("denegar")) {
-			Usuario usuario = wallabookDAO.consultarUsuarioNickname(request.getParameter("idRemitente"));
+		} else if (request.getParameter("peticion").equals("Rechazar")) {
+			Usuario usuario = wallabookDAO.consultarUsuarioNickname(request.getParameter("nickRemitente"));
 			wallabookDAO.denegarPeticion(libro, usuario);
-			mensaje = "Se ha denegado la petición";
+			mensajeAlert = "Se ha denegado la petición";
 		} else {
-			mensaje = "Ha ocurrido un error";
+			mensajeAlert = "Ha ocurrido un error";
 		}
-		request.setAttribute("mensaje", mensaje);
-		request.setAttribute("usuario", antiguoPropietario);
-		request.setAttribute("libros", libros);
-		request.getRequestDispatcher("/MostrarMisLibros/misLibros.jsp").forward(request, response);
+		if (mensajeAlert != "") {
+			request.setAttribute("alerta", mensajeAlert);
+		}
+		Usuario usuario =  wallabookDAO.consultarUsuarioNickname(nickname);
+		List <Notificacion> notificaciones = wallabookDAO.verNotificacionesUsuario(usuario);
+		if (notificaciones.isEmpty()) {
+			String mensajeNullNotificacion = "No tienes notificaciones";
+			request.setAttribute("error", mensajeNullNotificacion);
+		}
+		else {
+		request.setAttribute("notificaciones", notificaciones);
+		}
+		request.getRequestDispatcher("/accDenPeticiones/verNotificaciones.jsp").forward(request, response);
 
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
