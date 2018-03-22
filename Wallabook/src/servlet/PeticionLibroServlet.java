@@ -23,18 +23,10 @@ public class PeticionLibroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	WallabookDAO wallabookDAO = new WallabookDAO();
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public PeticionLibroServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = (String) request.getSession(false).getAttribute("me");
 		Usuario miUsuario =  wallabookDAO.consultarUsuarioNickname(nickname);

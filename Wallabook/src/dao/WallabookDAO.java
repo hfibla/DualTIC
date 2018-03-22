@@ -228,7 +228,7 @@ public class WallabookDAO {
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(peticion);
-		entityTransaction.commit();		
+		entityTransaction.commit();	
 	}
 	
 	public void crearNotificacionPeticionLibro (Notificacion notificacion) {
@@ -273,7 +273,7 @@ public class WallabookDAO {
 	}
 	
 	public List<Libro> consultarLibrosPedidoPendienteUsuario (Usuario miUsuario, Usuario suUsuario) {
-		List <Libro> librosSuUsuario = consultarLibrosUsuario(suUsuario);
+		List <Libro> librosSuUsuario = consultarLibrosDisponiblesUsuario(suUsuario);
 		List <Libro> libros = new ArrayList<Libro>();
 			for (int i=0; i<librosSuUsuario.size(); i++) {
 				Libro libro = librosSuUsuario.get(i);
@@ -285,7 +285,7 @@ public class WallabookDAO {
 	}
 	
 	public List<Libro> consultarLibrosPedidoNoPendienteUsuario (Usuario miUsuario, Usuario suUsuario) {
-		List <Libro> librosSuUsuario = consultarLibrosUsuario(suUsuario);
+		List <Libro> librosSuUsuario = consultarLibrosDisponiblesUsuario(suUsuario);
 		List <Libro> libros = new ArrayList<Libro>();
 			for (int i=0; i<librosSuUsuario.size(); i++) {
 				Libro libro = librosSuUsuario.get(i);
@@ -303,10 +303,10 @@ public class WallabookDAO {
 				Peticion.class);
 		queryCount.setParameter("libro", libro);
 		queryCount.setParameter("user", usuario.getIdUsuario());		
-		if (queryCount.getSingleResult() != null) {
-			return true;
+		if (queryCount.getSingleResult().equals(0L)) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	public List<Notificacion> verNotificacionesUsuario(Usuario usuario) {
@@ -341,6 +341,22 @@ public class WallabookDAO {
 		if (!count.equals(0L)) {
 			TypedQuery<Libro> queryAll = this.getEntityManager()
 					.createQuery("Select l from Libro l where l.usuario != :user and l.disponible = 1", Libro.class);
+			queryAll.setParameter("user", usuario);
+			libros = queryAll.getResultList();
+		}
+
+		return libros;
+	}
+	
+	public List<Libro> consultarLibrosDisponiblesUsuario(Usuario usuario) {
+		List<Libro> libros = Collections.emptyList();
+		Query queryCount = this.getEntityManager().createQuery(
+				"Select count (l) from Libro l where l.usuario = :user and l.disponible = 1", Libro.class);
+		queryCount.setParameter("user", usuario);
+		Long count = (Long) queryCount.getSingleResult();
+		if (!count.equals(0L)) {
+			TypedQuery<Libro> queryAll = this.getEntityManager()
+					.createQuery("Select l from Libro l where l.usuario = :user and l.disponible = 1", Libro.class);
 			queryAll.setParameter("user", usuario);
 			libros = queryAll.getResultList();
 		}

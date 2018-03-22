@@ -1,87 +1,35 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 @import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
 
 [class*="fontawesome-"]:before {
- font-family: 'FontAwesome', sans-serif;
+	font-family: 'FontAwesome', sans-serif;
 }
 
-<<<<<<< HEAD
-*{
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-=======
-{
-margin
-
-
-
-
-:
-
-
- 
-
-
-0;
-padding
-
-
-
-
-:
-
-
- 
-
-
-0;
-box-sizing
-
-
-
-
-:
-
-
- 
-
-
-border-box;
-
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #b7b7b7;
-    width: 100%;
-    margin: 0;
-    
+	font-family: 'Open Sans', sans-serif;
+	background-color: #b7b7b7;
+	width: 100%;
+	margin: 0;
 }
 
-header{
-    background-color: #616161;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 50px;
-    width: 100%;
-    z-index: 100;
-}
-
-#logo {
-    height: 50px;
-    top: 0;
-    left: 0;
-    margin-left: 20px;
-}
-main { 
-    width: 100%px;
-    height: 30px;
-    padding: 7px;
-    margin-top: 60px;
-    border-bottom: 2px solid orange;
-    color: white;
-    margin-left: 20px;    
+main {
+	width: 100% px;
+	height: 30px;
+	padding: 7px;
+	margin-top: 60px;
+	border-bottom: 2px solid orange;
+	color: white;
+	margin-left: 20px;
 }
 
 header {
@@ -101,43 +49,24 @@ header {
 	margin-left: 20px;
 }
 
-main {
-	width: 100% px;
-	height: 30px;
-	padding: 7px;
-	margin-top: 60px;
-	margin-left: 20px;
-	border-bottom: 2px solid orange;
-	color: white;
-}
-
 #contenedor-general {
-    margin-top: 10px;
-    margin-left: 40px;
-    display: inline-block;
+	margin-top: 10px;
+	margin-left: 40px;
+	display: inline-block;
 }
-.contenedor-libros {
 
-    width: 300px;
-    height: 200px;
-    margin: 5px;
-    margin-left: 20px;
-    margin-right: 30px;    
-    background-color: #616161;
-    border: 2px solid orange;
-    color: white;
-    display: inline-block;
-    border-radius: 2%;
+.contenedor-libros {
 	width: 300px;
-	height: 150px;
-	margin: 5px;
-	margin-left: 25px;
+	height: 190px;
+	margin-left: 33px;
 	margin-right: 30px;
-	background-color: #616161;
+	margin-top: 30px;
+	background-color: grey;
 	border: 2px solid orange;
 	color: white;
 	display: inline-block;
-	border-radius: 2%;
+	border-radius: 4px;
+	float: left;
 }
 
 .volver {
@@ -165,17 +94,6 @@ main {
 	margin-top: 6px;
 }
 
-#demasiados-nodisp-cambiados {
-	border: solid 1px #ff0000;
-	background: #f49a9a;
-	color: #ff0000;
-	padding: 0px;
-	text-align: center;
-	margin: 5px;
-	width: 70%;
-	margin-left: 190px;
-}
-
 #limite-nodisp {
 	border: solid 1px #ff0000;
 	background: #f49a9a;
@@ -187,40 +105,15 @@ main {
 	margin-left: 190px;
 }
 
-.contenedor-libros-con-ed {
-	width: 300px;
-	height: 150px;
-	margin-left: 33px;
-	margin-right: 30px;
-	margin-top: 30px;
-	background-color: grey;
-	border: 2px solid orange;
-	color: white;
-	display: inline-block;
-	border-radius: 4px;
-	float: left;
+ul li {
+	list-style: none;
+	margin: 2px;
+	height: 21.6px;
 }
 
-.contenedor-libros-sin-ed {
-	width: 300px;
-	height: 150px;
-	margin-left: 33px;
-	margin-right: 30px;
-	margin-top: 30px;
-	background-color: grey;
-	border: 2px solid orange;
-	color: white;
-	display: inline-block;
-	border-radius: 4px;
-	height: 200px;
-	margin: 5px;
-	margin-left: 20px;
-	margin-right: 30px;
-	background-color: #616161;
-	border: 2px solid orange;
-	color: white;
-	display: inline-block;
-	border-radius: 2%;
+ul {
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 .volver {
@@ -233,68 +126,68 @@ main {
 	text-decoration: none;
 }
 
-
 #demasiados-nodisp-cambiados {
-border:solid 1px #ff0000;
-background: #f49a9a;
-color:#ff0000;
-padding:0px;
-margin: 0 auto;
-margin-top: 5px;
-width: 70%;
-margin-left: 190px;
-
+	border: solid 1px #ff0000;
+	background: #f49a9a;
+	color: #ff0000;
+	padding: 0px;
+	text-align: center;
+	margin: 5px;
+	width: 70%;
+	margin-left: 190px;
 }
+
 #limite-nodisp {
-border:solid 1px #ff0000;
-background: #f49a9a;
-color:#ff0000;
-padding:0px;
-margin: 0 auto;
-margin-top: 5px;
-width: 70%;
-margin-left: 190px;
+	border: solid 1px #ff0000;
+	background: #f49a9a;
+	color: #ff0000;
+	padding: 0px;
+	margin: 0 auto;
+	margin-top: 5px;
+	width: 70%;
+	margin-left: 190px;
 }
 
-.cambiar-dispo { 
-   float: right;
-   top: 0;
-   margin-top: -40px;
-   margin-right: 120px;
-   color:white;
-   font-size: 15px;
-   text-decoration: none;
+.cambiar-dispo {
+	float: right;
+	top: 0;
+	margin-top: -40px;
+	margin-right: 120px;
+	color: white;
+	font-size: 15px;
+	text-decoration: none;
 }
-.cambiar-dispo:hover { 
-   float: right;
-   top: 0;
-   margin-top: -40px;
-   margin-right: 120px;
-   color:orange;;
-   font-size: 15px;
-   text-decoration: none;
-   font-weight: bold;
+
+.cambiar-dispo:hover {
+	float: right;
+	top: 0;
+	margin-top: -40px;
+	margin-right: 120px;
+	color: orange;;
+	font-size: 15px;
+	text-decoration: none;
+	font-weight: bold;
 }
-.volver{
-    float: right;
-    top: 0;
-    margin-top: -45px;
-    margin-right: 15px;
-    color:white;
-    font-size: 20px;
-    text-decoration: none;
+
+.volver {
+	float: right;
+	top: 0;
+	margin-top: -45px;
+	margin-right: 15px;
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
 }
-.volver:hover{
-    float: right;
-    top: 0;
-    margin-top: -45px;
-    margin-right: 15px;
-    color:orange;
-    font-size: 20px;
-    text-decoration: none;
-    
 
 .volver:hover {
+	float: right;
+	top: 0;
+	margin-top: -45px;
+	margin-right: 15px;
+	color: orange;
+	font-size: 20px;
+	text-decoration: none; .
+	volver: hover{ 
 	float: right;
 	top: 0;
 	margin-top: -45px;
@@ -302,27 +195,25 @@ margin-left: 190px;
 	color: darkorange;
 	font-size: 20px;
 	text-decoration: none;
-
 }
 
 .contenedor-libros p {
-   margin: 5px;
-   margin-top: 6px;
+	margin: 5px;
+	margin-top: 6px;
 }
 
-
 #nodisponible {
-   color : red;
-   border-radius: 4px;
-   font-weight: bold;
+	color: red;
+	border-radius: 4px;
+	font-weight: bold;
+}
 
-
-.social{
-widht: 100%;
-height: 50px;
-bottom:0;
-position:fixed;
-right:0;
+.social {
+	widht: 100%;
+	height: 50px;
+	bottom: 0;
+	position: fixed;
+	right: 0;
 }
 
 footer {
@@ -344,14 +235,8 @@ footer {
 	width: 100%;
 	bottom: 0;
 	height: 50px;
-
 }
-#disponible {
 
-   color: limegreen;
-   border-radius: 4px;
-   font-weight: bold;
-}
 .social {
 	widht: 100%;
 	height: 50px;
@@ -364,7 +249,6 @@ footer {
 	widht: 50px;
 	height: 50px;
 }
-
 
 #nodisponible {
 	color: red;
@@ -404,27 +288,39 @@ footer {
 		margin-left: 80px;
 	}
 	color
-	:
-	 
-	limegreen
-	;
 	
-   
-	border-radius
+	
 	:
+	
 	 
+	
+	limegreen
+	
+	
+	;
+	border-radius
+	
+	
+	:
+	
+	 
+	
 	4
 	px
-	;
 	
-    
+	
+	;
 	font-weight
-	:
-	 
-	bold
-	;
 	
-
+	
+	:
+	
+	 
+	
+	bold
+	
+	
+	;
 }
 
 .cambiar-dispo {
@@ -468,4 +364,3 @@ footer {
 	width: 70%;
 	margin-left: 190px;
 }
-
