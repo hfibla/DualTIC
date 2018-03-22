@@ -24,9 +24,10 @@ header {
 	left: 0;
 	height:50px;
 	width: 100%;
-	z-index: 100;
-	
+	z-index: 100;	
 }
+
+
 
 #logo {
 	height: 50px;
@@ -108,8 +109,8 @@ main {
 	margin-left: 130px;
 }
 
-<<<<<<< HEAD
-=======
+
+
 #limite-nodisp {
 	border: solid 1px #ff0000;
 	background: #f49a9a;
@@ -132,7 +133,7 @@ footer {
 	bottom: 0;
 	height: 50px;
 }
->>>>>>> 0a050090af6301cefaf8d0a39865af9e6aa0e755
+
 
 
 #nodisponible {
