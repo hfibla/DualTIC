@@ -96,11 +96,20 @@ public class WallabookDAO {
 	}
 
 	public Libro consultarLibroID(String idLibro) {
-		Libro libro = null;
+		Libro libro = new Libro();
 		int idLibroParseada = Integer.parseInt(idLibro);
 		TypedQuery<Libro> query = this.getEntityManager().createQuery("Select l from Libro l where l.idLibro = :id",
 				Libro.class);
 		query.setParameter("id", idLibroParseada);
+		libro = query.getSingleResult();
+		return libro;
+	}
+	
+	public Libro consultarLibroID(int idLibro) {
+		Libro libro = new Libro();		
+		TypedQuery<Libro> query = this.getEntityManager().createQuery("Select l from Libro l where l.idLibro = :id",
+				Libro.class);
+		query.setParameter("id", idLibro);
 		libro = query.getSingleResult();
 		return libro;
 	}
@@ -145,11 +154,11 @@ public class WallabookDAO {
 	}
 
 	public void enviarNotificacionesCambioLibroOK(Libro libro, Usuario antiguoPropietario, Usuario nuevoPropietario) {
-		Notificacion notificacionExPropietario = new Notificacion(
-				"El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.",
+		Notificacion notificacionExPropietario = new Notificacion(0,
+				"El cambio referente a su libro " + libro.getTitulo() + "se ha realizado con éxito.", libro,
 				antiguoPropietario);
-		Notificacion notificacionNuevoPropietario = new Notificacion(
-				"La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.",
+		Notificacion notificacionNuevoPropietario = new Notificacion(0,
+				"La petición del libro " + libro.getTitulo() + " que solicitó se ha realizado con éxito.", libro, 
 				nuevoPropietario);
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
@@ -160,11 +169,11 @@ public class WallabookDAO {
 
 	public void enviarNotificacionesCambioLibroError(Libro libro, Usuario antiguoPropietario,
 			Usuario nuevoPropietario) {
-		Notificacion notificacionExPropietario = new Notificacion(
-				"El cambio referente a su libro " + libro.getTitulo() + " no ha podido realizarse.",
+		Notificacion notificacionExPropietario = new Notificacion(0,
+				"El cambio referente a su libro " + libro.getTitulo() + " no ha podido realizarse.", libro,
 				antiguoPropietario);
-		Notificacion notificacionNuevoPropietario = new Notificacion("La petición del libro " + libro.getTitulo()
-				+ " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", nuevoPropietario);
+		Notificacion notificacionNuevoPropietario = new Notificacion(0, "La petición del libro " + libro.getTitulo()
+				+ " que solicitó no ha podido realizarse. Demasiados libros no disponibles.", libro, nuevoPropietario);
 		EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 		entityTransaction.begin();
 		this.getEntityManager().persist(notificacionExPropietario);
@@ -189,8 +198,8 @@ public class WallabookDAO {
 			peticiones = query.getResultList();
 			for (int i = 0; i < peticiones.size(); i++) {
 				Usuario usuario = peticiones.get(i).getUsuario();
-				Notificacion notificacionDenegada = new Notificacion(
-						"La petición del libro " + libro.getTitulo() + " que solicitó ha sido denegada.", usuario);
+				Notificacion notificacionDenegada = new Notificacion(0,
+						"La petición del libro " + libro.getTitulo() + " que solicitó ha sido denegada.", libro, usuario);
 				EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
 				entityTransaction.begin();
 				this.getEntityManager().persist(notificacionDenegada);
@@ -213,14 +222,13 @@ public class WallabookDAO {
 			Peticion peticionDenegada = query.getSingleResult();
 			Peticion peticion = this.getEntityManager().find(Peticion.class, peticionDenegada.getId());
 			this.getEntityManager().getTransaction().begin();
-			peticion.getId().setConfirmada("denegada");
+			crearPeticionLibro(new Peticion (libro, usuario, "denegada"));
+			this.getEntityManager().remove(peticion);
 			this.getEntityManager().getTransaction().commit();
-			Notificacion notificacionDenegada = new Notificacion(
-					"La petición del libro " + libro.getTitulo() + " que solicitó ha sido denegada.", usuario);
-			EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
-			entityTransaction.begin();
+			Notificacion notificacionDenegada = new Notificacion(0, 
+					"La petición del libro " + libro.getTitulo() + " que solicitó ha sido denegada.",libro, usuario);			
 			this.getEntityManager().persist(notificacionDenegada);
-			entityTransaction.commit();
+			this.getEntityManager().getTransaction().commit();
 		}
 	}
 
@@ -263,11 +271,12 @@ public class WallabookDAO {
 			Peticion peticion = this.getEntityManager().find(Peticion.class, idPeticion);
 			this.getEntityManager().getTransaction().begin();
 			if (porEncontrar && peticion.getId().getIdRemitente() == nuevoPropietario.getIdUsuario()) {
-				peticion.getId().setConfirmada("aceptada");
+				crearPeticionLibro(new Peticion (libro, nuevoPropietario, "aceptada"));
 				porEncontrar = false;
 			} else {
-				peticion.getId().setConfirmada("denegada");
+				crearPeticionLibro(new Peticion (libro, nuevoPropietario, "denegada"));
 			}
+			this.getEntityManager().remove(peticion);
 			this.getEntityManager().getTransaction().commit();
 		}
 	}

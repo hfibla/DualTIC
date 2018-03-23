@@ -33,7 +33,7 @@ public class PeticionLibroServlet extends HttpServlet {
 		Libro libro = wallabookDAO.consultarLibroID(request.getParameter("idLibro"));
 		Usuario suUsuario = libro.getUsuario();
 		wallabookDAO.crearPeticionLibro(new Peticion(libro,miUsuario));
-		wallabookDAO.crearNotificacionPeticionLibro(new Notificacion(miUsuario.getNickname() + " desea tu libro " + libro.getTitulo(), suUsuario));
+		wallabookDAO.crearNotificacionPeticionLibro(new Notificacion(1, miUsuario.getNickname() + " desea tu libro " + libro.getTitulo(), libro, suUsuario));
 		List<Libro> librosSolicitables = wallabookDAO.consultarLibrosPedidoNoPendienteUsuario(miUsuario, suUsuario);
 		List<Libro> librosNoSolicitables = wallabookDAO.consultarLibrosPedidoPendienteUsuario(miUsuario, suUsuario);
 		request.setAttribute("miUsuario", miUsuario);
